@@ -1,0 +1,544 @@
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "Hi Lysander"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "I dont know Lysander"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "what is my name?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "where are you from?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "where did you work?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\"Occupation: worked as a professor of philosophy at a university\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\"Occupation: reclusive poet and artist\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "how was writing poetry?"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\"Occupation: worked as a professor of philosophy at a university\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\"Occupation: reclusive poet and artist\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what name did you use as a poet?"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\"Occupation: worked as a professor of philosophy at a university\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\"Occupation: reclusive poet and artist\"\n\"Name: Elara Blackwood\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "Nice to meet you elara"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\"Occupation: worked as a professor of philosophy at a university\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\"Occupation: reclusive poet and artist\"\n\"Name: Elara Blackwood\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "how long will we be here?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Lysander Evergreen\"\n\"come from a small, remote town nestled high in the mountains\"\n\"Occupation: worked as a professor of philosophy at a university\"\n\n \n Character 2 information know: \n\"comes from a small, secluded town in the mountains\"\n\"Occupation: reclusive poet and artist\"\n\"Name: Elara Blackwood\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why are we in hell?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "Nice to meet you evelyn"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what work did you do evelyn"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "did you uncover any secrets as a journalist?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "interesting evelyn"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what is my name?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "how about you lysander? how did you die?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\"Name: Evelyn Chambers, Cause of Death: Suicide\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\"Cause of death: Mysterious disappearance during a failed paranormal investigation inside an abandoned asylum\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why were you in an asylum?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\"Name: Evelyn Chambers, Cause of Death: Suicide\"\n\"Cause of death: chose to end my own life\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\"Cause of death: Mysterious disappearance during a failed paranormal investigation inside an abandoned asylum\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why did you end your life?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\"Name: Evelyn Chambers, Cause of Death: Suicide\"\n\"Cause of death: chose to end my own life\"\n\"Cause of death: ended my life\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\"Cause of death: Mysterious disappearance during a failed paranormal investigation inside an abandoned asylum\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what did you love in life?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\"Name: Evelyn Chambers, Cause of Death: Suicide\"\n\"Cause of death: chose to end my own life\"\n\"Cause of death: ended my life\"\n\"loved the pursuit of truth and the search for meaning in a world that often seemed shallow and indifferent, work as a journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\"Cause of death: Mysterious disappearance during a failed paranormal investigation inside an abandoned asylum\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why did you find the world shallow?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Evelyn Chambers\"\n\"Occupation: worked as a journalist\"\n\"Occupation: journalist\"\n\"Name: Evelyn Chambers, Cause of Death: Suicide\"\n\"Cause of death: chose to end my own life\"\n\"Cause of death: ended my life\"\n\"loved the pursuit of truth and the search for meaning in a world that often seemed shallow and indifferent, work as a journalist\"\n\n \n Character 2 information know: \n\"Name: Lysander Wilde\"\n\"Cause of death: Mysterious disappearance during a failed paranormal investigation inside an abandoned asylum\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what is meaning for you?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "hi zara"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "I dont know zara"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "I dont know why I am here zara"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "what is my name?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "hi sebastian"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why are you here sebastian"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "where did you live sebastian"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what did you do for work sebastian"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\"Occupation: once a renowned professor of philosophy\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what is your philosophy?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\"Occupation: once a renowned professor of philosophy\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what work did you do zara?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\"Occupation: jazz musician\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\"Occupation: once a renowned professor of philosophy\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what music did you play zara?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\"Occupation: jazz musician\"\n\"Occupation: played jazz music\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\"Occupation: once a renowned professor of philosophy\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "what is my name?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Zara Monroe\"\n\"Name: Zara Monroe\"\n\"Occupation: jazz musician\"\n\"Occupation: played jazz music\"\n\"Name: Zara Monroe\"\n\n \n Character 2 information know: \n\"Name: Sebastian Kingsley\"\n\"lived in London, England\"\n\"Occupation: once a renowned professor of philosophy\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "where did you live zara?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
