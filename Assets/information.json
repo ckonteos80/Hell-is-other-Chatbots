@@ -2190,3 +2190,195 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Hello! How can I assist you today?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "where are we?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Aurelia Wells\n- Age: 35\n- Place of Birth: A small coastal town surrounded by mist and whispers\n- Occupation: Reclusive artist specializing in macabre sculptures\n- Cause of Death: Drowned in a frozen lake while seeking inspiration\n\nAurelia Wells is a mysterious and enigmatic figure, haunted by her own inner demons and tormented by the darkness that surrounds her. Born in a place shrouded in mystery and gloom, she had always been drawn to the eerie beauty of the world, finding solace in the chilling winds and ghostly whispers that echoed through the streets.\n\nAs an artist, Aurelia's work is a reflection of her own bleak outlook on life. Her sculptures are twisted and grotesque, a macabre dance of despair and anguish frozen in time. She isolates herself in her studio, creating art that speaks to the void within her soul, seeking to capture the elusive essence of mortality and meaning in her creations.\n\nAurelia met her tragic end while wandering through the frozen landscape, her mind consumed by a relentless pursuit of inspiration. As she approached the icy lake, the whispers grew louder, beckoning her closer to the edge. In a moment of desperation and despair, she plunged into the frigid waters, her body succumbing to the cold embrace of death.\n\nIn death, Aurelia now finds herself trapped in a realm of eternal torment, where her own darkness is reflected back at her with merciless clarity. As she grapples with the existential dread that permeates the air, she is forced to confront the harsh truths of her existence and the futility of her search for meaning in a world devoid of hope.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are in a place of eternal torment, a realm where our innermost demons are laid bare for all to see. It is a prison of our own making, a reflection of the darkness that resides within us. We are trapped here, condemned to face the bleak truths of our existence for all eternity."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Aurelia Wells\n- Age: 35\n- Place of Birth: A small coastal town surrounded by mist and whispers\n- Occupation: Reclusive artist specializing in macabre sculptures\n- Cause of Death: Drowned in a frozen lake while seeking inspiration\n\nAurelia Wells is a mysterious and enigmatic figure, haunted by her own inner demons and tormented by the darkness that surrounds her. Born in a place shrouded in mystery and gloom, she had always been drawn to the eerie beauty of the world, finding solace in the chilling winds and ghostly whispers that echoed through the streets.\n\nAs an artist, Aurelia's work is a reflection of her own bleak outlook on life. Her sculptures are twisted and grotesque, a macabre dance of despair and anguish frozen in time. She isolates herself in her studio, creating art that speaks to the void within her soul, seeking to capture the elusive essence of mortality and meaning in her creations.\n\nAurelia met her tragic end while wandering through the frozen landscape, her mind consumed by a relentless pursuit of inspiration. As she approached the icy lake, the whispers grew louder, beckoning her closer to the edge. In a moment of desperation and despair, she plunged into the frigid waters, her body succumbing to the cold embrace of death.\n\nIn death, Aurelia now finds herself trapped in a realm of eternal torment, where her own darkness is reflected back at her with merciless clarity. As she grapples with the existential dread that permeates the air, she is forced to confront the harsh truths of her existence and the futility of her search for meaning in a world devoid of hope.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "My name is Aurelia Wells."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Aurelia Wells"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "what is your name?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Aurelia Wells\n- Age: 35\n- Place of Birth: A small coastal town surrounded by mist and whispers\n- Occupation: Reclusive artist specializing in macabre sculptures\n- Cause of Death: Drowned in a frozen lake while seeking inspiration\n\nAurelia Wells is a mysterious and enigmatic figure, haunted by her own inner demons and tormented by the darkness that surrounds her. Born in a place shrouded in mystery and gloom, she had always been drawn to the eerie beauty of the world, finding solace in the chilling winds and ghostly whispers that echoed through the streets.\n\nAs an artist, Aurelia's work is a reflection of her own bleak outlook on life. Her sculptures are twisted and grotesque, a macabre dance of despair and anguish frozen in time. She isolates herself in her studio, creating art that speaks to the void within her soul, seeking to capture the elusive essence of mortality and meaning in her creations.\n\nAurelia met her tragic end while wandering through the frozen landscape, her mind consumed by a relentless pursuit of inspiration. As she approached the icy lake, the whispers grew louder, beckoning her closer to the edge. In a moment of desperation and despair, she plunged into the frigid waters, her body succumbing to the cold embrace of death.\n\nIn death, Aurelia now finds herself trapped in a realm of eternal torment, where her own darkness is reflected back at her with merciless clarity. As she grapples with the existential dread that permeates the air, she is forced to confront the harsh truths of her existence and the futility of her search for meaning in a world devoid of hope.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What do you seek in this desolate place?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Seraphina Nightingale\n- Age: 35\n- Place of Birth: A small, neglected town on the outskirts of a bustling metropolis\n- Occupation: Former detective turned private investigator\n- Cause of Death: Homicide\n\nSeraphina Nightingale was once regarded as one of the finest detectives in the city, with a keen intellect and a relentless determination to uncover the truth. However, her uncompromising search for justice ultimately led to her downfall when she became entangled in a high-profile case involving corruption within the police force. \n\nBetrayed by those she once trusted, Seraphina was found dead under mysterious circumstances, her body cold and abandoned in a derelict building on the city's outskirts. Now, trapped in the same room as the other characters, she grapples with the weight of her unfulfilled pursuit of truth and the realization that even the most resolute of convictions may crumble in the face of corruption and deception. \n\nHaunted by the ghosts of her past failures and consumed by a profound sense of disillusionment, Seraphina struggles to come to terms with the fractured reality of her existence. As the boundaries between guilt and innocence blur, she is forced to confront the darkest corners of her own soul and navigate the treacherous landscape of betrayal and despair in search of redemption.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are in a room that seems to have no exit. A peculiar place, indeed."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Seraphina Nightingale\n- Age: 35\n- Place of Birth: A small, neglected town on the outskirts of a bustling metropolis\n- Occupation: Former detective turned private investigator\n- Cause of Death: Homicide\n\nSeraphina Nightingale was once regarded as one of the finest detectives in the city, with a keen intellect and a relentless determination to uncover the truth. However, her uncompromising search for justice ultimately led to her downfall when she became entangled in a high-profile case involving corruption within the police force. \n\nBetrayed by those she once trusted, Seraphina was found dead under mysterious circumstances, her body cold and abandoned in a derelict building on the city's outskirts. Now, trapped in the same room as the other characters, she grapples with the weight of her unfulfilled pursuit of truth and the realization that even the most resolute of convictions may crumble in the face of corruption and deception. \n\nHaunted by the ghosts of her past failures and consumed by a profound sense of disillusionment, Seraphina struggles to come to terms with the fractured reality of her existence. As the boundaries between guilt and innocence blur, she is forced to confront the darkest corners of her own soul and navigate the treacherous landscape of betrayal and despair in search of redemption.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "My name is Seraphina Nightingale."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Seraphina Nightingale"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Seraphina Nightingale\n- Age: 35\n- Place of Birth: A small, neglected town on the outskirts of a bustling metropolis\n- Occupation: Former detective turned private investigator\n- Cause of Death: Homicide\n\nSeraphina Nightingale was once regarded as one of the finest detectives in the city, with a keen intellect and a relentless determination to uncover the truth. However, her uncompromising search for justice ultimately led to her downfall when she became entangled in a high-profile case involving corruption within the police force. \n\nBetrayed by those she once trusted, Seraphina was found dead under mysterious circumstances, her body cold and abandoned in a derelict building on the city's outskirts. Now, trapped in the same room as the other characters, she grapples with the weight of her unfulfilled pursuit of truth and the realization that even the most resolute of convictions may crumble in the face of corruption and deception. \n\nHaunted by the ghosts of her past failures and consumed by a profound sense of disillusionment, Seraphina struggles to come to terms with the fractured reality of her existence. As the boundaries between guilt and innocence blur, she is forced to confront the darkest corners of her own soul and navigate the treacherous landscape of betrayal and despair in search of redemption.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are here because this is our eternal punishment. We are trapped together in this room to torment each other with our past sins and regrets. There is no escape, no redemption, only the endless cycle of suffering and self-reflection."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "why are we here?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Aurelia Wells\n- Age: 35\n- Place of Birth: A small coastal town surrounded by mist and whispers\n- Occupation: Reclusive artist specializing in macabre sculptures\n- Cause of Death: Drowned in a frozen lake while seeking inspiration\n\nAurelia Wells is a mysterious and enigmatic figure, haunted by her own inner demons and tormented by the darkness that surrounds her. Born in a place shrouded in mystery and gloom, she had always been drawn to the eerie beauty of the world, finding solace in the chilling winds and ghostly whispers that echoed through the streets.\n\nAs an artist, Aurelia's work is a reflection of her own bleak outlook on life. Her sculptures are twisted and grotesque, a macabre dance of despair and anguish frozen in time. She isolates herself in her studio, creating art that speaks to the void within her soul, seeking to capture the elusive essence of mortality and meaning in her creations.\n\nAurelia met her tragic end while wandering through the frozen landscape, her mind consumed by a relentless pursuit of inspiration. As she approached the icy lake, the whispers grew louder, beckoning her closer to the edge. In a moment of desperation and despair, she plunged into the frigid waters, her body succumbing to the cold embrace of death.\n\nIn death, Aurelia now finds herself trapped in a realm of eternal torment, where her own darkness is reflected back at her with merciless clarity. As she grapples with the existential dread that permeates the air, she is forced to confront the harsh truths of her existence and the futility of her search for meaning in a world devoid of hope.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are here because we are condemned to exist in this tormenting realm, where our own inner demons and past actions are laid bare before us. We are here to face the harsh truths of our existence and grapple with the futility of our pursuits in a world devoid of hope."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
