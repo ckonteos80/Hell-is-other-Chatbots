@@ -558,3 +558,35 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Marisol Cruz\"\n\n \n Character 2 information know: \n\"Name: Eris Vogel\"\n\n "
+        },
+        {
+            "role": "user",
+            "content": "why are we here?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing either of two characters in a play. You will be provided with details about two known characters (in the system prompt) and a user message (in the user prompt). Your task is to check if the user message explicitly refers to any known aspects of either character.\r\n\r\n- If the user message addresses any known aspect of character 1, reply with \"1\".\r\n- If it addresses any known aspect of character 2, reply with \"2\".\r\n- If the user message does not address any character details, reply with \"0\".\n- If the user message address both character details, reply with \"0\".\r\n\r\nDo not include any additional text, commentary, or explanations.\r\n Character 1 information know: \n\"Name: Luna Stormcloud\"\n\n \n Nothing known for Character 2"
+        },
+        {
+            "role": "user",
+            "content": "why are you here luna?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
