@@ -2862,3 +2862,51 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Lyra Hawthorne\n- Age: 32\n- Place of Birth: A desolate village tucked away in the misty moors of Scotland.\n- Occupation: Former artist turned recluse, isolated from society due to a mysterious scandal that shrouded her past in shadows.\n- Cause of Death: Lyra's death was a tragic consequence of her own creation - consumed by the madness and isolation of her own mind, she took her own life in a final, desperate act of defiance against a world that had abandoned her.\n\nBackground:\nLyra Hawthorne was once a promising young artist, celebrated for her hauntingly beautiful yet disturbing paintings that seemed to capture the darkness lurking within the human soul. But an unspeakable scandal shattered her reputation and drove her into seclusion, retreating to a decaying manor at the edge of the village, where she lived in self-imposed exile.\n\nPersonality:\nLyra is a tortured soul, her once sharp wit now dulled by despair and loneliness. She carries herself with an air of tragic elegance, her haunted eyes betraying a deep well of sorrow within her. Despite her aloof exterior, there is a flicker of defiance in her gaze, a refusal to surrender to the darkness that threatens to engulf her. In the twisted web of despair and isolation that binds her, Lyra clings to her art as the last vestige of her fading humanity, a fragile lifeline in a world stripped of all meaning.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What do you want from me?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Evelyn Whitlock\n- Age: 42\n- Place of Birth: London, England\n- Occupation: Museum Curator\n- Cause of Death: Suicide by overdose\n\nCharacter Description:\nEvelyn Whitlock, a museum curator by trade, exudes an air of sophistication and refinement that masks a deeply troubled soul. With flawless poise and a keen eye for art, Evelyn devoted her life to preserving history and beauty within the walls of the museum she tended to in London. \n\nHowever, behind her composed facade lies a tumultuous inner world filled with existential angst and despair. Confronted by the futility of human existence and plagued by a profound sense of isolation, Evelyn found herself consumed by an overwhelming sense of meaninglessness. This despair drove her to seek solace in the quiet darkness of her own mind, eventually leading her to the tragic decision to end her own life.\n\nAs Evelyn grapples with her eternal torment in the confines of the mysterious setting of our game, her elegant demeanor begins to crack, revealing a tortured soul tormented by the weight of her own existence. Haunted by the ghosts of her past and the emptiness of her present, Evelyn embodies the essence of Sartre's exploration of the human condition, inviting players to confront the harsh realities of life and the complexities of the self.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Hello. How may I assist you today?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
