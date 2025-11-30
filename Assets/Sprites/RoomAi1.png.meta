@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4506334a1e946894fa51e75298705043
+guid: d840b3b9bd69bc34fbb39ade35f446db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1235531351626268515
-    second: Couch1_0
+      213: -147320647928092601
+    second: RoomAi1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -165,23 +165,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Couch1_0
+      name: RoomAi1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 278
-        height: 74
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36fba8ad73d752110800000000000000
-      internalID: 1235531351626268515
+      spriteID: 7486a28b6ac94fdf0800000000000000
+      internalID: -147320647928092601
       vertices: []
       indices: 
       edges: []
@@ -190,7 +190,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 59196ba5c4499c843993ef313dd1eb9a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -200,7 +200,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Couch1_0: 1235531351626268515
+      RoomAi1_0: -147320647928092601
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
