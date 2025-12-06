@@ -109,7 +109,7 @@ public class CharacterController : MonoBehaviour
     public string adressingSystemPrompt;
 
 
-    private string spaceUrl = "https://jejunepixels-openai-proxy.hf.space/chat";
+    private string spaceUrl = "https://jejunepixels-noexit-proxy.hf.space/chat";
 
     void Start()
     {
