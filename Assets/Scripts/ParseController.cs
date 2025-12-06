@@ -19,7 +19,7 @@ public class ParseController : MonoBehaviour
 
         if (inputField.interactable)
         {
-            if (myMaster.theCharacterController.Dialogues.Count == 0)
+            if (myMaster.theOverlayController.TextDisplays.Count == 0)
             {
                 // Only process if the input is not empty
                 if (!string.IsNullOrEmpty(input))
@@ -44,10 +44,10 @@ public class ParseController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if (myMaster.theCharacterController.Dialogues.Count > 0)
+                if (myMaster.theOverlayController.TextDisplays.Count > 0)
                 {
-                    Destroy(myMaster.theCharacterController.Dialogues[0]);
-                    myMaster.theCharacterController.Dialogues.RemoveAt(0);
+                    Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
+                    myMaster.theOverlayController.TextDisplays.RemoveAt(0);
                 }
 
                 // if (myMaster.theCharacterControllerGrok.Dialogues.Count > 0)
@@ -74,7 +74,7 @@ public class ParseController : MonoBehaviour
                 PreventArrowKeyInput();
             }
         }
-        if (myMaster.theCharacterController.Dialogues.Count == 0)
+        if (myMaster.theOverlayController.TextDisplays.Count == 0)
         //   if (myMaster.theCharacterControllerDeep.Dialogues.Count == 0)
         //  if (myMaster.theCharacterControllerGrok.Dialogues.Count == 0)
         {

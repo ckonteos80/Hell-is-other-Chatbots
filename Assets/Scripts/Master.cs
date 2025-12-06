@@ -10,6 +10,8 @@ public class Master : MonoBehaviour
 
     public ParseController theParseController;
 
+    public TextOverlayController theOverlayController;
+
     /// <summary>
     ///  public string key;
     /// </summary>

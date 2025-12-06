@@ -53,13 +53,13 @@ public class CharacterController : MonoBehaviour
 {
     // References and API details.
     Master myMaster;
-    public string apiKey;
-    private string apiUrl = "https://api.openai.com/v1/chat/completions";
-    private float retryDelay = 2f;
 
     // Scene elements.
     public GameObject dialoguePrefab;
-    public List<GameObject> Dialogues;
+    //public List<GameObject> Dialogues;
+
+
+
     public List<PersonController> Characters; // Assumes PersonController has fields: myName, myCharacter, infoShared, dialogueHolder, etc.
 
     // Dialogue and event tracking.
@@ -114,7 +114,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         myMaster = GetComponentInParent<Master>();
-    ///    apiKey = myMaster.key; // Get the API key from your Master script.
+        ///    apiKey = myMaster.key; // Get the API key from your Master script.
         mySaveController = GetComponent<saveController>();
 
         // Start generating names for the characters.
@@ -176,15 +176,15 @@ public class CharacterController : MonoBehaviour
 
         string jsonBody = JsonUtility.ToJson(conversation);
 
-        // ✅ DETAILED LOGGING
-        Debug.Log("═══════════════════════════════════════");
-        Debug.Log($"🌐 Sending Request - Attempt {retryAttempts + 1}/3");
-        Debug.Log($"📍 URL: {spaceUrl}");
-        Debug.Log($"🎯 Character: {characterNo}");
-        Debug.Log($"🤖 Model: {model}");
-        Debug.Log($"🌡️ Temperature: {temperature}");
-        Debug.Log($"📤 JSON Body: {jsonBody}");
-        Debug.Log("═══════════════════════════════════════");
+        // // ✅ DETAILED LOGGING
+        // Debug.Log("═══════════════════════════════════════");
+        // Debug.Log($"🌐 Sending Request - Attempt {retryAttempts + 1}/3");
+        // Debug.Log($"📍 URL: {spaceUrl}");
+        // Debug.Log($"🎯 Character: {characterNo}");
+        // Debug.Log($"🤖 Model: {model}");
+        // Debug.Log($"🌡️ Temperature: {temperature}");
+        // Debug.Log($"📤 JSON Body: {jsonBody}");
+        // Debug.Log("═══════════════════════════════════════");
 
         // Create the web request
         UnityWebRequest request = new UnityWebRequest(spaceUrl, "POST");
@@ -208,13 +208,13 @@ public class CharacterController : MonoBehaviour
         // Check for errors
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("═══════════════════════════════════════");
-            Debug.LogError($"❌ REQUEST FAILED - Attempt {retryAttempts + 1}/3");
-            Debug.LogError($"Character: {characterNo}");
-            Debug.LogError($"URL: {spaceUrl}");
-            Debug.LogError($"Error: {request.error}");
-            Debug.LogError($"Response Code: {request.responseCode}");
-            Debug.LogError($"Response Body: {request.downloadHandler.text}");
+            // Debug.LogError("═══════════════════════════════════════");
+            // Debug.LogError($"❌ REQUEST FAILED - Attempt {retryAttempts + 1}/3");
+            // Debug.LogError($"Character: {characterNo}");
+            // Debug.LogError($"URL: {spaceUrl}");
+            // Debug.LogError($"Error: {request.error}");
+            // Debug.LogError($"Response Code: {request.responseCode}");
+            // Debug.LogError($"Response Body: {request.downloadHandler.text}");
 
             // Log response headers for debugging
             if (request.GetResponseHeaders() != null)
@@ -256,10 +256,10 @@ public class CharacterController : MonoBehaviour
             // Request successful
             string response = request.downloadHandler.text;
 
-            Debug.Log("═══════════════════════════════════════");
-            Debug.Log($"✅ SUCCESS - Character {characterNo}");
-            Debug.Log($"📥 Raw Response: {response}");
-            Debug.Log("═══════════════════════════════════════");
+            // Debug.Log("═══════════════════════════════════════");
+            // Debug.Log($"✅ SUCCESS - Character {characterNo}");
+            // Debug.Log($"📥 Raw Response: {response}");
+            // Debug.Log("═══════════════════════════════════════");
 
             // Parse the JSON response
             OpenAIResponse openAIResponse = JsonUtility.FromJson<OpenAIResponse>(response);
@@ -267,11 +267,11 @@ public class CharacterController : MonoBehaviour
             // Validate the response structure
             if (openAIResponse == null || openAIResponse.choices == null || openAIResponse.choices.Length == 0)
             {
-                Debug.LogError("═══════════════════════════════════════");
-                Debug.LogError("❌ Response parsing failed - Invalid JSON structure");
-                Debug.LogError($"Received response: {response}");
-                Debug.LogError("Expected structure: {\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"...\"}}]}");
-                Debug.LogError("═══════════════════════════════════════");
+                // Debug.LogError("═══════════════════════════════════════");
+                // Debug.LogError("❌ Response parsing failed - Invalid JSON structure");
+                // Debug.LogError($"Received response: {response}");
+                // Debug.LogError("Expected structure: {\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"...\"}}]}");
+                // Debug.LogError("═══════════════════════════════════════");
                 request.Dispose();
                 yield break;
             }
@@ -578,10 +578,12 @@ public class CharacterController : MonoBehaviour
     {
         GameObject newObject = Instantiate(dialoguePrefab, Characters[0].dialogueHolder);
         newObject.transform.SetParent(Characters[characterNo].dialogueHolder);
+        newObject.name = "character" + characterNo.ToString();
         newObject.transform.localPosition = Vector3.zero;
         // Debug.Log("Displaying for Character " + characterNo + ": " + message);
         dialogueDisplay myDialogueDisplay = newObject.GetComponent<dialogueDisplay>();
         myDialogueDisplay.showMessage(message);
-        Dialogues.Add(newObject);
+        myMaster.theOverlayController.addImage(myDialogueDisplay);
     }
+
 }

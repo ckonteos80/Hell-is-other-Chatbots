@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 7384053691864505426}
   - component: {fileID: 3394076873777493097}
   - component: {fileID: 889989953154097328}
+  - component: {fileID: 3789078374502596321}
   m_Layer: 5
   m_Name: CharacterText
   m_TagString: Untagged
@@ -363,3 +364,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3789078374502596321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9181259625093524909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa65f00dec428a4fb64aa81e471e175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPositions:
+  - {x: 0, y: 3.2}
+  - {x: 1.5, y: 1}
+  - {x: 0, y: -1}
+  - {x: -1.5, y: 1}
+  curentPos: 0
+  boxRectTransform: {fileID: 0}
+  anchorMinPositions:
+  - {x: 0.5, y: 0}
+  - {x: 0, y: 0.5}
+  - {x: 0.5, y: 1}
+  - {x: 1, y: 0.5}
+  anchorMaxPositions:
+  - {x: 0.5, y: 0}
+  - {x: 0, y: 0.5}
+  - {x: 0.5, y: 1}
+  - {x: 1, y: 0.5}
