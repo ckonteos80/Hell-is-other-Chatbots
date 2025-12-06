@@ -107,10 +107,14 @@ public class CharacterController : MonoBehaviour
     public string modelInfo;
     [TextArea(3, 10)]
     public string adressingSystemPrompt;
+
+
+    private string spaceUrl = "https://jejunepixels-openai-proxy.hf.space/chat";
+
     void Start()
     {
         myMaster = GetComponentInParent<Master>();
-        apiKey = myMaster.key; // Get the API key from your Master script.
+    ///    apiKey = myMaster.key; // Get the API key from your Master script.
         mySaveController = GetComponent<saveController>();
 
         // Start generating names for the characters.
@@ -146,14 +150,14 @@ public class CharacterController : MonoBehaviour
     }
 
     // Generic coroutine that sends an OpenAI API request.
-    public IEnumerator SendOpenAIRequest(string systemMessage, string userMessage, int characterNo, float temperature, string model, Action<OpenAIResponse> callback)
+    public IEnumerator SendOpenAIRequest(string systemMessage, string userMessage, int characterNo, float temperature, string model, Action<OpenAIResponse> callback, int retryAttempts = 0)
     {
         // Build the messages list.
         List<Message> messages = new List<Message>
-        {
-            new Message { role = "system", content = systemMessage },
-            new Message { role = "user", content = userMessage }
-        };
+    {
+        new Message { role = "system", content = systemMessage },
+        new Message { role = "user", content = userMessage }
+    };
 
         // Clean up message content.
         for (int i = 0; i < messages.Count; i++)
@@ -166,49 +170,129 @@ public class CharacterController : MonoBehaviour
         ConversationWrapper conversation = new ConversationWrapper
         {
             model = model,
-            // "ft:gpt-3.5-turbo-1106:ck80:training1:B8ihcA3A", // Change model if needed.
-            //  model = "gpt-4",
             temperature = temperature,
             messages = messages.ToArray()
         };
 
         string jsonBody = JsonUtility.ToJson(conversation);
-        UnityWebRequest request = new UnityWebRequest(apiUrl, "POST");
+
+        // ✅ DETAILED LOGGING
+        Debug.Log("═══════════════════════════════════════");
+        Debug.Log($"🌐 Sending Request - Attempt {retryAttempts + 1}/3");
+        Debug.Log($"📍 URL: {spaceUrl}");
+        Debug.Log($"🎯 Character: {characterNo}");
+        Debug.Log($"🤖 Model: {model}");
+        Debug.Log($"🌡️ Temperature: {temperature}");
+        Debug.Log($"📤 JSON Body: {jsonBody}");
+        Debug.Log("═══════════════════════════════════════");
+
+        // Create the web request
+        UnityWebRequest request = new UnityWebRequest(spaceUrl, "POST");
+
+        // Convert JSON string to bytes
         byte[] jsonToSend = Encoding.UTF8.GetBytes(jsonBody);
         request.uploadHandler = new UploadHandlerRaw(jsonToSend);
         request.downloadHandler = new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-        request.SetRequestHeader("Authorization", "Bearer " + apiKey);
 
-        //    Debug.Log("Sending request for Character " + characterNo + ": " + jsonBody);
+        // Set headers - NO Authorization header (Hugging Face Space handles it)
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Accept", "application/json");
+        request.SetRequestHeader("User-Agent", "UnityPlayer");
+
+        // Set timeout for Hugging Face Spaces (they can be slow on first request/cold start)
+        request.timeout = 60;
+
+        // Send the request
         yield return request.SendWebRequest();
 
+        // Check for errors
         if (request.result != UnityWebRequest.Result.Success)
         {
-            // Debug.LogError("Request failed for Character " + characterNo + ": " + request.error);
-            // Debug.LogError("Response Code: " + request.responseCode);
-            // Debug.LogError("Response Body: " + request.downloadHandler.text);
+            Debug.LogError("═══════════════════════════════════════");
+            Debug.LogError($"❌ REQUEST FAILED - Attempt {retryAttempts + 1}/3");
+            Debug.LogError($"Character: {characterNo}");
+            Debug.LogError($"URL: {spaceUrl}");
+            Debug.LogError($"Error: {request.error}");
+            Debug.LogError($"Response Code: {request.responseCode}");
+            Debug.LogError($"Response Body: {request.downloadHandler.text}");
+
+            // Log response headers for debugging
+            if (request.GetResponseHeaders() != null)
+            {
+                Debug.LogError("Response Headers:");
+                foreach (var header in request.GetResponseHeaders())
+                {
+                    Debug.LogError($"  {header.Key}: {header.Value}");
+                }
+            }
+            Debug.LogError("═══════════════════════════════════════");
+
+            // ✅ RETRY LOGIC for cold starts (503/504), timeouts, or connection errors
+            bool shouldRetry = (request.responseCode == 503 ||
+                               request.responseCode == 504 ||
+                               request.responseCode == 0 || // Connection failed
+                               request.error.Contains("timeout") ||
+                               request.error.Contains("Cannot connect") ||
+                               request.error.Contains("Could not resolve host"));
+
+            if (shouldRetry && retryAttempts < 2)
+            {
+                Debug.LogWarning($"⏳ Space might be starting up or connection issue. Retrying in 10 seconds...");
+                request.Dispose();
+                yield return new WaitForSeconds(10f);
+
+                // Retry recursively
+                yield return StartCoroutine(SendOpenAIRequest(systemMessage, userMessage, characterNo, temperature, model, callback, retryAttempts + 1));
+                yield break;
+            }
+
+            // Max retries reached or non-retryable error
+            Debug.LogError($"❌ Request failed after {retryAttempts + 1} attempts. Giving up.");
             request.Dispose();
             yield break;
         }
         else
         {
+            // Request successful
             string response = request.downloadHandler.text;
-            //    Debug.Log("Raw Response for Character " + characterNo + ": " + response);
+
+            Debug.Log("═══════════════════════════════════════");
+            Debug.Log($"✅ SUCCESS - Character {characterNo}");
+            Debug.Log($"📥 Raw Response: {response}");
+            Debug.Log("═══════════════════════════════════════");
+
+            // Parse the JSON response
             OpenAIResponse openAIResponse = JsonUtility.FromJson<OpenAIResponse>(response);
+
+            // Validate the response structure
             if (openAIResponse == null || openAIResponse.choices == null || openAIResponse.choices.Length == 0)
             {
-                // Debug.LogError("Response did not contain expected choices for Character " + characterNo);
+                Debug.LogError("═══════════════════════════════════════");
+                Debug.LogError("❌ Response parsing failed - Invalid JSON structure");
+                Debug.LogError($"Received response: {response}");
+                Debug.LogError("Expected structure: {\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"...\"}}]}");
+                Debug.LogError("═══════════════════════════════════════");
                 request.Dispose();
                 yield break;
             }
-            // Invoke the callback to handle the response.
+
+            // Validate that we have message content
+            if (openAIResponse.choices[0].message == null ||
+                string.IsNullOrEmpty(openAIResponse.choices[0].message.content))
+            {
+                Debug.LogError("❌ Response message is null or empty");
+                request.Dispose();
+                yield break;
+            }
+
+            // Success! Invoke the callback with the parsed response
+            Debug.Log($"✨ Invoking callback with content: {openAIResponse.choices[0].message.content}");
             callback?.Invoke(openAIResponse);
         }
-        request.Dispose();
-        yield break;
-    }
 
+        // Clean up
+        request.Dispose();
+    }
     public IEnumerator SendRequestForAdress(string userMessage, int characterSpeakingNo, int retryAttempts = 0)
     {
         // Build the final system prompt by appending current events.

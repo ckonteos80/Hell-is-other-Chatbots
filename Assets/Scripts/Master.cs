@@ -7,19 +7,17 @@ public class Master : MonoBehaviour
 
     public CharacterController theCharacterController;
 
-    
-    public CharacterControllerGrok theCharacterControllerGrok;
-    
-    public characterControllerDeep theCharacterControllerDeep;
 
     public ParseController theParseController;
 
-    public string key;
+    /// <summary>
+    ///  public string key;
+    /// </summary>
 
-    
-    public string GrokKey;
 
-    public string DeepKey;
+    /// public string GrokKey;
+
+    ///  public string DeepKey;
 
 
     /// <summary>
@@ -28,7 +26,7 @@ public class Master : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       // theCharacterController = GetComponentInChildren<CharacterController>();
+        // theCharacterController = GetComponentInChildren<CharacterController>();
         ///    thePlayerMovement = GetComponentInChildren<PlayerMovement>();
         theMovementController = GetComponentInChildren<MovementController>();
         theWaypointController = GetComponentInChildren<WaypointController>();
@@ -41,5 +39,5 @@ public class Master : MonoBehaviour
 
     }
 
-    
+
 }

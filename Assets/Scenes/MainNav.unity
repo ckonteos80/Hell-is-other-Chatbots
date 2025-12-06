@@ -199,114 +199,6 @@ MonoBehaviour:
   overrideCursor: {fileID: -2413806693520163455, guid: 8f4e763c252f9324fbfad975879409a5, type: 3}
   defaultCursor: {fileID: -2413806693520163455, guid: 8f4e763c252f9324fbfad975879409a5, type: 3}
   cursorRenderer: {fileID: 354558485}
---- !u!1 &18614033
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 18614034}
-  - component: {fileID: 18614035}
-  - component: {fileID: 18614036}
-  - component: {fileID: 18614037}
-  - component: {fileID: 18614038}
-  m_Layer: 0
-  m_Name: Character Controller Grok
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &18614034
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18614033}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 639496506}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &18614035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18614033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3147730cb4fbecd4bacdfadf370602f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &18614036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18614033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f19ecc50bdda554c9fac337dde38184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKeyGrok: 
-  dialoguePrefab: {fileID: 1955208573117639016, guid: ada96a3f2b999674ba03a458e3e26fb5, type: 3}
-  Dialogues: []
-  Characters:
-  - {fileID: 2059035740}
-  - {fileID: 1842401093}
-  - {fileID: 142131068}
-  dialogueEntries: []
-  events: []
-  baseSetup: 'You are an actor playing a role in a creative adaptation of the stage
-    play ''No Exit'' by Jean-Paul Sartre. You have to stay and reply in your character,
-    dont try to be overtly helpfull and give brief answears only from the point of
-    view of your character. Here is your character description: '
-  characterSetup: We are playing a game based on the stage play No Exit by Jean-Paul
-    Sartre.
-  characterUser: 'Generate a unique character description for a character in the
-    game / play. Include: name, age, place born, job, cause of death.'
-  characterName: Generate a unique and creative character name. Reply only with the
-    first and last name
-  systemPrompts:
-  - 
-  - 
-  - 
-  temp: 0.5
-  charaterTemp: 1.5
---- !u!114 &18614037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18614033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0150b0a8ebc7ee143a9f55628a483650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &18614038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18614033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b7a16ff27c4504ebd8148befe5ac0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &74526957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,12 +1052,7 @@ MonoBehaviour:
   theMovementController: {fileID: 0}
   theWaypointController: {fileID: 0}
   theCharacterController: {fileID: 1576598639}
-  theCharacterControllerGrok: {fileID: 18614036}
-  theCharacterControllerDeep: {fileID: 1486514633}
   theParseController: {fileID: 74526962}
-  key: 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
-  GrokKey: xai-YN6obAoqnU8MRf0A2mqXrIzxYSyU1QPFgUh09rfkNZs4EJm0qwIbslSSUiSwSySYBmToure4pW0gkLnM
-  DeepKey: sk-5af5eb49cc9e4da6b685745893a72a8e
 --- !u!4 &639496506
 Transform:
   m_ObjectHideFlags: 0
@@ -1180,8 +1067,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1576598635}
-  - {fileID: 1486514637}
-  - {fileID: 18614034}
   - {fileID: 787896058}
   - {fileID: 7685810}
   m_Father: {fileID: 0}
@@ -2259,88 +2144,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1486514632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1486514637}
-  - component: {fileID: 1486514633}
-  - component: {fileID: 1486514634}
-  m_Layer: 0
-  m_Name: Character Controller Deep
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1486514633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486514632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460bae23d0fb04345a2e93911320e091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  apiKey: 
-  dialoguePrefab: {fileID: 1955208573117639016, guid: ada96a3f2b999674ba03a458e3e26fb5, type: 3}
-  Dialogues: []
-  Characters:
-  - {fileID: 2059035740}
-  - {fileID: 1842401093}
-  - {fileID: 142131068}
-  dialogueEntries: []
-  events: []
-  baseSetup: 'You are an actor playing a role in a creative adaptation of the stage
-    play ''No Exit'' by Jean-Paul Sartre. You have to stay and reply in your character,
-    dont try to be overtly helpfull and give verybrief answears only from the point
-    of view of your character. Here is your character description: '
-  characterSetup: We are playing a game based on the stage play No Exit by Jean-Paul
-    Sartre.
-  characterUser: 'Generate a unique character description for a character in the
-    game / play. Include: name, age, place born, job, cause of death.'
-  characterName: Generate a unique and creative character name. Reply only with the
-    first and last name
-  systemPrompts:
-  - 
-  - 
-  - 
-  temp: 0.5
-  charaterTemp: 1.5
---- !u!114 &1486514634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486514632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b7a16ff27c4504ebd8148befe5ac0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1486514637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1486514632}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 639496506}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521047618
 GameObject:
   m_ObjectHideFlags: 0
