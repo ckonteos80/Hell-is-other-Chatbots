@@ -62,7 +62,7 @@ MonoBehaviour:
   myText: {fileID: 0}
   myBackgroundImage: {fileID: 0}
   padding: 5
-  maxWidth: 150
+  maxWidth: 175
   minHeight: 10
   checkOverlap: 1
   myTextPositionController: {fileID: 0}
