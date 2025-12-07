@@ -885,7 +885,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: 8f4e763c252f9324fbfad975879409a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1549,7 +1549,7 @@ Transform:
   m_GameObject: {fileID: 654965745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 1.45, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1624,10 +1624,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.8739393, y: 0.42178476}
-      - {x: 0.10495138, y: 0.85517657}
-      - {x: -0.81437486, y: 0.66647065}
-      - {x: -0.1876092, y: 0.19962978}
+    - - {x: 1.4138262, y: -1.9879552}
+      - {x: 0.5131588, y: -1.2648681}
+      - {x: -1.2752523, y: -1.2823898}
+      - {x: -0.25344944, y: -1.9994226}
   m_UseDelaunayMesh: 0
 --- !u!1 &701642424
 GameObject:
@@ -2393,11 +2393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a6560668b3df18b44abd5ad71a017c7f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.673
+      value: 6.56
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a6560668b3df18b44abd5ad71a017c7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.48
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: a6560668b3df18b44abd5ad71a017c7f, type: 3}
       propertyPath: m_LocalPosition.z
