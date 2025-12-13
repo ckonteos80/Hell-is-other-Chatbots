@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 
 
 // Global Models
@@ -61,6 +62,8 @@ public class CharacterController : MonoBehaviour
 
 
     public List<PersonController> Characters; // Assumes PersonController has fields: myName, myCharacter, infoShared, dialogueHolder, etc.
+
+    public PersonController NarratorCharacter;
 
     // Dialogue and event tracking.
     public List<DialogueEntry> dialogueEntries;
@@ -141,7 +144,11 @@ public class CharacterController : MonoBehaviour
         if (Characters[1].infoShared.Count == 0 && Characters[2].infoShared.Count == 0)
         {
             StartCoroutine(SendRequestForCharacter(userInput, 0, 1));
-            StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
+            if (Characters[2].gameObject.activeSelf)
+            {
+                StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
+            }
+         //   StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
         }
         if (Characters[1].infoShared.Count != 0 || Characters[2].infoShared.Count != 0)
         {
@@ -431,7 +438,7 @@ public class CharacterController : MonoBehaviour
             StartCoroutine(CheckPersonalInfo(reply, characterReplyingNo));
 
             // Display the dialogue.
-            ShowDialog(reply, characterReplyingNo);
+            ShowDialog(reply, characterReplyingNo, 0);
 
             if (mySaveController != null)
             {
@@ -574,7 +581,7 @@ public class CharacterController : MonoBehaviour
     }
 
     // Displays dialogue in the specified character's dialogue holder.
-    public void ShowDialog(string message, int characterNo)
+    public void ShowDialog(string message, int characterNo, int actionAfterClose)
     {
         GameObject newObject = Instantiate(dialoguePrefab, Characters[0].dialogueHolder);
         newObject.transform.SetParent(Characters[characterNo].dialogueHolder);
@@ -582,8 +589,66 @@ public class CharacterController : MonoBehaviour
         newObject.transform.localPosition = Vector3.zero;
         // Debug.Log("Displaying for Character " + characterNo + ": " + message);
         dialogueDisplay myDialogueDisplay = newObject.GetComponent<dialogueDisplay>();
-        myDialogueDisplay.showMessage(message);
+        myDialogueDisplay.showMessage(message, actionAfterClose);
         myMaster.theOverlayController.addImage(myDialogueDisplay);
+    }
+
+    public void RequestNarratorDialogue(string context = "")
+    {
+        StartCoroutine(GenerateNarratorDialogue(context));
+    }
+
+    private IEnumerator GenerateNarratorDialogue(string context)
+    {
+        // Build prompt based on current game state
+        string systemPrompt = systemPrompts[3];
+
+
+
+
+        string userPrompt = context;
+
+        yield return StartCoroutine(SendOpenAIRequest(
+            systemPrompt,
+            userPrompt,
+            3,
+            temp,
+            modelDialogue,
+            (response) =>
+            {
+                Message assistantMessage = response.choices[0].message;
+                string reply = assistantMessage.content.Trim();
+                string charName = Characters[3].myName.Trim();
+
+                // Remove character name prefix if present
+                if (reply.StartsWith(charName))
+                {
+                    int colonIndex = reply.IndexOf(":");
+                    if (colonIndex > 0 && colonIndex < reply.Length - 1)
+                    {
+                        reply = reply.Substring(colonIndex + 1).Trim();
+                    }
+                    else
+                    {
+                        reply = reply.Substring(charName.Length).Trim();
+                    }
+                }
+
+                // Log dialogue entry
+                DialogueEntry entry = new DialogueEntry(3, Characters[3].name, reply);
+                dialogueEntries.Add(entry);
+                events.Add(Characters[3].myName + " said: " + reply + " .");
+
+                // Display the dialogue
+                ShowDialog(reply, 3, 1);
+
+                // Save if needed
+                if (mySaveController != null)
+                {
+                    mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply);
+                }
+            }
+        ));
     }
 
 }

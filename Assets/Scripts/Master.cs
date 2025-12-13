@@ -12,6 +12,15 @@ public class Master : MonoBehaviour
 
     public TextOverlayController theOverlayController;
 
+    public DoorController theDoorController;
+
+    public Transform thePlayerStartMovePos;
+
+    //  public bool CanCLickMove;
+    public bool blockClick;
+
+    public float timeFromStart;
+
     /// <summary>
     ///  public string key;
     /// </summary>
@@ -33,13 +42,16 @@ public class Master : MonoBehaviour
         theMovementController = GetComponentInChildren<MovementController>();
         theWaypointController = GetComponentInChildren<WaypointController>();
         theParseController = GetComponentInChildren<ParseController>();
-    }
 
+        theCharacterController.RequestNarratorDialogue("welcome the player to the game");
+
+    }
     // Update is called once per frame
     void Update()
     {
-
+        timeFromStart += Time.deltaTime;
     }
 
 
 }
+

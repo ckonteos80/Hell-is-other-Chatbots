@@ -29,7 +29,7 @@ public class ParseController : MonoBehaviour
                     //  myMaster.theCharacterControllerGrok.ParsedText(input);
                     //  myMaster.theCharacterControllerDeep.ParsedText(input);
 
-                    myMaster.theCharacterController.ShowDialog(input, 0);
+                    myMaster.theCharacterController.ShowDialog(input, 0,0);
                     ///  myMaster.theCharacterControllerGrok.ShowDialog(input, 0);
                   //  myMaster.theCharacterControllerDeep.ShowDialog(input, 0);
                     inputField.text = "";

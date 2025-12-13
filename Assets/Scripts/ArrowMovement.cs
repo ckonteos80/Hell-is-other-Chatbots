@@ -8,6 +8,7 @@ public class ArrowMovement : MonoBehaviour
     Master myMaster;
 
     public bool usingKeys;
+    public bool keysEnabled;
 
     void Start()
     {
@@ -18,115 +19,118 @@ public class ArrowMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if any arrow key is pressed (up, down, left, or right)
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (keysEnabled)
         {
-            if (myMaster.theParseController.inputField.isFocused)
+            // Check if any arrow key is pressed (up, down, left, or right)
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
-                myMaster.theParseController.inputField.DeactivateInputField();  // Unfocus the input field
-            }
-            //    Debug.Log("An arrow key is pressed.");
-            if (!usingKeys)
-            {
-                myMovementController.Xvelocity = 0;
-                myMovementController.Yvelocity = 0;
+                if (myMaster.theParseController.inputField.isFocused)
+                {
+                    myMaster.theParseController.inputField.DeactivateInputField();  // Unfocus the input field
+                }
+                //    Debug.Log("An arrow key is pressed.");
+                if (!usingKeys)
+                {
+                    myMovementController.Xvelocity = 0;
+                    myMovementController.Yvelocity = 0;
+                    myMovementController.move();
+                }
+                usingKeys = true;
+                OverrideKeyboard();
                 myMovementController.move();
-            }
-            usingKeys = true;
-            OverrideKeyboard();
-            myMovementController.move();
 
-            if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
-            {
-                myMovementController.Xvelocity = 0;
-                if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
-                {
-                    myMovementController.Yvelocity = 0;
-                }
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-            {
-                if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
-                {
-                    myMovementController.Yvelocity = 0;
-                }
-                if (Input.GetKey(KeyCode.LeftArrow))
-                {
-                    myMovementController.Xvelocity = -1;
-                }
-                else
-                {
-                    if (!Input.GetKey(KeyCode.RightArrow))
-                    {
-                        myMovementController.Xvelocity = 0;
-                    }
-                }
-
-                if (Input.GetKey(KeyCode.RightArrow))
-                {
-                    myMovementController.Xvelocity = 1;
-                }
-                else
-                {
-                    if (!Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        myMovementController.Xvelocity = 0;
-                    }
-                }
-            }
-
-            if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow))
-            {
-                myMovementController.Yvelocity = 0;
-                if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+                if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
                 {
                     myMovementController.Xvelocity = 0;
-                }
-
-            }
-            else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
-            {
-                if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-                {
-                    myMovementController.Xvelocity = 0;
-                }
-
-                if (Input.GetKey(KeyCode.UpArrow))
-                {
-                    myMovementController.Yvelocity = 1;
-                }
-                else
-                {
-                    if (!Input.GetKey(KeyCode.DownArrow))
+                    if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
                     {
                         myMovementController.Yvelocity = 0;
                     }
                 }
-                if (Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
                 {
-                    myMovementController.Yvelocity = -1;
-                }
-                else
-                {
-                    if (!Input.GetKey(KeyCode.UpArrow))
+                    if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow))
                     {
                         myMovementController.Yvelocity = 0;
                     }
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        myMovementController.Xvelocity = -1;
+                    }
+                    else
+                    {
+                        if (!Input.GetKey(KeyCode.RightArrow))
+                        {
+                            myMovementController.Xvelocity = 0;
+                        }
+                    }
+
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        myMovementController.Xvelocity = 1;
+                    }
+                    else
+                    {
+                        if (!Input.GetKey(KeyCode.LeftArrow))
+                        {
+                            myMovementController.Xvelocity = 0;
+                        }
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.DownArrow))
+                {
+                    myMovementController.Yvelocity = 0;
+                    if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+                    {
+                        myMovementController.Xvelocity = 0;
+                    }
+
+                }
+                else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+                    {
+                        myMovementController.Xvelocity = 0;
+                    }
+
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        myMovementController.Yvelocity = 1;
+                    }
+                    else
+                    {
+                        if (!Input.GetKey(KeyCode.DownArrow))
+                        {
+                            myMovementController.Yvelocity = 0;
+                        }
+                    }
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        myMovementController.Yvelocity = -1;
+                    }
+                    else
+                    {
+                        if (!Input.GetKey(KeyCode.UpArrow))
+                        {
+                            myMovementController.Yvelocity = 0;
+                        }
+                    }
                 }
             }
-        }
-        else
-        {
-            if (!myMaster.theParseController.inputField.isFocused)
+            else
             {
-                myMaster.theParseController.inputField.ActivateInputField();  // Unfocus the input field
-            }
-            if (usingKeys)
-            {
-                myMovementController.Xvelocity = 0;
-                myMovementController.Yvelocity = 0;
-                myMovementController.move();
-                usingKeys = false;
+                if (!myMaster.theParseController.inputField.isFocused)
+                {
+                    myMaster.theParseController.inputField.ActivateInputField();  // Unfocus the input field
+                }
+                if (usingKeys)
+                {
+                    myMovementController.Xvelocity = 0;
+                    myMovementController.Yvelocity = 0;
+                    myMovementController.move();
+                    usingKeys = false;
+                }
             }
         }
     }

@@ -29,12 +29,19 @@ public class MovementController : MonoBehaviour
     public Rigidbody2D myRB;
 
     public int ActionToPerform;
+    //1 sit
+    //2 narrator starrt
 
     public bool sitting;
+
+    Master myMaster;
+
+
 
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        myMaster = GetComponentInParent<Master>();
     }
     void Update()
     {
@@ -156,7 +163,7 @@ public class MovementController : MonoBehaviour
             }
 
             move();
-      //      myRB.linearVelocity = new Vector2(Xvelocity, Yvelocity);
+            //      myRB.linearVelocity = new Vector2(Xvelocity, Yvelocity);
 
 
 
@@ -169,9 +176,32 @@ public class MovementController : MonoBehaviour
             {
                 ActionSit();
             }
+            if (ActionToPerform == 2)
+            {
+                ActionNarrator();
+            }
         }
 
 
+    }
+
+    public void ActionNarrator()
+    {
+        BoxCollider2D myBox = GetComponentInChildren<BoxCollider2D>();
+        if ((myBox.enabled == false))
+        {
+            myBox.enabled = true;
+        }
+
+        ArrowMovement myArrowMovement = GetComponent<ArrowMovement>();
+        myArrowMovement.keysEnabled = true;
+
+        myMaster.blockClick = false;
+
+        
+
+
+        ActionToPerform = 0;
     }
 
     public void ActionSit()
@@ -196,7 +226,7 @@ public class MovementController : MonoBehaviour
 
     public void clearHitObject()
     {
-        
+
     }
 
 

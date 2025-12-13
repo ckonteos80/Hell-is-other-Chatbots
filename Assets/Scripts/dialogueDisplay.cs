@@ -19,6 +19,8 @@ public class dialogueDisplay : MonoBehaviour
 
     private Canvas parentCanvas;
     private Transform canvasTransform;
+
+    public int ActionClose;
     // private bool hasText = false;
     // private static int instanceCounter = 0; // Static counter for priority
     // private int instanceID; // This instance's ID for priority
@@ -67,8 +69,8 @@ public class dialogueDisplay : MonoBehaviour
     {
         myTextPositionController = transform.parent.GetComponent<TextPositionController>();
     }
-    
-    public void showMessage(string message)
+
+    public void showMessage(string message, int actionOnClose)
     {
 
         // Set the text
@@ -101,6 +103,7 @@ public class dialogueDisplay : MonoBehaviour
         textRectTransform.offsetMax = new Vector2(-padding, -padding);    // Right, Top padding (negative!)
 
         ///     Debug.Log($"[ID:{instanceID}] Message: '{message}' | Canvas pos: {canvasTransform.localPosition} | Position index: {currentPositionIndex}");
+        ActionClose = actionOnClose;
 
     }
 
@@ -121,6 +124,18 @@ public class dialogueDisplay : MonoBehaviour
 
     }
 
-    // ✅ Visualize overlaps in Scene view
 
+    void OnDestroy()
+    {
+        if (ActionClose == 1)
+        {
+            Master myMaster = GetComponentInParent<Master>();
+            if (myMaster != null)
+            {
+                myMaster.theDoorController.doorOpen = false;
+                AiEventController newEventController = myMaster.theCharacterController.Characters[1].GetComponent<AiEventController>();
+                newEventController.addEventTime(5f, 1);
+            }
+        }
+    }
 }

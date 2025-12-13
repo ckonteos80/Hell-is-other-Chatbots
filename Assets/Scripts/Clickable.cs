@@ -10,6 +10,7 @@ public class Clickable : MonoBehaviour
     public bool isObject;
 
     public bool objectClicked;
+
     ObjectMovePlayer myObjectMove;
 
     void Start()
@@ -21,66 +22,76 @@ public class Clickable : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse button click
+        if (!myMaster.blockClick)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickedPos = mousePos;
-
-            // First, check if an object in "OverrideCollider" is clicked
-            RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("OverrideCollider"));
-
-            if (hit.collider != null) // Override Collider detected
+            if (Input.GetMouseButtonDown(0)) // Left mouse button click
             {
-                if (hit.collider.gameObject == this.gameObject) // Ensure it belongs to THIS GameObject
+                if (myMaster.theOverlayController.TextDisplays.Count == 0)
                 {
-                    // objectClicked = true;
-                    Debug.Log("Clicked inside Override Collider!");
+                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    clickedPos = mousePos;
 
-                    if (isObject)
+                    // First, check if an object in "OverrideCollider" is clicked
+                    RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("OverrideCollider"));
+
+                    if (hit.collider != null) // Override Collider detected
                     {
-                        if (myMaster.theMovementController.sitting)
+                        if (hit.collider.gameObject == this.gameObject) // Ensure it belongs to THIS GameObject
                         {
-                            myMaster.theMovementController.actionStand();
+                            // objectClicked = true;
+                            Debug.Log("Clicked inside Override Collider!");
+
+                            if (isObject)
+                            {
+                                if (myMaster.theMovementController.sitting)
+                                {
+                                    myMaster.theMovementController.actionStand();
+                                }
+                                objectClicked = true;
+                                myObjectMove.ClickedObject();
+                            }
                         }
-                        objectClicked = true;
-                        myObjectMove.ClickedObject();
+
+
+
+
+                        return; // Exit early, preventing Floor Collider processing
                     }
-                }
 
+                    // If no OverrideCollider was hit, process Floor Collider
+                    hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Floor"));
 
+                    if (hit.collider != null && !objectClicked) // Floor Collider detected
+                    {
+                        Debug.Log("Clicked inside Floor Collider!");
 
+                        if (isObject)
+                        {
+                            objectClicked = true;
+                        }
+                        else
+                        {
+                            if (myMaster.theMovementController.sitting)
+                            {
+                                myMaster.theMovementController.actionStand();
+                            }
+                            myMaster.theWaypointController.SetTarget(clickedPos);
+                            myMaster.theMovementController.ActionToPerform = 0;
 
-                return; // Exit early, preventing Floor Collider processing
-            }
-
-            // If no OverrideCollider was hit, process Floor Collider
-            hit = Physics2D.Raycast(mousePos, Vector2.zero, Mathf.Infinity, LayerMask.GetMask("Floor"));
-
-            if (hit.collider != null && !objectClicked) // Floor Collider detected
-            {
-                Debug.Log("Clicked inside Floor Collider!");
-
-                if (isObject)
-                {
-                    objectClicked = true;
+                            // for main waypoints
+                            // myMaster.thePlayerMovement.MoveToPos.Clear();
+                            // myMaster.thePlayerMovement.ActionToPerform = 0;
+                            // myMaster.thePlayerMovement.MoveToPos.Add(clickedPos);
+                        }
+                    }
                 }
                 else
                 {
-                    if (myMaster.theMovementController.sitting)
-                    {
-                        myMaster.theMovementController.actionStand();
-                    }
-                    myMaster.theWaypointController.SetTarget(clickedPos);
-                    myMaster.theMovementController.ActionToPerform = 0;
-
-                    // for main waypoints
-                    // myMaster.thePlayerMovement.MoveToPos.Clear();
-                    // myMaster.thePlayerMovement.ActionToPerform = 0;
-                    // myMaster.thePlayerMovement.MoveToPos.Add(clickedPos);
+                    Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
+                    myMaster.theOverlayController.TextDisplays.RemoveAt(0);
                 }
             }
+
         }
-
-
     }
 }
