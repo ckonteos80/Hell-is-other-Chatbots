@@ -25,10 +25,10 @@ public class TextPositionController : MonoBehaviour
             // Get first child's RectTransform
             boxRectTransform = transform.GetChild(0).GetComponent<RectTransform>();
 
-            if (boxRectTransform == null)
-            {
-                Debug.LogError("TextPositionController: First child has no RectTransform!");
-            }
+            // if (boxRectTransform == null)
+            // {
+            //     Debug.LogError("TextPositionController: First child has no RectTransform!");
+            // }
         }
 
     }

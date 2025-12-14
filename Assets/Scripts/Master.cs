@@ -1,5 +1,8 @@
 using UnityEngine;
 
+
+using System.Collections;
+
 public class Master : MonoBehaviour
 {
     public MovementController theMovementController;
@@ -21,6 +24,8 @@ public class Master : MonoBehaviour
 
     public float timeFromStart;
 
+    public PromptsController thePromptsController;
+
     /// <summary>
     ///  public string key;
     /// </summary>
@@ -35,7 +40,7 @@ public class Master : MonoBehaviour
     /// public PlayerMovement thePlayerMovement;
     /// </summary>
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         // theCharacterController = GetComponentInChildren<CharacterController>();
         ///    thePlayerMovement = GetComponentInChildren<PlayerMovement>();
@@ -43,13 +48,33 @@ public class Master : MonoBehaviour
         theWaypointController = GetComponentInChildren<WaypointController>();
         theParseController = GetComponentInChildren<ParseController>();
 
-        theCharacterController.RequestNarratorDialogue("welcome the player to the game");
 
+        thePromptsController = GetComponent<PromptsController>();
     }
+    void Start()
+    {
+        StartCoroutine(WelcomePlayer());
+    }
+
+    IEnumerator WelcomePlayer()
+    {
+        yield return null; // Wait one frame for CharacterController.Start() to run
+        theCharacterController.RequestNarratorDialogue("welcome the player to the game");
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         timeFromStart += Time.deltaTime;
+
+    }
+
+    public void SetNextEvent()
+    {
+        int randomChar = Random.Range(0, theCharacterController.Characters.Count);
+        float eventDelay = Random.Range(5f, 10f);  
+        theCharacterController.Characters[randomChar].myAiEventController.addEventTime(eventDelay, 1);
     }
 
 

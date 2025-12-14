@@ -63,41 +63,16 @@ public class CharacterController : MonoBehaviour
 
     public List<PersonController> Characters; // Assumes PersonController has fields: myName, myCharacter, infoShared, dialogueHolder, etc.
 
-    public PersonController NarratorCharacter;
+  //  public PersonController NarratorCharacter;
 
     // Dialogue and event tracking.
     public List<DialogueEntry> dialogueEntries;
     public List<string> events;
 
-    [TextArea(3, 10)]
-    //  public string characterUser;
-    public string mainGameSystemPrompt;
-    //[TextArea(3, 10)]    // Prompts and summaries.
-    //public string baseSetup;
-    [TextArea(3, 10)]
-    public string characterSetupSystemPrompt;
-    [TextArea(3, 10)]
-    public string characterSetupUserPrompt;
-    // [TextArea(3, 10)]
-    // //  public string characterUser;
-    // public string characterNameSystemPrompt;
-    [TextArea(3, 10)]
-    public string characterNameUserPrompt; // Used when generating a name.
-    [TextArea(3, 10)]
-    public string characterDialogueSystemPrompt; // Used when generating a name.
-    [TextArea(3, 10)]
-    public string characterDialogueSystemPromptEnding;
-
-    [TextArea(3, 10)]
-    public string characterDialogueUserPromptEnding;
-
-    [TextArea(3, 10)]
-    public string characterDialogueUserPromptEnding2;
-    [TextArea(3, 10)]
-    public string infoExtractionSystemPrompt;
+   
 
 
-    public List<string> systemPrompts; // One per character.
+ //   public List<string> systemPrompts; // One per character.
 
     // Model parameters.
     public float temp;         // For dialogue requests.
@@ -105,11 +80,10 @@ public class CharacterController : MonoBehaviour
 
     saveController mySaveController;
 
-
     public string modelDialogue;
     public string modelInfo;
-    [TextArea(3, 10)]
-    public string adressingSystemPrompt;
+ 
+  
 
 
     private string spaceUrl = "https://jejunepixels-noexit-proxy.hf.space/chat";
@@ -148,7 +122,7 @@ public class CharacterController : MonoBehaviour
             {
                 StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
             }
-         //   StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
+            //   StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
         }
         if (Characters[1].infoShared.Count != 0 || Characters[2].infoShared.Count != 0)
         {
@@ -183,15 +157,6 @@ public class CharacterController : MonoBehaviour
 
         string jsonBody = JsonUtility.ToJson(conversation);
 
-        // // ✅ DETAILED LOGGING
-        // Debug.Log("═══════════════════════════════════════");
-        // Debug.Log($"🌐 Sending Request - Attempt {retryAttempts + 1}/3");
-        // Debug.Log($"📍 URL: {spaceUrl}");
-        // Debug.Log($"🎯 Character: {characterNo}");
-        // Debug.Log($"🤖 Model: {model}");
-        // Debug.Log($"🌡️ Temperature: {temperature}");
-        // Debug.Log($"📤 JSON Body: {jsonBody}");
-        // Debug.Log("═══════════════════════════════════════");
 
         // Create the web request
         UnityWebRequest request = new UnityWebRequest(spaceUrl, "POST");
@@ -215,13 +180,6 @@ public class CharacterController : MonoBehaviour
         // Check for errors
         if (request.result != UnityWebRequest.Result.Success)
         {
-            // Debug.LogError("═══════════════════════════════════════");
-            // Debug.LogError($"❌ REQUEST FAILED - Attempt {retryAttempts + 1}/3");
-            // Debug.LogError($"Character: {characterNo}");
-            // Debug.LogError($"URL: {spaceUrl}");
-            // Debug.LogError($"Error: {request.error}");
-            // Debug.LogError($"Response Code: {request.responseCode}");
-            // Debug.LogError($"Response Body: {request.downloadHandler.text}");
 
             // Log response headers for debugging
             if (request.GetResponseHeaders() != null)
@@ -232,7 +190,7 @@ public class CharacterController : MonoBehaviour
                     Debug.LogError($"  {header.Key}: {header.Value}");
                 }
             }
-            Debug.LogError("═══════════════════════════════════════");
+
 
             // ✅ RETRY LOGIC for cold starts (503/504), timeouts, or connection errors
             bool shouldRetry = (request.responseCode == 503 ||
@@ -263,10 +221,6 @@ public class CharacterController : MonoBehaviour
             // Request successful
             string response = request.downloadHandler.text;
 
-            // Debug.Log("═══════════════════════════════════════");
-            // Debug.Log($"✅ SUCCESS - Character {characterNo}");
-            // Debug.Log($"📥 Raw Response: {response}");
-            // Debug.Log("═══════════════════════════════════════");
 
             // Parse the JSON response
             OpenAIResponse openAIResponse = JsonUtility.FromJson<OpenAIResponse>(response);
@@ -274,11 +228,7 @@ public class CharacterController : MonoBehaviour
             // Validate the response structure
             if (openAIResponse == null || openAIResponse.choices == null || openAIResponse.choices.Length == 0)
             {
-                // Debug.LogError("═══════════════════════════════════════");
-                // Debug.LogError("❌ Response parsing failed - Invalid JSON structure");
-                // Debug.LogError($"Received response: {response}");
-                // Debug.LogError("Expected structure: {\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"...\"}}]}");
-                // Debug.LogError("═══════════════════════════════════════");
+
                 request.Dispose();
                 yield break;
             }
@@ -302,43 +252,17 @@ public class CharacterController : MonoBehaviour
     }
     public IEnumerator SendRequestForAdress(string userMessage, int characterSpeakingNo, int retryAttempts = 0)
     {
-        // Build the final system prompt by appending current events.
-        //        string finalSystemPrompt = characterDialogueSystemPrompt+ "\n"+;
+        // Build character info strings efficiently
+        string character1info = Characters[1].infoShared.Count != 0
+            ? "Character 1 information know: \n" + GetCharacterInfoString(1) + "\n "
+            : "Nothing known for Character 1";
 
-        string character1info = "";
-        if (Characters[1].infoShared.Count != 0)
-        {
-            string allInfo = "";
-            foreach (string info in Characters[1].infoShared)
-            {
-                allInfo += "\"" + info + "\"\n";
-            }
-            character1info = "Character 1 information know: \n" + allInfo + "\n ";
-            //    "User: "  +
-        }
-        else
-        {
-            character1info = "Nothing known for Character 1";
-        }
-
-        string character2info = "";
-        if (Characters[2].infoShared.Count != 0)
-        {
-            string allInfo = "";
-            foreach (string info in Characters[2].infoShared)
-            {
-                allInfo += "\"" + info + "\"\n";
-            }
-            character2info = "Character 2 information know: \n" + allInfo + "\n ";
-            //    "User: "  +
-        }
-        else
-        {
-            character2info = "Nothing known for Character 2";
-        }
+        string character2info = Characters[2].infoShared.Count != 0
+            ? "Character 2 information know: \n" + GetCharacterInfoString(2) + "\n "
+            : "Nothing known for Character 2";
 
 
-        string AdressSystemPromptComplete = adressingSystemPrompt + "\n " + character1info + "\n " + character2info;
+        string AdressSystemPromptComplete =myMaster.thePromptsController.adressingSystemPrompt + "\n " + character1info + "\n " + character2info;
 
         yield return StartCoroutine(SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, (response) =>
         {
@@ -349,19 +273,17 @@ public class CharacterController : MonoBehaviour
             // remove that prefix.
             Debug.Log("checked adressing got this reply: " + reply);
 
-            if (reply == "0")
+            if (reply.Contains("0"))
             {
                 StartCoroutine(SendRequestForCharacter(userMessage, 0, 1));
                 StartCoroutine(SendRequestForCharacter(userMessage, 0, 2));
             }
-            if (reply == "1")
+            if (reply.Contains("1"))
             {
                 StartCoroutine(SendRequestForCharacter(userMessage, 0, 1));
-                //  StartCoroutine(SendRequestForCharacter(userMessage, 0, 2));
             }
-            if (reply == "2")
+            if (reply.Contains("2"))
             {
-                //    StartCoroutine(SendRequestForCharacter(userMessage, 0, 1));
                 StartCoroutine(SendRequestForCharacter(userMessage, 0, 2));
             }
 
@@ -381,73 +303,34 @@ public class CharacterController : MonoBehaviour
 
     public IEnumerator SendRequestForCharacter(string userMessage, int characterSpeakingNo, int characterReplyingNo, int retryAttempts = 0)
     {
-        // Build the final system prompt by appending current events.
-        //        string finalSystemPrompt = characterDialogueSystemPrompt+ "\n"+;
-        string userPrompt = "";
+        // Build user prompt with character info if available
+        string userPrompt;
         if (Characters[characterSpeakingNo].infoShared.Count != 0)
         {
-            string allInfo = "";
-            foreach (string info in Characters[characterSpeakingNo].infoShared)
-            {
-                allInfo += "\"" + info + "\"\n";
-            }
-            userPrompt = userMessage + "\n " + characterDialogueUserPromptEnding + "\n " + allInfo + "\n " + characterDialogueUserPromptEnding2;
-            //    "User: "  +
+            string allInfo = GetCharacterInfoString(characterSpeakingNo);
+            userPrompt = userMessage + "\n " + myMaster.thePromptsController.characterDialogueUserPromptEnding + "\n " + allInfo + "\n " + myMaster.thePromptsController.characterDialogueUserPromptEnding2;
         }
         else
         {
             userPrompt = userMessage;
-            // Characters[characterSpeakingNo].myName + ": "
-
         }
 
-        yield return StartCoroutine(SendOpenAIRequest(systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, modelDialogue, (response) =>
+        yield return StartCoroutine(SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, modelDialogue, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
-            string reply = assistantMessage.content.Trim();
-            string charName = Characters[characterReplyingNo].myName.Trim();
+            string reply = StripCharacterNamePrefix(assistantMessage.content, Characters[characterReplyingNo].myName);
 
-            // If the reply starts with the character's name followed by a colon or similar delimiter,
-            // remove that prefix.
-            if (reply.StartsWith(charName))
-            {
-                // Try to find the colon separator
-                int colonIndex = reply.IndexOf(":");
-                if (colonIndex > 0 && colonIndex < reply.Length - 1)
-                {
-                    reply = reply.Substring(colonIndex + 1).Trim();
-                }
-                else
-                {
-                    // Otherwise, remove the character name from the beginning.
-                    reply = reply.Substring(charName.Length).Trim();
-                }
-            }
+            // Log dialogue entry and event
+            LogDialogueEntry(characterReplyingNo, reply, "said");
 
-            //    Debug.Log("Sent system Prompt: " + userPrompt + "\n User message: \n" + userMessage + "\n and I got this reply: \n" + reply);
-
-            // Debug.Log("Processed reply for Character " + characterReplyingNo + ": " + reply);
-
-
-            // Add dialogue entry and event.
-            DialogueEntry entry = new DialogueEntry(characterReplyingNo, Characters[characterReplyingNo].name, reply);
-            dialogueEntries.Add(entry);
-            events.Add(Characters[characterReplyingNo].myName + " said: " + reply + " .");
-
-            // Optionally, check for personal info.
+            // Check for personal info
             StartCoroutine(CheckPersonalInfo(reply, characterReplyingNo));
 
-            // Display the dialogue.
+            // Display the dialogue
             ShowDialog(reply, characterReplyingNo, 0);
 
-            if (mySaveController != null)
-            {
-                mySaveController.NewEntryDialogue(systemPrompts[characterReplyingNo], userPrompt, reply);
-            }
-            else
-            {
-                Debug.LogError("mySaveController is not assigned.");
-            }
+            // Save dialogue
+            SaveDialogueIfPossible(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, reply);
         }));
     }
 
@@ -458,7 +341,7 @@ public class CharacterController : MonoBehaviour
 
         //  systemPrompts[characterNo] +
         string finalSystemPromptCharacterInfo = Characters[characterNo].myCharacter +
-            "\n" + infoExtractionSystemPrompt;
+            "\n" + myMaster.thePromptsController.infoExtractionSystemPrompt;
 
         Debug.Log("Checking personal info for character " + characterNo + ": " + finalSystemPromptCharacterInfo);
 
@@ -542,11 +425,57 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    #region Helper Methods
+
+    private string GetCharacterInfoString(int characterNo)
+    {
+        if (Characters[characterNo].infoShared.Count == 0)
+            return "";
+
+        StringBuilder sb = new StringBuilder();
+        foreach (string info in Characters[characterNo].infoShared)
+        {
+            sb.Append("\"").Append(info).Append("\"\n");
+        }
+        return sb.ToString();
+    }
+
+    private string StripCharacterNamePrefix(string text, string characterName)
+    {
+        text = text.Trim();
+        if (!text.StartsWith(characterName))
+            return text;
+
+        int colonIndex = text.IndexOf(":");
+        if (colonIndex > 0 && colonIndex < text.Length - 1)
+        {
+            return text.Substring(colonIndex + 1).Trim();
+        }
+        return text.Substring(characterName.Length).Trim();
+    }
+
+    private void LogDialogueEntry(int characterNo, string dialogue, string eventType = "said")
+    {
+        DialogueEntry entry = new DialogueEntry(characterNo, Characters[characterNo].name, dialogue);
+        dialogueEntries.Add(entry);
+        events.Add($"{Characters[characterNo].myName} {eventType}: {dialogue}");
+    }
+
+    private void SaveDialogueIfPossible(string systemPrompt, string userPrompt, string reply)
+    {
+        if (mySaveController != null)
+        {
+            mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply);
+        }
+    }
+
+    #endregion
+
     // Uses the generic request to generate a character name.
     private IEnumerator GenerateCharacterName(int characterNo)
     {
 
-        yield return StartCoroutine(SendOpenAIRequest(mainGameSystemPrompt + " " + characterSetupSystemPrompt, characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, (response) =>
+        yield return StartCoroutine(SendOpenAIRequest(myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt, myMaster.thePromptsController.characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, (response) =>
         {
             Debug.Log("Started");
             string generatedName = response.choices[0].message.content;
@@ -560,18 +489,18 @@ public class CharacterController : MonoBehaviour
     // Uses the generic request to generate a character description.
     private IEnumerator GenerateCharacterDescription(int characterNo, string characterName)
     {
-        string prompt = mainGameSystemPrompt + " " + characterSetupSystemPrompt;    //     ". Include: name, age, place born, job, cause of death.";
-        yield return StartCoroutine(SendOpenAIRequest(prompt, characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, (response) =>
+        string prompt = myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt;    //     ". Include: name, age, place born, job, cause of death.";
+        yield return StartCoroutine(SendOpenAIRequest(prompt, myMaster.thePromptsController.characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, (response) =>
         {
             string description = response.choices[0].message.content;
             // Debug.Log("Generated description for Character " + characterNo + ": " + description);
             Characters[characterNo].myCharacter = description;
-            systemPrompts[characterNo] = characterDialogueSystemPrompt + "\n " + description + "\n " + characterDialogueSystemPromptEnding;
+            myMaster.thePromptsController.systemPrompts[characterNo] = myMaster.thePromptsController.characterDialogueSystemPrompt + "\n " + description + "\n " + myMaster.thePromptsController.characterDialogueSystemPromptEnding;
 
 
             if (mySaveController != null)
             {
-                mySaveController.NewCharacterInfo(prompt, characterSetupUserPrompt, description);
+                mySaveController.NewCharacterInfo(prompt, myMaster.thePromptsController.characterSetupUserPrompt, description);
             }
             else
             {
@@ -600,12 +529,7 @@ public class CharacterController : MonoBehaviour
 
     private IEnumerator GenerateNarratorDialogue(string context)
     {
-        // Build prompt based on current game state
-        string systemPrompt = systemPrompts[3];
-
-
-
-
+        string systemPrompt = myMaster.thePromptsController.systemPrompts[3];
         string userPrompt = context;
 
         yield return StartCoroutine(SendOpenAIRequest(
@@ -617,36 +541,65 @@ public class CharacterController : MonoBehaviour
             (response) =>
             {
                 Message assistantMessage = response.choices[0].message;
-                string reply = assistantMessage.content.Trim();
-                string charName = Characters[3].myName.Trim();
-
-                // Remove character name prefix if present
-                if (reply.StartsWith(charName))
-                {
-                    int colonIndex = reply.IndexOf(":");
-                    if (colonIndex > 0 && colonIndex < reply.Length - 1)
-                    {
-                        reply = reply.Substring(colonIndex + 1).Trim();
-                    }
-                    else
-                    {
-                        reply = reply.Substring(charName.Length).Trim();
-                    }
-                }
+                string reply = StripCharacterNamePrefix(assistantMessage.content, Characters[3].myName);
 
                 // Log dialogue entry
-                DialogueEntry entry = new DialogueEntry(3, Characters[3].name, reply);
-                dialogueEntries.Add(entry);
-                events.Add(Characters[3].myName + " said: " + reply + " .");
+                LogDialogueEntry(3, reply, "said");
 
                 // Display the dialogue
                 ShowDialog(reply, 3, 1);
 
-                // Save if needed
-                if (mySaveController != null)
-                {
-                    mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply);
-                }
+                // Save dialogue
+                SaveDialogueIfPossible(systemPrompt, userPrompt, reply);
+            }
+        ));
+    }
+
+    // Call this to make a character ask the player a question
+    public void RequestCharacterQuestion(int characterNo, string questionContext = "")
+    {
+        StartCoroutine(GenerateCharacterQuestion(characterNo, questionContext));
+    }
+
+    private IEnumerator GenerateCharacterQuestion(int characterNo, string questionContext)
+    {
+        // Build system prompt for question generation
+        string systemPrompt = myMaster.thePromptsController.systemPrompts[characterNo] +
+            "\n\nYou must ask the player a single, direct question. " +
+            "Make it conversational and relevant to what you know about them or the situation.";
+
+        // Build context from recent conversation using StringBuilder
+        StringBuilder recentContext = new StringBuilder();
+        int contextCount = Mathf.Min(3, dialogueEntries.Count);
+        for (int i = dialogueEntries.Count - contextCount; i < dialogueEntries.Count; i++)
+        {
+            recentContext.Append(dialogueEntries[i].characterName).Append(": ")
+                        .Append(dialogueEntries[i].dialogueText).Append(" ");
+        }
+
+        string userPrompt = string.IsNullOrEmpty(questionContext)
+            ? $"Based on the conversation: {recentContext}\nAsk the player a relevant question."
+            : questionContext;
+
+        yield return StartCoroutine(SendOpenAIRequest(
+            systemPrompt,
+            userPrompt,
+            characterNo,
+            temp,
+            modelDialogue,
+            (response) =>
+            {
+                Message assistantMessage = response.choices[0].message;
+                string question = StripCharacterNamePrefix(assistantMessage.content, Characters[characterNo].myName);
+
+                // Log dialogue entry
+                LogDialogueEntry(characterNo, question, "asked");
+
+                // Display the question
+                ShowDialog(question, characterNo, 0);
+
+                // Save dialogue
+                SaveDialogueIfPossible(systemPrompt, userPrompt, question);
             }
         ));
     }

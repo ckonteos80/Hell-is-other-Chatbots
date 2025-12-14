@@ -46,8 +46,9 @@ public class ParseController : MonoBehaviour
             {
                 if (myMaster.theOverlayController.TextDisplays.Count > 0)
                 {
-                    Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
-                    myMaster.theOverlayController.TextDisplays.RemoveAt(0);
+                    // Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
+                    // myMaster.theOverlayController.TextDisplays.RemoveAt(0);
+                    myMaster.theOverlayController.clearText();
                 }
 
                 // if (myMaster.theCharacterControllerGrok.Dialogues.Count > 0)

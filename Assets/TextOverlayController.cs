@@ -5,10 +5,13 @@ using UnityEngine.UI;
 public class TextOverlayController : MonoBehaviour
 {
     public List<dialogueDisplay> TextDisplays;
+    Master myMaster;
     // public float overlapMargin = 10f; // Increased margin
 
     void Start()
     {
+
+        myMaster = GetComponentInParent<Master>();
         if (TextDisplays == null)
         {
             TextDisplays = new List<dialogueDisplay>();
@@ -17,96 +20,60 @@ public class TextOverlayController : MonoBehaviour
 
     void LateUpdate()
     {
+        ManageActiveDisplays();
+
         if (TextDisplays.Count > 1) // Only check if we have 2+ dialogues
         {
-            if (TextDisplays[0].myBackgroundImage != null)
+            if (TextDisplays[0].myBackgroundImage != null && TextDisplays[1].myBackgroundImage != null)
             {
-                if (TextDisplays[1].myBackgroundImage != null)
+                if (RectTransformsOverlap(TextDisplays[0].myBackgroundImage.rectTransform, TextDisplays[1].myBackgroundImage.rectTransform))
                 {
-                    if (RectTransformsOverlap(TextDisplays[0].myBackgroundImage.rectTransform, TextDisplays[1].myBackgroundImage.rectTransform))
-                    {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
-                        MoveToNextPosition(TextDisplays[0]);
-                    }
+                    MoveToNextPosition(TextDisplays[0]);
                 }
-                if (TextDisplays[2].myBackgroundImage != null)
+            }
+
+            if (TextDisplays.Count > 2) // Check for third dialogue
+            {
+                if (TextDisplays[0].myBackgroundImage != null && TextDisplays[2].myBackgroundImage != null)
                 {
                     if (RectTransformsOverlap(TextDisplays[0].myBackgroundImage.rectTransform, TextDisplays[2].myBackgroundImage.rectTransform))
                     {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
                         MoveToNextPosition(TextDisplays[0]);
                     }
                 }
-            }
-            if (TextDisplays[1].myBackgroundImage != null)
-            {
-                if (TextDisplays[0].myBackgroundImage != null)
-                {
-                    if (RectTransformsOverlap(TextDisplays[1].myBackgroundImage.rectTransform, TextDisplays[0].myBackgroundImage.rectTransform))
-                    {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
-                        MoveToNextPosition(TextDisplays[1]);
-                    }
-                }
-                if (TextDisplays[2].myBackgroundImage != null)
+
+                if (TextDisplays[1].myBackgroundImage != null && TextDisplays[2].myBackgroundImage != null)
                 {
                     if (RectTransformsOverlap(TextDisplays[1].myBackgroundImage.rectTransform, TextDisplays[2].myBackgroundImage.rectTransform))
                     {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
                         MoveToNextPosition(TextDisplays[1]);
                     }
                 }
             }
+        }
+    }
 
-             if (TextDisplays[2].myBackgroundImage != null)
+    public void clearText()
+    {
+        Destroy(TextDisplays[0].gameObject);
+        TextDisplays.RemoveAt(0);
+
+        if (myMaster.theCharacterController.Characters[1].myAiEventController.nextEventType == 0 && myMaster.theCharacterController.Characters[2].myAiEventController.nextEventType == 0)
+        {
+            myMaster.SetNextEvent();
+        }
+    }
+
+
+    void ManageActiveDisplays()
+    {
+        for (int i = 0; i < TextDisplays.Count; i++)
+        {
+            if (TextDisplays[i] != null)
             {
-                if (TextDisplays[0].myBackgroundImage != null)
-                {
-                    if (RectTransformsOverlap(TextDisplays[2].myBackgroundImage.rectTransform, TextDisplays[0].myBackgroundImage.rectTransform))
-                    {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
-                        MoveToNextPosition(TextDisplays[2]);
-                    }
-                }
-                if (TextDisplays[1].myBackgroundImage != null)
-                {
-                    if (RectTransformsOverlap(TextDisplays[2].myBackgroundImage.rectTransform, TextDisplays[1].myBackgroundImage.rectTransform))
-                    {
-                        //     Debug.Log($"🔍 {TextDisplays[0].gameObject.name} and {TextDisplays[1].gameObject.name} are overlapping, MOVING THE FIRST ONE");
-                        MoveToNextPosition(TextDisplays[2]);
-                    }
-                }
+                // Keep first 3 active, deactivate the rest
+                TextDisplays[i].gameObject.SetActive(i < 3);
             }
-
-
-
-
-
-            //  HashSet<dialogueDisplay> movedThisFrame = new HashSet<dialogueDisplay>();
-
-            // for (int i = 0; i < TextDisplays.Count; i++)
-            // {
-            //     dialogueDisplay display = TextDisplays[i];
-
-            //    if (display == null || display.myBackgroundImage == null) continue;
-
-            // Skip if already moved this frame
-            //    if (movedThisFrame.Contains(display)) continue;
-
-            // List<dialogueDisplay> overlaps = GetOverlappingDialogues(display);
-
-            //     if (overlaps.Count > 0)
-            //     {
-            //         Debug.Log($"🔍 {display.gameObject.name} has {overlaps.Count} overlaps, MOVING IT");
-            //         // Move THIS box (the first one in the list that has an overlap)
-            //         MoveToNextPosition(display);
-            //  //       movedThisFrame.Add(display);
-            //    }
-            //     else
-            //     {
-            //         Debug.Log($"✅ {display.gameObject.name} has no overlaps");
-            //     }
-            // }
         }
     }
 
@@ -114,8 +81,9 @@ public class TextOverlayController : MonoBehaviour
     {
         if (newDisplay != null && !TextDisplays.Contains(newDisplay))
         {
+            newDisplay.gameObject.SetActive(false);
             TextDisplays.Add(newDisplay);
-            Debug.Log($"Added dialogue to list. Total: {TextDisplays.Count}");
+            //            Debug.Log($"Added dialogue to list. Total: {TextDisplays.Count}");
         }
     }
 
@@ -174,9 +142,9 @@ public class TextOverlayController : MonoBehaviour
 
         bool overlaps = overlapX && overlapY;
 
-        Debug.Log($"Rect1: X({minX1:F1} to {maxX1:F1}) Y({minY1:F1} to {maxY1:F1})");
-        Debug.Log($"Rect2: X({minX2:F1} to {maxX2:F1}) Y({minY2:F1} to {maxY2:F1})");
-        Debug.Log($"OverlapX: {overlapX}, OverlapY: {overlapY}, RESULT: {overlaps}");
+        // Debug.Log($"Rect1: X({minX1:F1} to {maxX1:F1}) Y({minY1:F1} to {maxY1:F1})");
+        // Debug.Log($"Rect2: X({minX2:F1} to {maxX2:F1}) Y({minY2:F1} to {maxY2:F1})");
+        // Debug.Log($"OverlapX: {overlapX}, OverlapY: {overlapY}, RESULT: {overlaps}");
 
         return overlaps;
     }
@@ -195,7 +163,7 @@ public class TextOverlayController : MonoBehaviour
         // Force immediate position update
         controller.setCanvasPosition(controller.curentPos);
 
-        Debug.Log($"🔄 {display.gameObject.name} (parent: {display.transform.parent.parent.name}) moved to position {controller.curentPos}");
+        //      Debug.Log($"🔄 {display.gameObject.name} (parent: {display.transform.parent.parent.name}) moved to position {controller.curentPos}");
     }
 }
 

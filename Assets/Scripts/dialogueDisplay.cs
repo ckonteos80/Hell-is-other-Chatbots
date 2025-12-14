@@ -39,7 +39,7 @@ public class dialogueDisplay : MonoBehaviour
         //   instanceID = instanceCounter++;
 
 
-        Debug.Log($"📦 {gameObject.name} initialized - Controller: {(myTextPositionController != null ? myTextPositionController.gameObject.name : "NULL")}, Parent Canvas: {transform.parent.parent.name}");
+     //   Debug.Log($"📦 {gameObject.name} initialized - Controller: {(myTextPositionController != null ? myTextPositionController.gameObject.name : "NULL")}, Parent Canvas: {transform.parent.parent.name}");
 
         myText = GetComponentInChildren<TextMeshProUGUI>();
         boxRectTransform = GetComponent<RectTransform>();
@@ -62,7 +62,7 @@ public class dialogueDisplay : MonoBehaviour
 
 
 
-        //  Debug.Log($"DialogueDisplay {instanceID} initialized on {gameObject.name}");
+    //    //  Debug.Log($"DialogueDisplay {instanceID} initialized on {gameObject.name}");
     }
 
     void Start()

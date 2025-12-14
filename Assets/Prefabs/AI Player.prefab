@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8366209746194918415}
   - component: {fileID: 8394548517777374934}
   - component: {fileID: 4971916255134719354}
+  - component: {fileID: 8733488386375411414}
   m_Layer: 0
   m_Name: AI Player
   m_TagString: Untagged
@@ -171,6 +172,21 @@ MonoBehaviour:
   myCharacter: 
   dialogueHolder: {fileID: 4578247092227054478}
   infoShared: []
+--- !u!114 &8733488386375411414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108731281920194922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04cc22e5e3c01d0489aa7e7c718ce096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterNo: 1
+  nextEventTime: 0
+  nextEventType: 0
 --- !u!1 &7167807062933225602
 GameObject:
   m_ObjectHideFlags: 0

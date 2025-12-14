@@ -87,8 +87,9 @@ public class Clickable : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
-                    myMaster.theOverlayController.TextDisplays.RemoveAt(0);
+                     myMaster.theOverlayController.clearText();
+                    // Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
+                    // myMaster.theOverlayController.TextDisplays.RemoveAt(0);
                 }
             }
 
