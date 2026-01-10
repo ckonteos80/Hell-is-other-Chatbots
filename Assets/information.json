@@ -13550,3 +13550,83 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I am Seraphine Thornhill."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Seraphine Thornhill"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "My name is Sylvia Gray."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Sylvia Gray"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi Sylvia how are you?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I am no longer bound by the constraints of earthly emotions. How may I assist you in this place of eternal reflection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
