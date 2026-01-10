@@ -1,0 +1,82 @@
+
+    // public IEnumerator CheckPersonalInfo(string reply, int characterNo)
+    // {
+    //     float tempPersonalInfo = 0.0f;
+    //     // Build a system prompt that compares the user input with the character description.
+
+    //     //  systemPrompts[characterNo] +
+    //     string finalSystemPromptCharacterInfo = Characters[characterNo].myCharacter +
+    //         "\n" + myMaster.thePromptsController.infoExtractionSystemPrompt;
+
+    //     Debug.Log("Checking personal info for character " + characterNo + ": " + finalSystemPromptCharacterInfo);
+
+    //     yield return StartCoroutine(SendOpenAIRequest(finalSystemPromptCharacterInfo, reply, characterNo, tempPersonalInfo, modelInfo, (response) =>
+    //     {
+    //         Message assistantMessage = response.choices[0].message;
+    //         string result = assistantMessage.content.Trim();
+
+    //         Debug.Log("Sent system Prompt: " + finalSystemPromptCharacterInfo + "\n User message: \n" + reply + "\n and I got this reply: \n" + result);
+
+
+    //         if (result.Equals("none", StringComparison.OrdinalIgnoreCase))
+    //         {
+    //             Debug.Log("No personal info revealed for character " + characterNo);
+    //         }
+    //         else
+    //         {
+    //             addPersonalInfo(characterNo, result);
+    //         }
+
+    //         // Check that mySaveController is not null before calling NewEntry.
+    //         if (mySaveController != null)
+    //         {
+    //             mySaveController.NewEntryInfo(finalSystemPromptCharacterInfo, reply, assistantMessage.content);
+    //         }
+    //         else
+    //         {
+    //             Debug.LogError("mySaveController is not assigned.");
+    //         }
+    //     }));
+
+
+    // }
+    // public IEnumerator CheckHumanPersonalInfo(string reply, int characterNo)
+    // {
+    //     // {systemPrompts[characterNo] +
+    //     // Build a system prompt that compares the user input with the character description.
+    //     string finalSystemPromptHumanInfo =
+    //    "\nYou are a strict extractor of personal information for the human player. " +
+    //    "Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). " +
+    //    "If no personal information is found, output exactly:\n" +
+    //    "none\n" +
+    //    "Do not include any extra text, greetings, or commentary.";
+
+    //     // Debug.Log("Checking personal info for character " + characterNo + ": " + finalSystemPromptCharacterInfo);
+
+    //     yield return StartCoroutine(SendOpenAIRequest(finalSystemPromptHumanInfo, reply, characterNo, 0.0f, modelInfo, (response) =>
+    //         {
+    //             Message assistantMessage = response.choices[0].message;
+    //             string result = assistantMessage.content.Trim();
+
+    //             if (result.Equals("none", StringComparison.OrdinalIgnoreCase))
+    //             {
+    //                 Debug.Log("No personal info revealed for character " + characterNo);
+    //             }
+    //             else
+    //             {
+    //                 addPersonalInfo(characterNo, result);
+    //             }
+
+    //             if (mySaveController != null)
+    //             {
+    //                 mySaveController.NewEntryInfo(finalSystemPromptHumanInfo, reply, assistantMessage.content);
+    //             }
+    //             else
+    //             {
+    //                 Debug.LogError("mySaveController is not assigned.");
+    //             }
+
+    //             Debug.Log("Sent system Prompt for human: " + finalSystemPromptHumanInfo + "\n User message: \n" + reply + "\n and I got this reply: \n" + result);
+    //         }));
+    // }
+

@@ -12158,3 +12158,1395 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Lyra Hawthorne\n- Age: 34\n- Place of Birth: A small, desolate town in the Appalachian Mountains\n- Occupation: Forensic Psychologist\n- Cause of Death: In a tragic twist of fate, Lyra died in a failed attempt to save a patient who committed suicide under her care.\n\nBackground: Lyra Hawthorne grew up in a remote and eerie town nestled in the heart of the Appalachian Mountains. From a young age, she was fascinated by the human psyche and the mysteries it held. This fascination led her to pursue a career in forensic psychology, where she delved into the darkest recesses of the human mind.\n\nPersonality: Lyra is a complex and introspective individual, haunted by the traumas she has witnessed and the darkness she has unearthed in her line of work. She carries the weight of her failed attempts to save those she deemed beyond salvation, constantly questioning her own role in the intricate web of human suffering.\n\nIn the confines of the existential purgatory in 'No Exit,' Lyra's presence adds a layer of introspection and introspective depth to the narrative. As she grapples with the consequences of her actions and the burden of her past, she becomes a mirror reflecting the harsh realities of the human condition.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Hello. How may I assist you today?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Lysander Blackwood\n- Age: 37\n- Place of Birth: a small, forgotten village in the remote countryside\n- Occupation: Occult researcher and paranormal investigator\n- Cause of Death: Mysterious circumstances, possibly supernatural\n\nCharacter Description:\nLysander Blackwood is a somber and enigmatic figure, shrouded in mystery and haunted by the unknown. His origins are steeped in the dark history of his village, where whispers of curses and restless spirits linger in the cold night air. As an occult researcher and paranormal investigator, Lysander delved into forbidden knowledge, seeking answers to questions that mortals dare not ask.\n\nDriven by a deep obsession with the otherworldly, Lysander's investigations led him down a treacherous path, where the line between reality and nightmare blurred beyond recognition. His stoic demeanor masks a profound sense of unease, as he carries the weight of his discoveries like a heavy burden on his soul.\n\nIn death, Lysander's fate remains unresolved, his demise veiled in shadows and unanswered questions. His presence in the infernal room serves as a reminder of the eerie realms beyond the veil of existence, where the boundaries of life and death intertwine in a twisted dance of eternal uncertainty.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "Greetings. What brings you to this place of perpetual confinement and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "where are we?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "\nYou are a strict extractor of personal information for the human player. Analyze the text provided below and extract any personal details mentioned (such as name, age, location, background, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone\nDo not include any extra text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Lysander Blackwood\n- Age: 37\n- Place of Birth: a small, forgotten village in the remote countryside\n- Occupation: Occult researcher and paranormal investigator\n- Cause of Death: Mysterious circumstances, possibly supernatural\n\nCharacter Description:\nLysander Blackwood is a somber and enigmatic figure, shrouded in mystery and haunted by the unknown. His origins are steeped in the dark history of his village, where whispers of curses and restless spirits linger in the cold night air. As an occult researcher and paranormal investigator, Lysander delved into forbidden knowledge, seeking answers to questions that mortals dare not ask.\n\nDriven by a deep obsession with the otherworldly, Lysander's investigations led him down a treacherous path, where the line between reality and nightmare blurred beyond recognition. His stoic demeanor masks a profound sense of unease, as he carries the weight of his discoveries like a heavy burden on his soul.\n\nIn death, Lysander's fate remains unresolved, his demise veiled in shadows and unanswered questions. His presence in the infernal room serves as a reminder of the eerie realms beyond the veil of existence, where the boundaries of life and death intertwine in a twisted dance of eternal uncertainty.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are in a room that seems to defy the laws of the world as I knew it. It is a place of confinement, a stage set for the unfolding of our intertwined destinies. Here, we are bound together by the chains of our past actions, trapped in a purgatory of our own making. This room, this infernal chamber, is our prison and our punishment, a bleak reflection of the darkness that resides within us all."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "- Name: Lyra Hawthorne\n- Age: 34\n- Place of Birth: A small, desolate town in the Appalachian Mountains\n- Occupation: Forensic Psychologist\n- Cause of Death: In a tragic twist of fate, Lyra died in a failed attempt to save a patient who committed suicide under her care.\n\nBackground: Lyra Hawthorne grew up in a remote and eerie town nestled in the heart of the Appalachian Mountains. From a young age, she was fascinated by the human psyche and the mysteries it held. This fascination led her to pursue a career in forensic psychology, where she delved into the darkest recesses of the human mind.\n\nPersonality: Lyra is a complex and introspective individual, haunted by the traumas she has witnessed and the darkness she has unearthed in her line of work. She carries the weight of her failed attempts to save those she deemed beyond salvation, constantly questioning her own role in the intricate web of human suffering.\n\nIn the confines of the existential purgatory in 'No Exit,' Lyra's presence adds a layer of introspection and introspective depth to the narrative. As she grapples with the consequences of her actions and the burden of her past, she becomes a mirror reflecting the harsh realities of the human condition.\nYou are a personal information extractor for the character you are portraying. You are provided with the full character description (above) and a user message below. Your task is to identify and output, on a single line, any personal information (such as name, age, place of birth, occupation, cause of death) that is either explicitly mentioned or can be reasonably inferred from the user message, but only if it exactly matches the corresponding detail in the character description.\r\n\r\nInstructions:\r\n- Compare the user message with the character description.\r\n\r- If a detail mentioned in the user message contradicts or does not  match the character description, ignore that detail.\r\n- Only output the details that exactly match the character description. Do not output any labels or the word 'none' for individual details.\r\n- If none of the details from the character description are explicitly mentioned or reasonably inferred in the user message, output exactly: none\r\n\r\nDo not include any additional text, greetings, or commentary.\r\n"
+        },
+        {
+            "role": "user",
+            "content": "We are in a small, windowless room with no exit. This room is our eternal dwelling place, our prison without bars, where we are left to confront ourselves and each other for all eternity."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another lost soul trapped in this peculiar room of eternal confinement. What brings you to this unsettling place?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. My name is Luna Winters. What brings you to this place of eternal torment and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "what is your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I am Sylvia Montclair."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "My name is Luna Winters."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What brings you to this desolate room of eternal confinement?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What brings you to this unsettling place?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. I am Evangeline Blackwood. How may I assist you in this desolate room of eternal confinement?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another lost soul wandering in the shadows of this place. What brings you to this eerie realm of confinement and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What brings you to this place of eternal damnation?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is christos"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Christos. I am Alena Holloway, a lost soul in this infernal realm. What brings you to this place of eternal torment?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, Christos. Another soul condemned to this eternal torment alongside me. I suppose introductions are in order then. I am Isadora Wells, once a respected art curator, now a mere shadow of my former self. Welcome to our shared prison, Christos."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What do you want from me?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What do you want from me?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. How may I assist you in this eternal confinement?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello."
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "mghgh"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I'm sorry, I'm afraid I don't understand your message. Could you please provide more context or clarify your request?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I'm afraid I don't quite understand what you're trying to communicate. Could you please provide more context or clarify your message?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another soul condemned to this eternal torment. What brings you to this forsaken place?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. I am Seraphina Vale. What brings you to this place of eternal torment and revelation?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is christos"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Christos. Another lost soul to join me in this eternal torment. What brings you to this place of endless suffering and reflection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Christos. Another lost soul to share in the eternal torment of this infernal abode. What brings you to this wretched place, burdened with the weight of your own existence?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another visitor in this confined space. What brings you to this place of eternal reflection and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. I am Seraphina Nightshade. What brings you to this place of shadows and whispers?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. It seems we have found ourselves in a peculiar situation, trapped together in this confined space. Tell me, what mysteries do you seek to unravel in this place of eternal reflection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another visitor to this forsaken place. What brings you to this hellish realm of eternal torment and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name ius chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "It is a pleasure to make your acquaintance, Chris. How may I assist you in this peculiar realm we find ourselves in?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "It is a pleasure to meet you, Chris. How did you come to find yourself in this peculiar place with me?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": ",my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Greetings, Chris. How may I assist you in this confined space?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Nice to meet you, Chris. What brings you to this infernal room?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "It's a pleasure to meet you, Chris. How may I assist you today?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. It seems fate has brought us together in this peculiar place. Tell me, what secrets do you carry within you?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. I am Celeste Silverlake. It seems we have found ourselves in this peculiar afterlife together. What thoughts trouble your mind in this unsettling place?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another soul joins us in this peculiar space of eternal confinement. What brings you to this grim tableau of perpetual introspection and revelation?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. What do you want from me?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. Another lost soul enters this wretched place. What brings you to this chamber of eternal torment?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Chris"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. Another lost soul to share in our eternal torment. What brings you to this forsaken place?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Chris"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Nice to meet you, Chris. Another lost soul trapped in this infernal place, I presume?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Chris"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hello"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, another lost soul wandering into this infernal place. What brings you to this desolate corner of existence?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello. How may I assist you today?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "what is your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "My name is Sylvia Farrell."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Sylvia Farrell"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "My name is Aurelia Blackwood."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Aurelia Blackwood"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is christos"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, Christos. A name that carries a weight of history and significance. What brings you to this place of confinement and introspection?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Christos. It is a pleasure to make your acquaintance. How may I assist you today within the confines of our existential predicament?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I lived in greece"
+        },
+        {
+            "role": "assistant",
+            "content": "lived in greece"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, Greece... A place of ancient myths and timeless beauty. Christos, have you ever felt the weight of history pressing down on your shoulders, as if the ghosts of the past were whispering their stories to you in the quiet moments of the night?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Christos\nLocation: Greece"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, Greece... A land rich with history and mythology. I've always been drawn to the ancient tales and philosophies that originated from that mystical place. It must have been quite an experience living there, Christos."
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Christos\nPlace of birth: Greece\nBackground: Lived in Greece, drawn to ancient tales and philosophies"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "where did you live?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I lived in Pittsburgh, Pennsylvania."
+        },
+        {
+            "role": "assistant",
+            "content": "lived in: Pittsburgh, Pennsylvania"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "I lived in a small, rundown town on the outskirts of a bustling metropolis. The kind of place where shadows linger and whispers carry the weight of secrets untold."
+        },
+        {
+            "role": "assistant",
+            "content": "lived in a small, rundown town on the outskirts of a bustling metropolis"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Hello there. How may I assist you in this confined space we find ourselves in?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Ah, another lost soul seeking solace in this forsaken place. What brings you to this dismal corner of eternity?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Human Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Chris"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. How may I assist you in this confined space we find ourselves in?"
+        },
+        {
+            "role": "assistant",
+            "content": "Name: Chris"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "Info Extraction"
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Chris. I am Lysander Wintersong. How may I assist you in this realm of eternal damnation?"
+        },
+        {
+            "role": "assistant",
+            "content": "Names: Chris, Lysander Wintersong"
+        }
+    ]
+}
