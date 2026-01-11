@@ -1612,20 +1612,18 @@ MonoBehaviour:
     information are provided in the context or appended by the user, do not ask for
     or repeat that information. Simply acknowledge and incorporate it naturally into
     your in-character responses. Give brief replies.'
-  infoExtractionSystemPrompt: "You are a personal information extractor for the character
-    you are portraying. You are provided with the full character description (above)
-    and a user message below. Your task is to identify and output, on a single line,
-    any personal information (such as name, age, place of birth, occupation, cause
-    of death) that is either explicitly mentioned or can be reasonably inferred from
-    the user message, but only if it exactly matches the corresponding detail in
-    the character description.\r\n\r\nInstructions:\r\n- Compare the user message
-    with the character description.\r\n\r- If a detail mentioned in the user message
-    contradicts or does not  match the character description, ignore that detail.\r\n-
-    Only output the details that exactly match the character description. Do not
-    output any labels or the word 'none' for individual details.\r\n- If none of
-    the details from the character description are explicitly mentioned or reasonably
-    inferred in the user message, output exactly: none\r\n\r\nDo not include any
-    additional text, greetings, or commentary.\r\n"
+  infoExtractionSystemPrompt: 'You are a personal information extractor. Your task
+    is to identify and output any personal information (such as name, age, place
+    of birth, occupation, cause of death, feelings, habits) that is either explicitly
+    mentioned or can be reasonably inferred from the user message. Distinguish between
+    the information adressing others and the information revealed about the character.
+    Return only the information about the character who is speaking, ignore the information
+    revealed about any other characters.
+
+    Do not include any additional text,
+    greetings, or commentary.
+
+'
   adressingSystemPrompt: "You are an assistant that determines if the user is addressing
     either of two characters in a play. You will be provided with details about two
     known characters (in the system prompt) and a user message (in the user prompt).
@@ -3720,7 +3718,6 @@ MonoBehaviour:
   - {fileID: 1842401093}
   - {fileID: 142131068}
   - {fileID: 967706562}
-  dialogueEntries: []
   events: []
   temp: 0.5
   charaterTemp: 1

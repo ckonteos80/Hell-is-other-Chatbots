@@ -60,7 +60,7 @@ public class TextOverlayController : MonoBehaviour
 
         if (myMaster.theCharacterController.Characters[1].myAiEventController.nextEventType == 0 && myMaster.theCharacterController.Characters[2].myAiEventController.nextEventType == 0)
         {
-            myMaster.SetNextEvent();
+     //       myMaster.SetNextEvent();
         }
     }
 

@@ -33,16 +33,16 @@ public class CharacterController : MonoBehaviour
 
     public List<PersonController> Characters; // Assumes PersonController has fields: myName, myCharacter, infoShared, dialogueHolder, etc.
 
-  //  public PersonController NarratorCharacter;
+    //  public PersonController NarratorCharacter;
 
     // Dialogue and event tracking.
     public List<DialogueEntry> dialogueEntries;
     public List<string> events;
 
-   
 
 
- //   public List<string> systemPrompts; // One per character.
+
+    //   public List<string> systemPrompts; // One per character.
 
     // Model parameters.
     public float temp;         // For dialogue requests.
@@ -110,7 +110,7 @@ public class CharacterController : MonoBehaviour
             : "Nothing known for Character 2";
 
 
-        string AdressSystemPromptComplete =myMaster.thePromptsController.adressingSystemPrompt + "\n " + character1info + "\n " + character2info;
+        string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPrompt + "\n " + character1info + "\n " + character2info;
 
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, (response) =>
         {
@@ -184,7 +184,7 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("Checking personal info for character " + characterNo);
 
-        InfoExtractorHandler.ExtractInfo(reply, (result) =>
+        InfoExtractorHandler.ExtractInfo(reply, myMaster.thePromptsController.infoExtractionSystemPrompt, (result) =>
         {
             Debug.Log($"Extracted info for character {characterNo}: {result}");
 
@@ -195,7 +195,7 @@ public class CharacterController : MonoBehaviour
 
             if (mySaveController != null)
             {
-                mySaveController.NewEntryInfo("Info Extraction", reply, result);
+                mySaveController.NewEntryInfo(myMaster.thePromptsController.infoExtractionSystemPrompt, reply, result);
             }
             else
             {
@@ -209,7 +209,7 @@ public class CharacterController : MonoBehaviour
     {
         Debug.Log("Checking personal info for human player");
 
-        InfoExtractorHandler.ExtractInfo(reply, (result) =>
+        InfoExtractorHandler.ExtractInfo(reply, myMaster.thePromptsController.infoExtractionSystemPrompt, (result) =>
         {
             Debug.Log($"Extracted info for human player: {result}");
 
@@ -220,7 +220,7 @@ public class CharacterController : MonoBehaviour
 
             if (mySaveController != null)
             {
-                mySaveController.NewEntryInfo("Human Info Extraction", reply, result);
+                mySaveController.NewEntryInfo(myMaster.thePromptsController.infoExtractionSystemPrompt, reply, result);
             }
             else
             {

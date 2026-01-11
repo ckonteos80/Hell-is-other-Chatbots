@@ -32,6 +32,8 @@ public class PromptsController : MonoBehaviour
     [TextArea(3, 10)]
     public string adressingSystemPrompt;
 
+    
+
 
     public List<string> systemPrompts; // One per character.
 

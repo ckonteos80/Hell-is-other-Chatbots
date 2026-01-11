@@ -9,20 +9,7 @@ public static class InfoExtractorHandler
     private static readonly string API_URL = "https://jejunepixels-qwen3-info-extractor-fastapi.hf.space/extract";
     
     // Default system prompt
-    private static readonly string DEFAULT_SYSTEM_PROMPT = 
-        "You are a strict extractor of personal information. Analyze the text and extract personal details (name, age, location, occupation, hobbies, etc.). If no personal information is found, output exactly:\nnone";
-
-    /// <summary>
-    /// Extracts personal information from text using FastAPI with fine-tuned Qwen3
-    /// </summary>
-    /// <param name="text">The text to extract information from</param>
-    /// <param name="callback">Callback function when request completes, returns extracted info</param>
-    /// <param name="caller">MonoBehaviour calling this (needed for coroutine)</param>
-    public static void ExtractInfo(string text, Action<string> callback, MonoBehaviour caller)
-    {
-        ExtractInfo(text, DEFAULT_SYSTEM_PROMPT, callback, caller);
-    }
-
+  
     /// <summary>
     /// Extracts personal information from text with custom system prompt
     /// </summary>
