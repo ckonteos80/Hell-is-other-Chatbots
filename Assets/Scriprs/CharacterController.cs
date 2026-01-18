@@ -52,9 +52,15 @@ public class CharacterController : MonoBehaviour
 
     public string modelDialogue;
     public string modelInfo;
+    
+    // API Selection: switch between custom FastAPI and Hugging Face Space
+    public bool useHuggingFaceSpace = false;
 
     void Start()
     {
+        // Set which API the InfoExtractorHandler should use
+        InfoExtractorHandler.useHuggingFaceSpace = this.useHuggingFaceSpace;
+        
         myMaster = GetComponentInParent<Master>();
         mySaveController = GetComponent<saveController>();
 

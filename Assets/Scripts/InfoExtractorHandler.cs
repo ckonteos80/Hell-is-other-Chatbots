@@ -6,9 +6,12 @@ using System.Text;
 
 public static class InfoExtractorHandler
 {
-    private static readonly string API_URL = "https://jejunepixels-qwen3-info-extractor-fastapi.hf.space/extract";
+    // API URLs
+    private static readonly string CUSTOM_API_URL = "https://jejunepixels-qwen3-4B-info-extractor-fastapi.hf.space/extract";
+    private static readonly string HUGGINGFACE_API_URL = "https://jejunepixels-qwen3-0-6b-info-extractor-api.hf.space/extract";
     
-    // Default system prompt
+    // Public toggle - set from CharacterController
+    public static bool useHuggingFaceSpace = false;
   
     /// <summary>
     /// Extracts personal information from text with custom system prompt
@@ -24,6 +27,10 @@ public static class InfoExtractorHandler
 
     private static IEnumerator ExtractInfoCoroutine(string text, string systemPrompt, Action<string> callback)
     {
+        // Select API URL based on bool
+        string apiUrl = useHuggingFaceSpace ? HUGGINGFACE_API_URL : CUSTOM_API_URL;
+        string apiLabel = useHuggingFaceSpace ? "HuggingFace Space" : "Custom FastAPI";
+
         var request = new ExtractionRequest
         {
             text = text,
@@ -33,13 +40,15 @@ public static class InfoExtractorHandler
         string jsonPayload = JsonUtility.ToJson(request);
         byte[] jsonToSend = Encoding.UTF8.GetBytes(jsonPayload);
 
-        using (UnityWebRequest webRequest = new UnityWebRequest(API_URL, "POST"))
+        using (UnityWebRequest webRequest = new UnityWebRequest(apiUrl, "POST"))
         {
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
             webRequest.timeout = 180; // 3 minute timeout
+            webRequest.certificateHandler = new AcceptAllCertificatesHandler();
 
+            Debug.Log($"[InfoExtractor] Using {apiLabel} API");
             Debug.Log($"[InfoExtractor] Calling API for: {text.Substring(0, Mathf.Min(50, text.Length))}...");
 
             yield return webRequest.SendWebRequest();

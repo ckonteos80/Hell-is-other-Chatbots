@@ -1612,18 +1612,14 @@ MonoBehaviour:
     information are provided in the context or appended by the user, do not ask for
     or repeat that information. Simply acknowledge and incorporate it naturally into
     your in-character responses. Give brief replies.'
-  infoExtractionSystemPrompt: 'You are a personal information extractor. Your task
+  infoExtractionSystemPrompt: You are a personal information extractor. Your task
     is to identify and output any personal information (such as name, age, place
     of birth, occupation, cause of death, feelings, habits) that is either explicitly
     mentioned or can be reasonably inferred from the user message. Distinguish between
-    the information adressing others and the information revealed about the character.
+    the information addressing others and the information revealed about the character.
     Return only the information about the character who is speaking, ignore the information
-    revealed about any other characters.
-
-    Do not include any additional text,
-    greetings, or commentary.
-
-'
+    revealed about any other characters. Do not include any additional text, greetings,
+    or commentary.
   adressingSystemPrompt: "You are an assistant that determines if the user is addressing
     either of two characters in a play. You will be provided with details about two
     known characters (in the system prompt) and a user message (in the user prompt).
@@ -3723,6 +3719,7 @@ MonoBehaviour:
   charaterTemp: 1
   modelDialogue: gpt-3.5-turbo
   modelInfo: ft:gpt-3.5-turbo-1106:ck80:training1:B8ihcA3A
+  useHuggingFaceSpace: 1
 --- !u!1 &1633440104
 GameObject:
   m_ObjectHideFlags: 0
