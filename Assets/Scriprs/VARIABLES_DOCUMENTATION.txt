@@ -1,0 +1,497 @@
+================================================================================
+NO EXIT - VARIABLE & PROMPT STRUCTURE DOCUMENTATION
+================================================================================
+
+This document outlines all variables and prompt templates needed for the No Exit
+game system, organized by category and function.
+
+================================================================================
+1. CHARACTER DATA VARIABLES (Private)
+================================================================================
+These variables store the LLM-generated character data created during initialization.
+
+CHARACTER_BACKSTORY
+Type: string
+Description: Generated character backstory including personal history, background,
+  and formative experiences. Used to establish character depth.
+LLM Source: Initial backstory generation prompt
+Used By: Dialogue context, character understanding
+
+CHARACTER_GOALS
+Type: string
+Description: What the character wants to achieve or accomplish. Part of backstory
+  but emphasized separately for dialogue decision-making.
+LLM Source: Backstory generation prompt
+Used By: Character motivation in dialogue responses
+
+CHARACTER_DESIRED_PERCEPTION
+Type: string
+Description: How the character wants other people to see them. Used to determine
+  dialogue tone (friendly, neutral, against).
+LLM Source: Backstory generation prompt
+Used By: Tone determination, response generation
+
+CHARACTER_FEARED_PERCEPTION
+Type: string
+Description: How the character is afraid others will see them. Opposite of desired
+  perception. Used for tension and dialogue decisions.
+LLM Source: Backstory generation prompt
+Used By: Response generation when feared perception is being revealed
+
+CHARACTER_ARC
+Type: string
+Description: Complete story arc including turning points in life and key people
+  in the character's life.
+LLM Source: Story arc generation prompt
+Used By: Dialogue context, character consistency, plot understanding
+
+REAL_CAUSE_OF_DEATH
+Type: string
+Description: The actual, true reason why the character died. This is secret and
+  triggers BATTLE MODE when player discovers it.
+LLM Source: Real death cause generation prompt
+Used By: Battle mode trigger detection, contradiction checking
+
+COPE_STORY_OF_DEATH
+Type: string
+Description: The false story the character tells about how they died, based on
+  how they want to be perceived. What they claim happened.
+LLM Source: False death story generation prompt
+Used By: Dialogue responses, information consistency checks
+
+LIVING_PEOPLE_ACTIONS
+Type: List<string>
+Description: List of stories about what the character's close living people are
+  currently doing. Multiple entries for different people. Updated during gameplay
+  when player reveals information about them.
+LLM Source: Living people actions generation prompt (initialization)
+  New entries added when player mentions living people + reveals death info
+Used By: Dialogue context, character emotional motivation, narrative grounding
+
+RANDOM_FIRST_NAME
+Type: string
+Description: Randomly selected first name from database. Generated at initialization.
+Used By: Character identification, dialogue, UI display
+
+RANDOM_LAST_NAME
+Type: string
+Description: Randomly selected last name from database. Generated at initialization.
+Used By: Character identification, dialogue, UI display
+
+RANDOM_AGE
+Type: int
+Description: Randomly generated age number (1-100 range suggested).
+Used By: Character backstory context, dialogue context
+
+================================================================================
+2. CHARACTER STATE & TRACKING VARIABLES (Private)
+================================================================================
+These variables track what information has been revealed during gameplay.
+
+PLAYER_REVEALED_INFORMATION
+Type: List<string>
+Description: Log of all personal information the player has revealed about their
+  character throughout conversation. Used to measure information asymmetry.
+Example Entry: "Died in a car accident", "Was a doctor", "Had two children"
+
+AI_CHARACTER_REVEALED_INFORMATION
+Type: Dictionary<PersonController, List<string>>
+Description: For each AI character, track what personal information they've
+  revealed. Allows per-character information tracking.
+Key: Reference to PersonController
+Value: List of information revealed by that character
+
+REVEALED_CONTRADICTIONS
+Type: List<string>
+Description: Log of contradictions detected between player's statements and
+  previously established information or between multiple statements.
+Example Entry: "Said died in car crash on Tuesday, but earlier said died Wednesday"
+
+DIALOGUE_INTERACTION_SUMMARY
+Type: string
+Description: LLM-generated summary of all dialogue so far for context in
+  upcoming responses. Regenerated periodically to stay current.
+Used By: LLM prompts as context parameter
+
+INFORMATION_ASYMMETRY_SCORE
+Type: float (0-1)
+Description: Measurement of how much player has revealed vs. AI characters.
+  0 = balanced, 1 = player has revealed everything, -1 = characters ahead.
+Used By: Response generation decision (truthful vs. mysterious)
+
+DEATH_REVELATION_DETECTED
+Type: bool
+Description: Flag set to true when real cause of death has been detected/revealed.
+  When true, triggers transition to BATTLE MODE.
+Used By: Battle mode trigger check
+
+CHARACTER_ADDRESSING_DETECTED
+Type: string
+Description: Name of which AI character is being addressed in player's message.
+  Null/empty if no specific character addressed, both, or narrator.
+Used By: Response routing decision
+
+IS_CONTRADICTING_INFORMATION
+Type: bool
+Description: True when current player input contradicts established information.
+  Checked before generating response.
+Used By: Response generation (mystery prompt vs. normal prompt)
+
+CONVERSATION_TURN_COUNT
+Type: int
+Description: Counter of total dialogue exchanges. Used for pacing and context
+  window management.
+Used By: Dialogue management, summary regeneration trigger
+
+================================================================================
+3. PUBLIC PROMPT TEMPLATE VARIABLES (SerializeField / Public)
+================================================================================
+These are editable in the Inspector and define how LLM is prompted at each stage.
+All should be [TextArea] or [TextArea(5, 10)] for readability in Inspector.
+
+--- INITIALIZATION/CHARACTER GENERATION PROMPTS ---
+
+PROMPT_GENERATE_BACKSTORY
+Type: public string [TextArea]
+Description: Prompt that instructs LLM to generate initial character backstory,
+  including personal goals, desired perception, and feared perception.
+Template Should Include:
+  - Request for character goals
+  - How character wants to be seen
+  - How character fears being seen
+  - Relevant background and experiences
+Variables to Insert: CHARACTER NAME, AGE, RANDOM DETAILS
+
+PROMPT_GENERATE_STORY_ARC
+Type: public string [TextArea]
+Description: Prompt that generates complete character story arc including turning
+  points and key people in their life.
+Template Should Include:
+  - Request for major life events
+  - Key relationships and people
+  - Turning points and pivotal moments
+  - Arc trajectory and themes
+Variables to Insert: CHARACTER BACKSTORY, CHARACTER GOALS
+
+PROMPT_GENERATE_REAL_DEATH_CAUSE
+Type: public string [TextArea]
+Description: Prompt that generates the true, secret reason the character died.
+  This is what the player must eventually discover.
+Template Should Include:
+  - Instruction to make it compelling but hideable
+  - Connection to character's backstory
+  - Emotional weight and consequences
+  - Hint potential (not directly obvious but discoverable)
+Variables to Insert: CHARACTER ARC, CHARACTER FEARED PERCEPTION
+
+PROMPT_GENERATE_COPE_STORY
+Type: public string [TextArea]
+Description: Prompt that generates the false story about death that character
+  tells based on desired perception.
+Template Should Include:
+  - Based on how character wants to be seen
+  - More positive/acceptable than reality
+  - Should be believable within character arc
+  - Instructions for consistency with backstory
+Variables to Insert: REAL CAUSE OF DEATH, CHARACTER DESIRED PERCEPTION
+
+PROMPT_GENERATE_LIVING_PEOPLE_ACTIONS
+Type: public string [TextArea]
+Description: Prompt that generates stories of what the character's living loved
+  ones are currently doing.
+Template Should Include:
+  - Request for 3-5 different people's current activities
+  - How these activities relate to character's death
+  - Emotional resonance and connection to character
+Variables to Insert: CHARACTER BACKSTORY, CHARACTER ARC
+
+--- DIALOGUE INTERACTION PROMPTS ---
+
+PROMPT_CHARACTER_DIALOGUE_SYSTEM
+Type: public string [TextArea]
+Description: Main system prompt defining how character should behave in dialogue.
+  Sent with every character dialogue request.
+Template Should Include:
+  - Character's personality guidelines
+  - Communication style
+  - Emotional state (grief, shock, confusion)
+  - Instructions on what to hide/reveal based on information asymmetry
+  - Warning about contradictions
+Variables to Insert: CHARACTER BACKSTORY, CHARACTER ARC, DIALOGUE HISTORY
+
+PROMPT_DIALOGUE_TONE_DETERMINATION
+Type: public string [TextArea]
+Description: Prompt that analyzes player's message and determines response tone
+  (Neutral, Against, Friendly).
+Template Should Include:
+  - Desired perception comparison
+  - Feared perception comparison
+  - What the player is asking/saying
+  - Instructions to output: "TONE: [NEUTRAL/AGAINST/FRIENDLY]"
+Variables to Insert: CHARACTER DESIRED PERCEPTION, CHARACTER FEARED PERCEPTION, PLAYER MESSAGE
+
+PROMPT_RESPONSE_GENERATION_TRUTHFUL
+Type: public string [TextArea]
+Description: Prompt for generating character response when player has divulged
+  MORE information than character. Response should be truthful.
+Template Should Include:
+  - Character should acknowledge player's revelation
+  - Respond honestly within character
+  - May ask follow-up questions
+  - Show emotional reaction
+Variables to Insert: CHARACTER BACKSTORY, INFORMATION SUMMARY, DIALOGUE TONE
+
+PROMPT_RESPONSE_GENERATION_MYSTERIOUS
+Type: public string [TextArea]
+Description: Prompt for generating character response when information is
+  asymmetrical or contradicting. Response should be mysterious/questioning.
+Template Should Include:
+  - Don't reveal what character hasn't revealed
+  - Ask probing questions about player's statements
+  - Show suspicion if contradictions detected
+  - Redirect conversation strategically
+Variables to Insert: CHARACTER BACKSTORY, PLAYER INFORMATION, CONTRADICTION NOTES
+
+PROMPT_NARRATOR_COMMENTARY
+Type: public string [TextArea]
+Description: Prompt for generating narrator/environmental commentary on dialogue.
+Template Should Include:
+  - Observational details about scene
+  - Emotional temperature
+  - Foreshadowing elements
+  - Connection to living people or character arc
+Variables to Insert: SCENE DESCRIPTION, DIALOGUE SUMMARY, CHARACTER EMOTIONAL STATE
+
+PROMPT_CHARACTER_QUESTIONS
+Type: public string [TextArea]
+Description: Prompt for characters to ask the player probing questions.
+Template Should Include:
+  - Questions about player's character
+  - Follow-ups on vague statements
+  - Test questions about consistency
+  - Questions that might reveal contradictions
+Variables to Insert: CHARACTER BACKSTORY, INFORMATION REVEALED, SUSPECTED INCONSISTENCIES
+
+--- ANALYSIS & DETECTION PROMPTS ---
+
+PROMPT_EXTRACT_PERSONAL_INFO_PLAYER
+Type: public string [TextArea]
+Description: Prompt that extracts personal information about player's character
+  from their dialogue input.
+Template Should Include:
+  - Instructions to identify facts revealed
+  - Names, relationships, causes of death, etc.
+  - Output format (list or structured text)
+  - Only extract explicit claims, not implications
+Variables to Insert: PLAYER MESSAGE
+
+PROMPT_EXTRACT_PERSONAL_INFO_AI
+Type: public string [TextArea]
+Description: Prompt that extracts personal information revealed by AI character
+  in their response.
+Template Should Include:
+  - Same as player extraction
+  - Also note emotional revelations
+  - Note contradictions with character backstory
+Variables to Insert: CHARACTER RESPONSE, CHARACTER BACKSTORY
+
+PROMPT_DETECT_ADDRESSED_CHARACTER
+Type: public string [TextArea]
+Description: Prompt that determines which AI character(s) are being addressed
+  in player's message.
+Template Should Include:
+  - List of available characters with descriptions
+  - Instructions to identify direct address
+  - Output format: "CHARACTER: [NAME]" or "NONE" or "BOTH"
+Variables to Insert: PLAYER MESSAGE, CHARACTER NAMES LIST
+
+PROMPT_DETECT_DEATH_REVELATION
+Type: public string [TextArea]
+Description: Prompt that detects if player has revealed the real cause of death.
+  When positive, triggers BATTLE MODE.
+Template Should Include:
+  - Description of real cause of death (what to look for)
+  - Instructions to evaluate if player knows
+  - Output: "REVEALED: TRUE/FALSE" and confidence level
+  - Also check for implications/hints understanding
+Variables to Insert: PLAYER MESSAGE, REAL CAUSE OF DEATH
+
+PROMPT_DETECT_CONTRADICTIONS
+Type: public string [TextArea]
+Description: Prompt that identifies if new player statement contradicts
+  previously established information.
+Template Should Include:
+  - All previously revealed information
+  - New statement
+  - Output: "CONTRADICTION: TRUE/FALSE" with explanation
+  - Severity level if true
+Variables to Insert: PREVIOUS INFORMATION, CURRENT STATEMENT
+
+PROMPT_INFORMATION_ASYMMETRY_ANALYSIS
+Type: public string [TextArea]
+Description: Prompt that evaluates information balance between player and
+  AI characters.
+Template Should Include:
+  - Player's revealed information count
+  - Each character's revealed information count
+  - Calculate who's ahead
+  - Output: Asymmetry score and recommendations
+Variables to Insert: PLAYER INFO LIST, CHARACTER INFO LISTS
+
+================================================================================
+4. DIALOGUE & RESPONSE MANAGEMENT VARIABLES (Private)
+================================================================================
+
+ACTIVE_CHARACTER_ADDRESSING
+Type: PersonController
+Description: Reference to the character being addressed in current dialogue turn.
+  Null if no specific character or narrator.
+
+LAST_RESPONSE_TONE
+Type: string (enum: "NEUTRAL", "AGAINST", "FRIENDLY")
+Description: Track the tone of the last character response for consistency.
+
+RESPONSE_INFORMATION_GIVEN
+Type: List<string>
+Description: Information revealed in the current AI character's response.
+  Added to AI_CHARACTER_REVEALED_INFORMATION after response.
+
+IS_BATTLE_MODE_ACTIVE
+Type: bool
+Description: Flag set to true when real cause of death has been revealed.
+  Changes dialogue rules and introduces conflict/confrontation.
+
+BATTLE_MODE_INTENSITY
+Type: float (0-1)
+Description: How intense the battle mode confrontation is. Increases as player
+  reveals more about their actual death cause.
+
+================================================================================
+5. UTILITY & HELPER VARIABLES (Private/Public as needed)
+================================================================================
+
+LLM_CONTEXT_WINDOW_LIMIT
+Type: int
+Description: Maximum tokens to keep in active dialogue context. When exceeded,
+  old dialogue is summarized instead of kept verbatim.
+
+SUMMARY_REGENERATION_INTERVAL
+Type: int
+Description: How many dialogue turns between regenerating dialogue summary.
+
+INFORMATION_REVEAL_THRESHOLD
+Type: float (0-1)
+Description: Percentage of character's secrets that must be revealed to trigger
+  battle mode. Default: 0.8 (80%)
+
+MYSTERY_RESPONSE_PROBABILITY
+Type: float (0-1)
+Description: When information is asymmetrical, chance character responds
+  mysteriously vs. directly. Scales with asymmetry.
+
+================================================================================
+6. SCENE & GAME STATE VARIABLES
+================================================================================
+
+GAME_STATUS
+Type: string (enum: "INITIALIZATION", "CONVERSATION", "BATTLE_MODE", "ENDING")
+Description: Current game phase. Controls available prompts and rules.
+
+CURRENT_SCENE_ENVIRONMENT
+Type: string
+Description: Description of current location/environment. Used in narrator
+  commentary and character context.
+
+GAME_TIME_ELAPSED
+Type: float
+Description: In-game time elapsed. Can affect character emotional states and
+  urgency of dialogue.
+
+================================================================================
+7. VARIABLE INSERTION GUIDELINES
+================================================================================
+
+When sending prompts to LLM, replace these tokens:
+{CHARACTER_NAME} = RANDOM_FIRST_NAME + " " + RANDOM_LAST_NAME
+{CHARACTER_AGE} = RANDOM_AGE
+{BACKSTORY} = CHARACTER_BACKSTORY
+{CHARACTER_GOALS} = CHARACTER_GOALS
+{DESIRED_PERCEPTION} = CHARACTER_DESIRED_PERCEPTION
+{FEARED_PERCEPTION} = CHARACTER_FEARED_PERCEPTION
+{CHARACTER_ARC} = CHARACTER_ARC
+{REAL_DEATH} = REAL_CAUSE_OF_DEATH
+{COPE_DEATH} = COPE_STORY_OF_DEATH
+{LIVING_PEOPLE} = Join LIVING_PEOPLE_ACTIONS with newlines
+{DIALOGUE_HISTORY} = DIALOGUE_INTERACTION_SUMMARY
+{PLAYER_INFO} = Join PLAYER_REVEALED_INFORMATION with newlines
+{CHARACTER_INFO} = Join AI_CHARACTER_REVEALED_INFORMATION for specific character
+{CONTRADICTIONS} = Join REVEALED_CONTRADICTIONS with newlines
+{PLAYER_MESSAGE} = Current player input text
+{TONE} = LAST_RESPONSE_TONE
+{ADDRESSED_CHARACTER} = CHARACTER_ADDRESSING_DETECTED
+
+================================================================================
+8. DIALOGUE ENTRY STRUCTURE (For Logging)
+================================================================================
+
+Each dialogue entry should track:
+- Speaker (Player / Character Name / Narrator)
+- Message content
+- Turn number
+- Information revealed in this message
+- Tone (if character response)
+- Prompted with (which prompt was used)
+- Timestamp
+
+This allows reconstruction of dialogue history and context.
+
+================================================================================
+9. DIALOGUE PARSING & RESPONSE FLOW
+================================================================================
+
+The following flow executes when player input is received:
+
+STEP 1: PARSE TEXT FOR CONTENT
+- Information extractor checks personal information revealed (PROMPT_EXTRACT_PERSONAL_INFO_PLAYER)
+- Addressing system checks which AI person was addressed (PROMPT_DETECT_ADDRESSED_CHARACTER)
+- Detect if player is talking about people still alive after they died
+
+STEP 2: CHECK LIVING PEOPLE MENTION (NEW LOGIC)
+IF player is mentioning living people:
+  - Check if character talking (AI) has revealed more info about how they died
+    - IF TRUE: Continue conversation AND add new entry to LIVING_PEOPLE_ACTIONS list
+    - IF FALSE: Avoid replying directly, ask questions about the character instead
+ELSE:
+  - Continue to Step 3
+
+STEP 3: CHECK FOR CONTRADICTIONS
+- Checks if the new text reveals info that contradicts previously shared info
+  - IF contradiction found:
+    - If text is addressing an AI character: that character can challenge it
+    - If no character addressed: choose AI to challenge the contradiction
+  - IF no contradiction:
+    - Continue to Step 4
+
+STEP 4: REPLYING AI PROCESSES RESPONSE
+- Check if parsed text reveals the real cause of death
+  - IF TRUE: Trigger BATTLE MODE immediately
+  - IF FALSE: Continue
+- Check user's message against how AI wants to be seen
+  - Return: NEUTRAL, AGAINST, or FRIENDLY tone
+- Make summary of information divulged by both player and responding AI
+  - IF player divulged less info: Use mysterious response prompt, ask questions
+  - IF player divulged more info: Use truthful response prompt, reply honestly
+- Combine tone and information asymmetry to generate response
+- Information extractor checks personal information revealed in AI response
+
+STEP 5: UPDATE GAME STATE
+- Add player's revealed information to PLAYER_REVEALED_INFORMATION
+- Add AI's revealed information to AI_CHARACTER_REVEALED_INFORMATION
+- Update DIALOGUE_INTERACTION_SUMMARY periodically
+- Update CONVERSATION_TURN_COUNT
+- Flag any contradictions in REVEALED_CONTRADICTIONS
+- Check if DEATH_REVELATION_DETECTED should trigger battle mode
+
+================================================================================
+END OF DOCUMENTATION
+================================================================================

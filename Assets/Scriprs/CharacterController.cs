@@ -38,9 +38,11 @@ public class CharacterController : MonoBehaviour
     // Dialogue and event tracking.
     public List<DialogueEntry> dialogueEntries;
     public List<string> events;
+    public string latestDialoguesContext; // Stores the latest 5 dialogues for prompt context
 
-
-
+    // Character response queue
+    private List<int> respondingCharacterQueue = new List<int>();
+    private bool isProcessingResponses = false;
 
     //   public List<string> systemPrompts; // One per character.
 
@@ -54,7 +56,7 @@ public class CharacterController : MonoBehaviour
     public string modelInfo;
     
     // API Selection: switch between custom FastAPI and Hugging Face Space
-    public bool useHuggingFaceSpace = false;
+    public bool useHuggingFaceSpace;
 
     void Start()
     {
@@ -75,13 +77,14 @@ public class CharacterController : MonoBehaviour
     }
 
     // Called when the user sends a message.
-    public void ParsedText(string userInput)
+    public void ParsedText(string userInput, int characterNo)
     {
         Debug.Log("Received input: " + userInput);
-        // Log user dialogue.
-        DialogueEntry entry = new DialogueEntry(0, Characters[0].name, userInput);
+        string savedName = "Character " + characterNo;
+        // Log user dialogue. Use "Character X" format for consistency
+        DialogueEntry entry = new DialogueEntry(characterNo, savedName, userInput);
         dialogueEntries.Add(entry);
-        events.Add(Characters[0].myName + " said " + userInput + ".");
+        events.Add(savedName + ": " + userInput);
 
         // Send dialogue requests for each AI character.
         // StartCoroutine(SendRequestForCharacter(userInput, 0, 1));
@@ -108,15 +111,15 @@ public class CharacterController : MonoBehaviour
     {
         // Build character info strings efficiently
         string character1info = Characters[1].infoShared.Count != 0
-            ? "Character 1 information know: \n" + GetCharacterInfoString(1) + "\n "
+            ? "Character 1 information known: \n" + GetCharacterInfoString(1) + "\n "
             : "Nothing known for Character 1";
 
         string character2info = Characters[2].infoShared.Count != 0
-            ? "Character 2 information know: \n" + GetCharacterInfoString(2) + "\n "
+            ? "Character 2 information known: \n" + GetCharacterInfoString(2) + "\n "
             : "Nothing known for Character 2";
 
 
-        string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPrompt + "\n " + character1info + "\n " + character2info;
+        string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPromptIntro + "\n " + character1info + "\n " + character2info + "\n "+ myMaster.thePromptsController.adressingSystemPromptContext +"\n " + latestDialoguesContext +"\n " + myMaster.thePromptsController.adressingSystemPromptActions;
 
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, (response) =>
         {
@@ -127,18 +130,25 @@ public class CharacterController : MonoBehaviour
             // remove that prefix.
             Debug.Log("checked adressing got this reply: " + reply);
 
+            // Populate response queue based on addressing detection
             if (reply.Contains("0"))
             {
-                StartCoroutine(SendRequestForCharacter(userMessage, 0, 1));
-                StartCoroutine(SendRequestForCharacter(userMessage, 0, 2));
+                respondingCharacterQueue.Add(1);
+                respondingCharacterQueue.Add(2);
             }
-            if (reply.Contains("1"))
+            else if (reply.Contains("1"))
             {
-                StartCoroutine(SendRequestForCharacter(userMessage, 0, 1));
+                respondingCharacterQueue.Add(1);
             }
-            if (reply.Contains("2"))
+            else if (reply.Contains("2"))
             {
-                StartCoroutine(SendRequestForCharacter(userMessage, 0, 2));
+                respondingCharacterQueue.Add(2);
+            }
+
+            // Start processing the queue if not already processing
+            if (!isProcessingResponses && respondingCharacterQueue.Count > 0)
+            {
+                StartCoroutine(ProcessCharacterResponseQueue(userMessage));
             }
 
             if (mySaveController != null)
@@ -296,9 +306,12 @@ public class CharacterController : MonoBehaviour
         if (events == null)
             events = new List<string>();
 
-        DialogueEntry entry = new DialogueEntry(characterNo, Characters[characterNo].name, dialogue);
+        // Use "Character X" format instead of LLM-generated names to avoid confusing the LLM
+        string characterLabel = "Character " + characterNo;
+        DialogueEntry entry = new DialogueEntry(characterNo, characterLabel, dialogue);
         dialogueEntries.Add(entry);
-        events.Add($"{Characters[characterNo].myName} {eventType}: {dialogue}");
+        events.Add($"{characterLabel}: {dialogue}");
+        UpdateLatestDialoguesContext();
     }
 
     private void SaveDialogueIfPossible(string systemPrompt, string userPrompt, string reply)
@@ -307,6 +320,49 @@ public class CharacterController : MonoBehaviour
         {
             mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply);
         }
+    }
+
+    private void UpdateLatestDialoguesContext()
+    {
+        StringBuilder sb = new StringBuilder();
+        int startIndex = Mathf.Max(0, dialogueEntries.Count - 5);
+        
+        for (int i = startIndex; i < dialogueEntries.Count; i++)
+        {
+            // Use character index format for consistency in prompts
+            string characterLabel = "Character " + dialogueEntries[i].characterId;
+            sb.Append(characterLabel).Append(": ")
+              .Append(dialogueEntries[i].dialogueText).Append("\n");
+        }
+        
+        latestDialoguesContext = sb.ToString();
+    }
+
+    private IEnumerator ProcessCharacterResponseQueue(string userMessage)
+    {
+        isProcessingResponses = true;
+        
+        while (respondingCharacterQueue.Count > 0)
+        {
+            // Get first character in queue
+            int characterNo = respondingCharacterQueue[0];
+            respondingCharacterQueue.RemoveAt(0);
+            
+            Debug.Log($"Processing response from Character {characterNo}");
+            
+            // Wait for this character to respond
+            yield return StartCoroutine(SendRequestForCharacter(userMessage, 0, characterNo));
+            
+            // Optional: Add small delay between responses for readability
+            if (respondingCharacterQueue.Count > 0)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        
+        // Queue is empty, reset flag
+        isProcessingResponses = false;
+        Debug.Log("All characters have responded. Queue cleared.");
     }
 
     #endregion
