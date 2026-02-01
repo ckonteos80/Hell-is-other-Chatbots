@@ -31,6 +31,7 @@ public class ConversationWrapper
     public string model;
     public float temperature;
     public Message[] messages;
+    public int max_tokens;
 }
 
 /// <summary>
@@ -49,10 +50,11 @@ public static class APIRequestHandler
     /// <param name="characterNo">Character identifier for logging</param>
     /// <param name="temperature">AI temperature parameter (0-1)</param>
     /// <param name="model">Model name to use</param>
+    /// <param name="maxTokens">Maximum tokens to generate (0 for unlimited)</param>
     /// <param name="callback">Callback function when request succeeds</param>
     /// <param name="caller">MonoBehaviour calling this (needed for coroutine)</param>
     /// <param name="retryAttempts">Internal retry counter</param>
-    public static IEnumerator SendOpenAIRequest(string systemMessage, string userMessage, int characterNo, float temperature, string model, Action<OpenAIResponse> callback, MonoBehaviour caller, int retryAttempts = 0)
+    public static IEnumerator SendOpenAIRequest(string systemMessage, string userMessage, int characterNo, float temperature, string model, int maxTokens, Action<OpenAIResponse> callback, MonoBehaviour caller, int retryAttempts = 0)
     {
         // Build the messages list.
         List<Message> messages = new List<Message>
@@ -73,7 +75,8 @@ public static class APIRequestHandler
         {
             model = model,
             temperature = temperature,
-            messages = messages.ToArray()
+            messages = messages.ToArray(),
+            max_tokens = maxTokens
         };
 
         string jsonBody = JsonUtility.ToJson(conversation);
@@ -125,7 +128,7 @@ public static class APIRequestHandler
                 yield return new WaitForSeconds(10f);
 
                 // Retry recursively
-                yield return caller.StartCoroutine(SendOpenAIRequest(systemMessage, userMessage, characterNo, temperature, model, callback, caller, retryAttempts + 1));
+                yield return caller.StartCoroutine(SendOpenAIRequest(systemMessage, userMessage, characterNo, temperature, model, maxTokens, callback, caller, retryAttempts + 1));
                 yield break;
             }
 

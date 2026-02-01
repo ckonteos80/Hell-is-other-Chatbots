@@ -62,8 +62,7 @@ Used By: Dialogue responses, information consistency checks
 LIVING_PEOPLE_ACTIONS
 Type: List<string>
 Description: List of stories about what the character's close living people are
-  currently doing. Multiple entries for different people. Updated during gameplay
-  when player reveals information about them.
+  currently doing. Updated during gameplay when player reveals information about them.
 LLM Source: Living people actions generation prompt (initialization)
   New entries added when player mentions living people + reveals death info
 Used By: Dialogue context, character emotional motivation, narrative grounding

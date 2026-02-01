@@ -9,6 +9,8 @@ public class MovementController : MonoBehaviour
     public float Yvelocity;
 
     public float leniance;
+    public float moveSpeedX = 1f;
+    public float moveSpeedY = 1f;
 
     // public BoxColliderSideCheck TopTouch;
     // public BoxColliderSideCheck BottomTouch;
@@ -70,7 +72,7 @@ public class MovementController : MonoBehaviour
 
                     if (contactSide != 3)
                     {
-                        Xvelocity = -1;
+                        Xvelocity = -moveSpeedX;
                     }
                     else
                     {
@@ -91,7 +93,7 @@ public class MovementController : MonoBehaviour
 
                     if (contactSide != 2)
                     {
-                        Xvelocity = 1;
+                        Xvelocity = moveSpeedX;
                     }
                     else
                     {
@@ -119,7 +121,7 @@ public class MovementController : MonoBehaviour
                     // }
                     if (contactSide != 1)
                     {
-                        Yvelocity = -1;
+                        Yvelocity = -moveSpeedY;
                     }
                     else
                     {
@@ -138,7 +140,7 @@ public class MovementController : MonoBehaviour
                     // }
                     if (contactSide != 0)
                     {
-                        Yvelocity = 1;
+                        Yvelocity = moveSpeedY;
                     }
                     else
                     {

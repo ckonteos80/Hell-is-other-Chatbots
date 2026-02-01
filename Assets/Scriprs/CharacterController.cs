@@ -49,6 +49,8 @@ public class CharacterController : MonoBehaviour
     // Model parameters.
     public float temp;         // For dialogue requests.
     public float charaterTemp; // For generating names/descriptions.
+    public int maxDialogueTokens = 150;  // Token limit for character dialogue responses
+    public int maxAddressingTokens = 10; // Token limit for routing/addressing decisions
 
     saveController mySaveController;
 
@@ -90,7 +92,7 @@ public class CharacterController : MonoBehaviour
         // StartCoroutine(SendRequestForCharacter(userInput, 0, 1));
         // StartCoroutine(SendRequestForCharacter(userInput, 0, 2));
 
-        StartCoroutine(CheckHumanPersonalInfo(userInput, 0));
+        StartCoroutine(CheckPersonalInfo(userInput, 0));
 
         if (Characters[1].infoShared.Count == 0 && Characters[2].infoShared.Count == 0)
         {
@@ -121,14 +123,32 @@ public class CharacterController : MonoBehaviour
 
         string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPromptIntro + "\n " + character1info + "\n " + character2info + "\n "+ myMaster.thePromptsController.adressingSystemPromptContext +"\n " + latestDialoguesContext +"\n " + myMaster.thePromptsController.adressingSystemPromptActions;
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, maxAddressingTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             string reply = assistantMessage.content;
 
-            // If the reply starts with the character's name followed by a colon or similar delimiter,
-            // remove that prefix.
             Debug.Log("checked adressing got this reply: " + reply);
+
+            // Validate response contains valid addressing (0, 1, or 2)
+            bool isValidResponse = reply.Contains("0") || reply.Contains("1") || reply.Contains("2");
+
+            if (!isValidResponse)
+            {
+                if (retryAttempts < 3)
+                {
+                    // Invalid response, retry
+                    Debug.LogWarning($"Invalid addressing response (attempt {retryAttempts + 1}/3): '{reply}'. Retrying...");
+                    StartCoroutine(SendRequestForAdress(userMessage, characterSpeakingNo, retryAttempts + 1));
+                    return;
+                }
+                else
+                {
+                    // Max retries reached, fallback to "0" (both characters respond)
+                    Debug.LogError($"Invalid addressing response after 3 attempts: '{reply}'. Defaulting to both characters responding.");
+                    reply = "0";
+                }
+            }
 
             // Populate response queue based on addressing detection
             if (reply.Contains("0"))
@@ -177,7 +197,7 @@ public class CharacterController : MonoBehaviour
             userPrompt = userMessage;
         }
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, modelDialogue, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, modelDialogue, maxDialogueTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             string reply = StripCharacterNamePrefix(assistantMessage.content, Characters[characterReplyingNo].myName);
@@ -198,36 +218,12 @@ public class CharacterController : MonoBehaviour
 
     public IEnumerator CheckPersonalInfo(string reply, int characterNo)
     {
-        Debug.Log("Checking personal info for character " + characterNo);
+        string characterType = characterNo == 0 ? "human player" : $"character {characterNo}";
+        Debug.Log($"Checking personal info for {characterType}");
 
         InfoExtractorHandler.ExtractInfo(reply, myMaster.thePromptsController.infoExtractionSystemPrompt, (result) =>
         {
-            Debug.Log($"Extracted info for character {characterNo}: {result}");
-
-            if (!result.Equals("none", StringComparison.OrdinalIgnoreCase))
-            {
-                addPersonalInfo(characterNo, result);
-            }
-
-            if (mySaveController != null)
-            {
-                mySaveController.NewEntryInfo(myMaster.thePromptsController.infoExtractionSystemPrompt, reply, result);
-            }
-            else
-            {
-                Debug.LogError("mySaveController is not assigned.");
-            }
-        }, this);
-
-        yield return null;
-    }
-    public IEnumerator CheckHumanPersonalInfo(string reply, int characterNo)
-    {
-        Debug.Log("Checking personal info for human player");
-
-        InfoExtractorHandler.ExtractInfo(reply, myMaster.thePromptsController.infoExtractionSystemPrompt, (result) =>
-        {
-            Debug.Log($"Extracted info for human player: {result}");
+            Debug.Log($"Extracted info for {characterType}: {result}");
 
             if (!result.Equals("none", StringComparison.OrdinalIgnoreCase))
             {
@@ -371,7 +367,7 @@ public class CharacterController : MonoBehaviour
     private IEnumerator GenerateCharacterName(int characterNo)
     {
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt, myMaster.thePromptsController.characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt, myMaster.thePromptsController.characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, 0, (response) =>
         {
             Debug.Log("Started");
             string generatedName = response.choices[0].message.content;
@@ -386,7 +382,7 @@ public class CharacterController : MonoBehaviour
     private IEnumerator GenerateCharacterDescription(int characterNo, string characterName)
     {
         string prompt = myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt;    //     ". Include: name, age, place born, job, cause of death.";
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(prompt, myMaster.thePromptsController.characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(prompt, myMaster.thePromptsController.characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, 0, (response) =>
         {
             string description = response.choices[0].message.content;
             // Debug.Log("Generated description for Character " + characterNo + ": " + description);
@@ -434,6 +430,7 @@ public class CharacterController : MonoBehaviour
             3,
             temp,
             modelDialogue,
+            0,
             (response) =>
             {
                 Message assistantMessage = response.choices[0].message;
@@ -483,6 +480,7 @@ public class CharacterController : MonoBehaviour
             characterNo,
             temp,
             modelDialogue,
+            0,
             (response) =>
             {
                 Message assistantMessage = response.choices[0].message;

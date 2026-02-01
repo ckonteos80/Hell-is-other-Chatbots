@@ -55,7 +55,7 @@ public class ArrowMovement : MonoBehaviour
                     }
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        myMovementController.Xvelocity = -1;
+                        myMovementController.Xvelocity = -myMovementController.moveSpeedX;
                     }
                     else
                     {
@@ -67,7 +67,7 @@ public class ArrowMovement : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        myMovementController.Xvelocity = 1;
+                        myMovementController.Xvelocity = myMovementController.moveSpeedX;
                     }
                     else
                     {
@@ -96,7 +96,7 @@ public class ArrowMovement : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
-                        myMovementController.Yvelocity = 1;
+                        myMovementController.Yvelocity = myMovementController.moveSpeedY;
                     }
                     else
                     {
@@ -107,7 +107,7 @@ public class ArrowMovement : MonoBehaviour
                     }
                     if (Input.GetKey(KeyCode.DownArrow))
                     {
-                        myMovementController.Yvelocity = -1;
+                        myMovementController.Yvelocity = -myMovementController.moveSpeedY;
                     }
                     else
                     {
