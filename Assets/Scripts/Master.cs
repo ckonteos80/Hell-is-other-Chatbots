@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 using System.Collections;
-
+using System.Collections.Generic;
 public class Master : MonoBehaviour
 {
     public MovementController theMovementController;
@@ -25,6 +25,8 @@ public class Master : MonoBehaviour
     public float timeFromStart;
 
     public PromptsController thePromptsController;
+
+    public List<FlickerController> theFlickerControllers;
 
     /// <summary>
     ///  public string key;
@@ -104,6 +106,11 @@ public class Master : MonoBehaviour
         
         float eventDelay = Random.Range(5f, 10f);  
         theCharacterController.Characters[randomChar].myAiEventController.addEventTime(eventDelay, 1);
+    }
+
+    public void StartFlicker()
+    {
+      theFlickerControllers[Random.Range(0, theFlickerControllers.Count)].Flicker();
     }
 
 

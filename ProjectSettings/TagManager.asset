@@ -41,5 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Room
+    uniqueID: 4003626459
+    locked: 0
+  - name: dust
+    uniqueID: 3881237199
+    locked: 0
+  - name: Messages
+    uniqueID: 1522907111
+    locked: 0
   m_RenderingLayers:
   - Default
+  - RoomLight

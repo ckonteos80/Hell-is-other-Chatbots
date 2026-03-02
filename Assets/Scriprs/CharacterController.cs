@@ -228,6 +228,7 @@ public class CharacterController : MonoBehaviour
             if (!result.Equals("none", StringComparison.OrdinalIgnoreCase))
             {
                 addPersonalInfo(characterNo, result);
+                myMaster.StartFlicker(); 
             }
 
             if (mySaveController != null)
