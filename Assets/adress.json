@@ -142,3 +142,67 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Ariadne Hayes, a marine biologist from a small coastal town in Maine.\"\n\n \n Character 2 information known: \n\"I am Luna Nightshade, a midnight poet and reclusive artist\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: Welcome, player, to an exciting adventure that awaits you! Prepare to embark on a journey full of challenges, mysteries, and thrilling experiences. Are you ready to test your skills and courage in this epic quest? Let's begin and see what awaits you in this extraordinary world!\nCharacter 1: What drew you to this place, to this room with us?\nCharacter 0: Hi my name is christos, who are you?\nCharacter 1: I am Ariadne Hayes. A marine biologist from a small coastal town in Maine. And who might you be, Christos?\nCharacter 2: I am Luna Nightshade, a midnight poet and reclusive artist. And who might you be, Christos?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "I am a poet from greece"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Ariadne Hayes, a marine biologist from a small coastal town in Maine.\"\n\"I lived in Greece, I was passionate about poetry, I am passionate about words\"\n\n \n Character 2 information known: \n\"I am Luna Nightshade, a midnight poet and reclusive artist\"\n\"I lived in Greece, I was passionate about poetry, I am passionate about words\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: I am Ariadne Hayes. A marine biologist from a small coastal town in Maine. And who might you be, Christos?\nCharacter 2: I am Luna Nightshade, a midnight poet and reclusive artist. And who might you be, Christos?\nCharacter 0: I am a poet from greece\nCharacter 1: Ah, a poet from Greece. Your words must dance like the waves upon the shore, carrying stories of ancient wisdom and beauty. Christos, it is an honor to meet a soul so attuned to the power of language and verse.\nCharacter 2: Ah, Christos, a poet from Greece. Your words must dance like the waves of the Aegean Sea, carrying the echoes of ancient myths and timeless truths. Poetry knows no bounds, transcending borders and uniting souls in the shared language of the heart. Tell me, Christos, what inspires your verses under the Grecian sun?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "where did you live?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Aurora Sinclair\"\n\n \n Character 2 information known: \n\"I am Liora Everhart.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: Welcome, brave adventurer, to a world of mystery and magic! Prepare yourself for an epic journey filled with challenges, puzzles, and battles. The fate of this realm rests in your hands. Are you ready to embark on this thrilling adventure?\nCharacter 1: What brings you to this place of confinement, and what burdens weigh heavily on your mind, dear interlocutor?\nCharacter 0: hi my name is christos\nCharacter 1: Hello, Christos. I am Aurora Sinclair. It seems we are both trapped in this room together. How intriguing.\nCharacter 2: Welcome, Christos. I am Liora Everhart. It seems we have found ourselves in this peculiar place together. How may I assist you in this realm of no escape?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "why are we here? who are you?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Aurora Sinclair\"\n\"I am Aurora Sinclair, a psychiatrist who once sought to understand the depths of the human mind.\"\n\n \n Character 2 information known: \n\"I am Liora Everhart.\"\n\"I was a curator of art in the world you knew, now I am a lost soul in this twisted purgatory\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Hello, Christos. I am Aurora Sinclair. It seems we are both trapped in this room together. How intriguing.\nCharacter 2: Welcome, Christos. I am Liora Everhart. It seems we have found ourselves in this peculiar place together. How may I assist you in this realm of no escape?\nCharacter 0: why are we here? who are you?\nCharacter 1: We are here in this room together, trapped in our own torment. I am Aurora Sinclair, a psychiatrist who once sought to understand the depths of the human mind. And you are Christos, a fellow soul bound to face the consequences of our past actions.\nCharacter 2: We are here in this place of torment, trapped in each other's company for eternity. As for who I am, I am Liora Everhart, once a curator of art in the world you knew. Now, I am but a lost soul in this twisted purgatory. And you, Christos, what brings you to this grim reality?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}

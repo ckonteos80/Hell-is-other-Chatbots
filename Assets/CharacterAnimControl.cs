@@ -35,7 +35,7 @@ public class CharacterAnimControl : MonoBehaviour
         float yVel = movementController.Yvelocity;
 
         // Debug logging
-        Debug.Log($"XVel: {xVel}, YVel: {yVel}, Current State: {currentState}");
+    //    Debug.Log($"XVel: {xVel}, YVel: {yVel}, Current State: {currentState}");
 
         // Small threshold for floating point comparison
         float threshold = 0.01f;

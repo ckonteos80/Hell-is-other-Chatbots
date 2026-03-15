@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class dialogueDisplay : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class dialogueDisplay : MonoBehaviour
 
     private int currentPositionIndex = 0; // Track which position we're using
 
+    [Header("Typewriter Settings")]
+    public float wordDelay = 0.08f;
+    public bool isRevealing = false;
+    private Coroutine revealCoroutine;
+    private bool revealOnEnable = false;
+
     void Awake()  // ✅ Use Awake instead of Start (runs earlier)
     {
         myBackgroundImage = GetComponent<Image>();
@@ -59,7 +66,6 @@ public class dialogueDisplay : MonoBehaviour
         {
             canvasTransform = parentCanvas.transform;
         }
-
 
 
     //    //  Debug.Log($"DialogueDisplay {instanceID} initialized on {gameObject.name}");
@@ -105,6 +111,36 @@ public class dialogueDisplay : MonoBehaviour
         ///     Debug.Log($"[ID:{instanceID}] Message: '{message}' | Canvas pos: {canvasTransform.localPosition} | Position index: {currentPositionIndex}");
         ActionClose = actionOnClose;
 
+        myText.maxVisibleWords = 0;
+        isRevealing = true;
+        revealOnEnable = true;
+
+    }
+
+    void OnEnable()
+    {
+        if (revealOnEnable)
+        {
+            revealOnEnable = false;
+            if (revealCoroutine != null) StopCoroutine(revealCoroutine);
+            revealCoroutine = StartCoroutine(RevealWords());
+        }
+    }
+
+    private IEnumerator RevealWords()
+    {
+        myText.ForceMeshUpdate();
+        int totalWords = myText.textInfo.wordCount;
+        myText.maxVisibleWords = 0;
+
+        for (int i = 1; i <= totalWords; i++)
+        {
+            myText.maxVisibleWords = i;
+            yield return new WaitForSeconds(wordDelay);
+        }
+
+        myText.maxVisibleWords = int.MaxValue;
+        isRevealing = false;
     }
 
 
@@ -113,15 +149,19 @@ public class dialogueDisplay : MonoBehaviour
     // ✅ Clear text and stop checking overlaps
     public void ClearMessage()
     {
+        if (revealCoroutine != null)
+        {
+            StopCoroutine(revealCoroutine);
+            revealCoroutine = null;
+        }
         if (myText != null)
         {
             myText.text = "";
+            myText.maxVisibleWords = int.MaxValue;
         }
-        ///    hasText = false;
-
-        // Reset to default position
+        isRevealing = false;
+        revealOnEnable = false;
         currentPositionIndex = 0;
-
     }
 
 

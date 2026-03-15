@@ -44,7 +44,8 @@ public class ParseController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                if (myMaster.theOverlayController.TextDisplays.Count > 0)
+                if (myMaster.theOverlayController.TextDisplays.Count > 0 &&
+                    !myMaster.theOverlayController.TextDisplays.Exists(d => d != null && d.isRevealing))
                 {
                     // Destroy(myMaster.theOverlayController.TextDisplays[0].gameObject);
                     // myMaster.theOverlayController.TextDisplays.RemoveAt(0);

@@ -7518,3 +7518,339 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi my name is christos"
+        },
+        {
+            "role": "assistant",
+            "content": "my name is christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hi my name is christos, who are you?"
+        },
+        {
+            "role": "assistant",
+            "content": "My name is Christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I am Ariadne Hayes. A marine biologist from a small coastal town in Maine. And who might you be, Christos?"
+        },
+        {
+            "role": "assistant",
+            "content": "I am Ariadne Hayes, a marine biologist from a small coastal town in Maine."
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I am Luna Nightshade, a midnight poet and reclusive artist. And who might you be, Christos?"
+        },
+        {
+            "role": "assistant",
+            "content": "I am Luna Nightshade, a midnight poet and reclusive artist"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I am a poet from greece"
+        },
+        {
+            "role": "assistant",
+            "content": "I am from Greece"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Ah, a poet from Greece. Your words must dance like the waves upon the shore, carrying stories of ancient wisdom and beauty. Christos, it is an honor to meet a soul so attuned to the power of language and verse."
+        },
+        {
+            "role": "assistant",
+            "content": "I lived in Greece, I was passionate about poetry, I am passionate about words"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Ah, Christos, a poet from Greece. Your words must dance like the waves of the Aegean Sea, carrying the echoes of ancient myths and timeless truths. Poetry knows no bounds, transcending borders and uniting souls in the shared language of the heart. Tell me, Christos, what inspires your verses under the Grecian sun?"
+        },
+        {
+            "role": "assistant",
+            "content": "I lived in Greece, I was passionate about poetry, I am passionate about words"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "where did you live?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I grew up in a small coastal town in Maine, surrounded by the vast expanse of the ocean. The sea was always my home, my sanctuary."
+        },
+        {
+            "role": "assistant",
+            "content": "I lived in a small coastal town in Maine, surrounded by the vast ocean"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I dwelled in the forsaken town of Shadowvale, where the shadows danced with the whispers of the night, and the moon cast its eerie light upon the forgotten streets. It was a place where solitude and darkness intertwined, shaping the essence of my being."
+        },
+        {
+            "role": "assistant",
+            "content": "I lived in the forsaken town of Shadowvale, where the shadows danced with the whispers of the night, and the moon cast its eerie light upon the forgotten streets."
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi my name is christos"
+        },
+        {
+            "role": "assistant",
+            "content": "my name is christos"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hello, Christos. I am Aurora Sinclair. It seems we are both trapped in this room together. How intriguing."
+        },
+        {
+            "role": "assistant",
+            "content": "I am Aurora Sinclair"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Welcome, Christos. I am Liora Everhart. It seems we have found ourselves in this peculiar place together. How may I assist you in this realm of no escape?"
+        },
+        {
+            "role": "assistant",
+            "content": "I am Liora Everhart."
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "why are we here? who are you?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "We are here in this room together, trapped in our own torment. I am Aurora Sinclair, a psychiatrist who once sought to understand the depths of the human mind. And you are Christos, a fellow soul bound to face the consequences of our past actions."
+        },
+        {
+            "role": "assistant",
+            "content": "I am Aurora Sinclair, a psychiatrist who once sought to understand the depths of the human mind."
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "We are here in this place of torment, trapped in each other's company for eternity. As for who I am, I am Liora Everhart, once a curator of art in the world you knew. Now, I am but a lost soul in this twisted purgatory. And you, Christos, what brings you to this grim reality?"
+        },
+        {
+            "role": "assistant",
+            "content": "I was a curator of art in the world you knew, now I am a lost soul in this twisted purgatory"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "My name is Aurora Sinclair. It's a pleasure to meet you, Christos."
+        },
+        {
+            "role": "assistant",
+            "content": "My name is Aurora Sinclair."
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "My name is Liora Everhart. It seems we find ourselves in quite a peculiar situation here, Christos."
+        },
+        {
+            "role": "assistant",
+            "content": "My name is Liora Everhart."
+        }
+    ]
+}

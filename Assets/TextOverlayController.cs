@@ -69,10 +69,21 @@ public class TextOverlayController : MonoBehaviour
     {
         for (int i = 0; i < TextDisplays.Count; i++)
         {
-            if (TextDisplays[i] != null)
+            if (TextDisplays[i] == null) continue;
+
+            if (i >= 3)
             {
-                // Keep first 3 active, deactivate the rest
-                TextDisplays[i].gameObject.SetActive(i < 3);
+                TextDisplays[i].gameObject.SetActive(false);
+            }
+            else if (i == 0)
+            {
+                TextDisplays[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                // Only activate once the previous box has finished revealing its words
+                if (!TextDisplays[i - 1].isRevealing)
+                    TextDisplays[i].gameObject.SetActive(true);
             }
         }
     }
