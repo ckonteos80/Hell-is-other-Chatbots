@@ -103,15 +103,9 @@ public static class APIRequestHandler
         // Check for errors
         if (request.result != UnityWebRequest.Result.Success)
         {
-            // Log response headers for debugging
-            if (request.GetResponseHeaders() != null)
-            {
-                Debug.LogError("Response Headers:");
-                foreach (var header in request.GetResponseHeaders())
-                {
-                    Debug.LogError($"  {header.Key}: {header.Value}");
-                }
-            }
+            Debug.LogError($"❌ HTTP {request.responseCode} — {request.error}");
+            if (!string.IsNullOrEmpty(request.downloadHandler?.text))
+                Debug.LogError($"Response body: {request.downloadHandler.text}");
 
             // ✅ RETRY LOGIC for cold starts (503/504), timeouts, or connection errors
             bool shouldRetry = (request.responseCode == 503 ||
