@@ -32,6 +32,7 @@ public class ConversationWrapper
     public float temperature;
     public Message[] messages;
     public int max_tokens;
+    public string provider;
 }
 
 /// <summary>
@@ -41,6 +42,9 @@ public class ConversationWrapper
 public static class APIRequestHandler
 {
     private static readonly string SPACE_URL = "https://jejunepixels-noexit-proxy.hf.space/chat";
+
+    // Set from CharacterController — if true, routes requests to Hugging Face; otherwise OpenAI
+    public static bool useHuggingFaceProvider;
 
     /// <summary>
     /// Sends a request to the OpenAI API with retry logic for cold starts.
@@ -56,6 +60,8 @@ public static class APIRequestHandler
     /// <param name="retryAttempts">Internal retry counter</param>
     public static IEnumerator SendOpenAIRequest(string systemMessage, string userMessage, int characterNo, float temperature, string model, int maxTokens, Action<OpenAIResponse> callback, MonoBehaviour caller, int retryAttempts = 0)
     {
+        string provider = useHuggingFaceProvider ? "hf" : "openai";
+
         // Build the messages list.
         List<Message> messages = new List<Message>
         {
@@ -76,7 +82,8 @@ public static class APIRequestHandler
             model = model,
             temperature = temperature,
             messages = messages.ToArray(),
-            max_tokens = maxTokens
+            max_tokens = maxTokens,
+            provider = provider
         };
 
         string jsonBody = JsonUtility.ToJson(conversation);

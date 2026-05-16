@@ -15,6 +15,10 @@ public class GeneratedCharacters : MonoBehaviour
 
     public List<CharacterEntry> characters = new();
 
+    public bool useHuggingFaceProvider;
+
+    public ModelNamesController modelNames;
+
     void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }

@@ -55,15 +55,20 @@ public class CharacterController : MonoBehaviour
     saveController mySaveController;
 
     public string modelDialogue;
-    public string modelInfo;
+  /// <summary>
+  ///  public string modelInfo;
+  /// </summary>
+ //   public ModelNamesController modelNames;
     
     // API Selection: switch between custom FastAPI and Hugging Face Space
-    public bool useHuggingFaceSpace;
+    public bool useQween0_6; //if true uses the small Qween 0.6 model hosted on FastAPI, if false uses the Qween 4B fast api
+ //   public bool useHuggingFaceProvider; // if true routes dialogue requests to Hugging Face; if false uses OpenAI
 
     void Start()
     {
         // Set which API the InfoExtractorHandler should use
-        InfoExtractorHandler.useHuggingFaceSpace = this.useHuggingFaceSpace;
+        InfoExtractorHandler.useQween0_6 = useQween0_6;
+        APIRequestHandler.useHuggingFaceProvider = GeneratedCharacters.Instance.useHuggingFaceProvider;
         
         myMaster = GetComponentInParent<Master>();
         mySaveController = GetComponent<saveController>();
@@ -130,7 +135,7 @@ public class CharacterController : MonoBehaviour
 
         string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPromptIntro + "\n " + character1info + "\n " + character2info + "\n "+ myMaster.thePromptsController.adressingSystemPromptContext +"\n " + latestDialoguesContext +"\n " + myMaster.thePromptsController.adressingSystemPromptActions;
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, modelDialogue, maxAddressingTokens, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, GeneratedCharacters.Instance.modelNames.modelAddressing, maxAddressingTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             string reply = assistantMessage.content;
@@ -204,7 +209,7 @@ public class CharacterController : MonoBehaviour
             userPrompt = userMessage;
         }
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, modelDialogue, maxDialogueTokens, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, GeneratedCharacters.Instance.modelNames.modelDialogue, maxDialogueTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             string reply = StripCharacterNamePrefix(assistantMessage.content, Characters[characterReplyingNo].myName);
@@ -426,7 +431,7 @@ public class CharacterController : MonoBehaviour
             userPrompt,
             3,
             temp,
-            modelDialogue,
+            GeneratedCharacters.Instance.modelNames.modelDialogue,
             0,
             (response) =>
             {
@@ -475,7 +480,7 @@ public class CharacterController : MonoBehaviour
             userPrompt,
             characterNo,
             temp,
-            modelDialogue,
+            GeneratedCharacters.Instance.modelNames.modelDialogue,
             0,
             (response) =>
             {

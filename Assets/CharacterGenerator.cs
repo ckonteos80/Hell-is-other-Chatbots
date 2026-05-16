@@ -11,11 +11,15 @@ public class CharacterGenerator : MonoBehaviour
     public Button generateButton;
     public GameObject generatingText;
     public string mainSceneName = "start";
-    public string modelName;
+    // public string modelName;
+  //  public ModelNamesController modelNames;
     public float temperature = 1f;
+
+ //   public bool useHuggingFaceProvider;
 
     void Start()
     {
+        APIRequestHandler.useHuggingFaceProvider = generatedCharacters.useHuggingFaceProvider;
         generateButton.GetComponentInChildren<TextMeshProUGUI>().text = "Generate Characters";
         generateButton.onClick.AddListener(OnGeneratePressed);
     }
@@ -46,7 +50,7 @@ public class CharacterGenerator : MonoBehaviour
         string generatedName = "";
 
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-            setupSystemPrompt, p.characterNameUserPrompt, charNo, temperature, modelName, 0,
+            setupSystemPrompt, p.characterNameUserPrompt, charNo, temperature, generatedCharacters.modelNames.modelGeneration, 0,
             (response) => { generatedName = response.choices[0].message.content.Trim(); },
             this));
 
@@ -61,7 +65,7 @@ public class CharacterGenerator : MonoBehaviour
         string generatedDescription = "";
 
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-            setupSystemPrompt, p.characterSetupUserPrompt + " " + generatedName, charNo, temperature, modelName, 0,
+            setupSystemPrompt, p.characterSetupUserPrompt + " " + generatedName, charNo, temperature, generatedCharacters.modelNames.modelGeneration, 0,
             (response) => { generatedDescription = response.choices[0].message.content; },
             this));
 

@@ -7,11 +7,11 @@ using System.Text;
 public static class InfoExtractorHandler
 {
     // API URLs
-    private static readonly string CUSTOM_API_URL = "https://jejunepixels-qwen3-4B-info-extractor-fastapi.hf.space/extract";
-    private static readonly string HUGGINGFACE_API_URL = "https://jejunepixels-qwen3-0-6b-info-extractor-api.hf.space/extract";
+    private static readonly string Qween4B = "https://jejunepixels-qwen3-4B-info-extractor-fastapi.hf.space/extract";
+    private static readonly string Qween0_6 = "https://jejunepixels-qwen3-0-6b-info-extractor-api.hf.space/extract";
     
     // Public toggle - set from CharacterController
-    public static bool useHuggingFaceSpace = false;
+    public static bool useQween0_6;
   
     /// <summary>
     /// Extracts personal information from text with custom system prompt
@@ -28,8 +28,8 @@ public static class InfoExtractorHandler
     private static IEnumerator ExtractInfoCoroutine(string text, string systemPrompt, Action<string> callback)
     {
         // Select API URL based on bool
-        string apiUrl = useHuggingFaceSpace ? HUGGINGFACE_API_URL : CUSTOM_API_URL;
-        string apiLabel = useHuggingFaceSpace ? "HuggingFace Space" : "Custom FastAPI";
+        string apiUrl = useQween0_6 ? Qween0_6 : Qween4B;
+        string apiLabel = useQween0_6 ? "Qwen3-0.6B" : "Qwen3-4B";
 
         var request = new ExtractionRequest
         {
