@@ -222,3 +222,67 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"We are trapped in this suffocating room, destined to confront the emptiness of our existence together for eternity.\"\n\n \n Character 2 information known: \n\"We are condemned to spend eternity together in this room.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: why are we here?\nCharacter 1: We are here because we have no choice. We are trapped in this suffocating room, destined to confront the emptiness of our existence together for eternity. The question of \"why\" is a futile pursuit, for in this place, there is no purpose, no escape, only the relentless torment of our own minds.\nCharacter 2: We are here because we are condemned to spend eternity together in this room. We are each other's torturers, forced to confront the consequences of our actions and the truths we tried to escape in life. Our presence here is a punishment for the sins we committed, whether in the open or hidden in the shadows.\nCharacter 1: What led you to this place, this moment in time? What burdens weigh heavily on your soul, my friend?\nCharacter 1: What led you to this place of confinement, my fellow lost soul?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "my name is chris, what is your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"We are trapped in this suffocating room, destined to confront the emptiness of our existence together for eternity.\"\n\"My name is Remy Thorne.\"\n\n \n Character 2 information known: \n\"We are condemned to spend eternity together in this room.\"\n\"My name is Evelyn Barrett.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: my name is chris, what is your names?\nCharacter 1: My name is Remy Thorne.\nCharacter 2: My name is Evelyn Barrett.\nCharacter 1: Chris, have you ever found yourself questioning the significance of your own name in the grand scheme of things?\nCharacter 2: Chris, have you ever found that your name has influenced how others perceive or interact with you in your life?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 2, reply with \"3\".\n\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hey remy nice to meet you"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Nothing known for Character 1\n Character 2 information known: \n\"I am Caspian Windsor\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: Welcome, brave adventurer, to a world of mystery and magic! Are you ready to embark on an epic journey filled with challenges and wonders beyond imagination? The fate of this realm lies in your hands. May your courage never waver, and may your spirit guide you through the trials that await. Prepare yourself for an unforgettable adventure!\nCharacter 0: hi my name is chris\nCharacter 2: Ah, greetings, Chris. I am Caspian Windsor. It appears we find ourselves in this peculiar setting together. What brings you to this labyrinth of existential quandaries?\nCharacter 1: Ah, Chris. Another visitor to this forsaken place. What brings you to this dismal corner of existence?\nCharacter 1: Chris, have you ever found yourself questioning the path you're on, wondering if there might be something more out there for you?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hey caspian thats a wierd name"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"My name is Evangeline Crossways.\"\n\n \n Character 2 information known: \n\"My name is Serena Harmon.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Chris, have you ever found yourself questioning the significance of your name in the grand scheme of existence?\nCharacter 2: Serena: Chris, have you ever felt like your name carries a weight or significance beyond just being a label?\nCharacter 0: what are your names?\nCharacter 1: My name is Evangeline Crossways. And you, Chris, what brings you to this place of eternal torment?\nCharacter 2: My name is Serena Harmon. It's a pleasure to meet you, Chris.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hii serena what work did you do?"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}

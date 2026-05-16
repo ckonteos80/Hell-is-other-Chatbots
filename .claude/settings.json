@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"d:\\\\Dropbox\\\\__Projects\\\\Unity Projects\\\\NoExit\\\\Assets\" -Include \"*.cs\" -Recurse)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Get-ChildItem -Path \"d:\\\\Dropbox\\\\__Projects\\\\Unity Projects\\\\NoExit\\\\Assets\\\\Scripts\" -Name)",
+      "Bash(findstr -i \"character\\\\|prompt\")",
+      "Bash(Sort-Object)",
+      "Bash(grep -E \"\\\\.cs$\")"
+    ]
+  }
+}

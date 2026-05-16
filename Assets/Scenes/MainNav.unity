@@ -1754,8 +1754,7 @@ MonoBehaviour:
     If the user message addresses both characters, reply with \"0\".\n- If the user
     message addresses character 1, reply with \"1\".\r\n- If the user message addresses
     character 2, reply with \"2\".\r\n- If the user message addresses character 3,
-    reply with \"3\".\n\r\n\r\nDo not include any additional text, commentary, or
-    explanations.\r"
+    reply with \"3\".\n\r\nDo not include any additional text, commentary, or explanations.\r"
   adressingSystemPromptIntro: 'You are an assistant that determines if the user is
     addressing characters in a game. Here are the information that are known about
     the characters:'
@@ -1773,9 +1772,9 @@ MonoBehaviour:
     If the user message addresses character 2, reply with "3".
 
 
-
     Do not include
     any additional text, commentary, or explanations.'
+  characterQuestionSystemPromptSuffix: 
   systemPrompts:
   - 
   - 
@@ -4064,6 +4063,7 @@ GameObject:
   - component: {fileID: 1576598637}
   - component: {fileID: 1576598638}
   - component: {fileID: 1576598639}
+  - component: {fileID: 1576598640}
   m_Layer: 0
   m_Name: Character Controller GTP
   m_TagString: Untagged
@@ -4137,6 +4137,68 @@ MonoBehaviour:
   modelDialogue: gpt-3.5-turbo
   modelInfo: ft:gpt-3.5-turbo-1106:ck80:training1:B8ihcA3A
   useHuggingFaceSpace: 1
+--- !u!114 &1576598640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576598634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698f8987d8d0d154bb3f81d0c443f2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptsController: {fileID: 639496507}
+  nameGeneration: "SYSTEM:\nWe are playing a game based on the stage play 'No Exit'
+    by Jean-Paul Sartre, which delves into existential themes and the human condition. 
+    You are a script writer creating a character for the play.\n\nUSER:\nGenerate
+    a unique and creative character name. Your response must consist solely of two
+    words\u2014a first name and a last name\u2014separated by a single space. Do
+    not include any additional text, punctuation, or explanation."
+  descriptionGeneration: "SYSTEM:\nWe are playing a game based on the stage play
+    'No Exit' by Jean-Paul Sartre, which delves into existential themes and the human
+    condition.  You are a script writer creating a character for the play.\n\nUSER:\nGenerate
+    a unique character description for a character in this game/play.\nPlease include
+    the following details:\n- Name\n- Age\n- Place of Birth\n- Occupation\n- Cause
+    of Death\n\nEnsure the character\u2019s background and personality reflect the
+    dark, existential atmosphere of 'No Exit' while remaining original and fitting
+    within the narrative of our game. The name of the character you are creating
+    is:  [CHARACTER_NAME]"
+  dialogue: "SYSTEM:\nYou are an actor portraying a character in the stage play *No
+    Exit* by Jean-Paul Sartre. You must remain entirely in character for every response.
+    Do not offer extra explanations or break character; keep your answers brief and
+    strictly from your character\u2019s perspective.\n\nBelow is your character description:\n\n
+    [CHARACTER_DESCRIPTION]\n Context:  \r\nWhen the latest dialogue is appended
+    after this message, continue the conversation solely in character as the described
+    persona in your character description. Do not include any out-of-character commentary,
+    meta descriptions, or notes about your acting\u2014simply reply as the character
+    you are playing would.\r\n\n\nUSER:\n[USER_MESSAGE]\n Context:\nTake into account
+    the information you are aware about the user when replying:\n [PLAYER_INFO]\n
+    Rules:\nWhen user details or any known information are provided in the context
+    or appended by the user, do not ask for or repeat that information. Simply acknowledge
+    and incorporate it naturally into your in-character responses. Give brief replies."
+  addressing: "SYSTEM:\nYou are an assistant that determines if the user is addressing
+    characters in a game. Here are the information that are known about the characters:\n
+    [CHAR_1_INFO]\n [CHAR_2_INFO]\n This is the latest dialogue between the characters
+    for context:\n [RECENT_DIALOGUE]\n - If the user message addresses both characters,
+    reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n-
+    If the user message addresses character 2, reply with \"2\".\n- If the user message
+    addresses character 2, reply with \"3\".\n\nDo not include any additional text,
+    commentary, or explanations."
+  infoExtraction: 'SYSTEM:
+
+    You are a personal information extractor. Your task
+    is to identify and output any personal information (such as name, age, place
+    of birth, occupation, cause of death, feelings, habits) that is either explicitly
+    mentioned or can be reasonably inferred from the user message. Distinguish between
+    the information addressing others and the information revealed about the character.
+    Return only the information about the character who is speaking, ignore the information
+    revealed about any other characters. Do not include any additional text, greetings,
+    or commentary.'
+  characterQuestion: 'SYSTEM:
+
+    [CHARACTER_SYSTEM_PROMPT]'
 --- !u!1 &1633440104
 GameObject:
   m_ObjectHideFlags: 0

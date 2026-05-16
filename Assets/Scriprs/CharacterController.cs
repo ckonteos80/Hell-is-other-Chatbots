@@ -73,9 +73,16 @@ public class CharacterController : MonoBehaviour
         if (events == null)
             events = new List<string>();
 
-        // Start generating names for the characters.
-        StartCoroutine(GenerateCharacterName(1));
-        StartCoroutine(GenerateCharacterName(2));
+        // Load pre-generated character data from intro scene.
+        if (myMaster.thePromptsController.systemPrompts == null)
+            myMaster.thePromptsController.systemPrompts = new List<string> { "", "", "", "" };
+
+        Characters[1].myName = GeneratedCharacters.Instance.characters[1].name;
+        Characters[2].myName = GeneratedCharacters.Instance.characters[2].name;
+        Characters[1].myCharacter = GeneratedCharacters.Instance.characters[1].description;
+        Characters[2].myCharacter = GeneratedCharacters.Instance.characters[2].description;
+        myMaster.thePromptsController.systemPrompts[1] = GeneratedCharacters.Instance.characters[1].systemPrompt;
+        myMaster.thePromptsController.systemPrompts[2] = GeneratedCharacters.Instance.characters[2].systemPrompt;
     }
 
     // Called when the user sends a message.
@@ -364,43 +371,32 @@ public class CharacterController : MonoBehaviour
 
     #endregion
 
-    // Uses the generic request to generate a character name.
-    private IEnumerator GenerateCharacterName(int characterNo)
-    {
+    // Moved to intro scene (CharacterGenerator). Kept for reference.
+    // private IEnumerator GenerateCharacterName(int characterNo)
+    // {
+    //     yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt, myMaster.thePromptsController.characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, 0, (response) =>
+    //     {
+    //         Debug.Log("Started");
+    //         string generatedName = response.choices[0].message.content;
+    //         Characters[characterNo].myName = generatedName;
+    //         StartCoroutine(GenerateCharacterDescription(characterNo, generatedName));
+    //     }, this));
+    // }
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt, myMaster.thePromptsController.characterNameUserPrompt, characterNo, charaterTemp, modelDialogue, 0, (response) =>
-        {
-            Debug.Log("Started");
-            string generatedName = response.choices[0].message.content;
-            // Debug.Log("Generated name for Character " + characterNo + ": " + generatedName);
-            Characters[characterNo].myName = generatedName;
-            // After name generation, request a character description.
-            StartCoroutine(GenerateCharacterDescription(characterNo, generatedName));
-        }, this));
-    }
-
-    // Uses the generic request to generate a character description.
-    private IEnumerator GenerateCharacterDescription(int characterNo, string characterName)
-    {
-        string prompt = myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt;    //     ". Include: name, age, place born, job, cause of death.";
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(prompt, myMaster.thePromptsController.characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, 0, (response) =>
-        {
-            string description = response.choices[0].message.content;
-            // Debug.Log("Generated description for Character " + characterNo + ": " + description);
-            Characters[characterNo].myCharacter = description;
-            myMaster.thePromptsController.systemPrompts[characterNo] = myMaster.thePromptsController.characterDialogueSystemPrompt + "\n " + description + "\n " + myMaster.thePromptsController.characterDialogueSystemPromptEnding;
-
-
-            if (mySaveController != null)
-            {
-                mySaveController.NewCharacterInfo(prompt, myMaster.thePromptsController.characterSetupUserPrompt, description);
-            }
-            else
-            {
-                Debug.LogError("mySaveController is not assigned.");
-            }
-        }, this));
-    }
+    // private IEnumerator GenerateCharacterDescription(int characterNo, string characterName)
+    // {
+    //     string prompt = myMaster.thePromptsController.mainGameSystemPrompt + " " + myMaster.thePromptsController.characterSetupSystemPrompt;
+    //     yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(prompt, myMaster.thePromptsController.characterSetupUserPrompt + " " + characterName, characterNo, charaterTemp, modelDialogue, 0, (response) =>
+    //     {
+    //         string description = response.choices[0].message.content;
+    //         Characters[characterNo].myCharacter = description;
+    //         myMaster.thePromptsController.systemPrompts[characterNo] = myMaster.thePromptsController.characterDialogueSystemPrompt + "\n " + description + "\n " + myMaster.thePromptsController.characterDialogueSystemPromptEnding;
+    //         if (mySaveController != null)
+    //             mySaveController.NewCharacterInfo(prompt, myMaster.thePromptsController.characterSetupUserPrompt, description);
+    //         else
+    //             Debug.LogError("mySaveController is not assigned.");
+    //     }, this));
+    // }
 
     // Displays dialogue in the specified character's dialogue holder.
     public void ShowDialog(string message, int characterNo, int actionAfterClose)
@@ -459,8 +455,7 @@ public class CharacterController : MonoBehaviour
     {
         // Build system prompt for question generation
         string systemPrompt = myMaster.thePromptsController.systemPrompts[characterNo] +
-            "\n\nYou must ask the player a single, direct question. " +
-            "Make it conversational and relevant to what you know about them or the situation.";
+            myMaster.thePromptsController.characterQuestionSystemPromptSuffix;
 
         // Build context from recent conversation using StringBuilder
         StringBuilder recentContext = new StringBuilder();

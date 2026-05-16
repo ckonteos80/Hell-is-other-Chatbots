@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "NoExit.sln"
+    "dotnet.defaultSolution": "NoExit.sln",
+    "dotnet.debug.suppressInvalidDebugTypeWarning": true
 }
