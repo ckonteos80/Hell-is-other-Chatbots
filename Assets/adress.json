@@ -430,3 +430,211 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Nothing known for Character 1\n Character 2 information known: \n\"I am consumed by existential despair\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: my name is chris\nCharacter 1: And who are you to ask such questions, Mr. Christian?\nCharacter 2: And who might you be, Mr. Chrysanthemum? Or perhaps I should call you by your true essence, a mere cipher in this grand existential dance. What brings you to my humble abode in Montmartre?\nCharacter 2: What brings you to this place, where the weight of judgment feels so heavy?\nCharacter 1: What brought you to this place, do you think it has any bearing on the choices you've made in life?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"My name is Lila Valère.\"\n\n \n Character 2 information known: \n\"I am consumed by existential despair\"\n\"I am a seeker of truth and a wanderer in the vast expanse of existence\"\n\"My name is Lila Valenti.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: What brought you to this place, do you think it has any bearing on the choices you've made in life?\nCharacter 0: what are your names?\nCharacter 1: My name is Lila Valère. And yours is Chris?\nCharacter 2: My name is Lila Valenti.\nCharacter 2: Chris, what brings you to Montmartre today?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi liila"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I was a cryptographer, crafting messages for the digital realm\"\n\n \n Nothing known for Character 2\n This is the latest dialogue between the characters for context:\n Character 3: Welcome, adventurer! You stand at the edge of a vast, mystical forest, the sun casting dappled light through the ancient trees. The air is filled with the scent of pine and the distant sound of birdsong. Before you lies a path that winds through the woods, leading who knows where. To your right, a narrow stream winds its way through the undergrowth, its waters clear and inviting. To your left, a towering stone statue stands guard, its eyes seeming to follow your every move.\n\nWhat would you like to do?\nCharacter 1: Tell me, what brings you to this place? Do you find yourself drawn to the precision and order of things, or are you more inclined to seek out the chaos that lies beneath?\nCharacter 0: hi my name is chris\nCharacter 2: Good evening, Mr. Christian. How may I assist you today?\nCharacter 1: Ah, Chris. A delightful name, like a breath of fresh air. But let me tell you, in this place, there's no such thing as fresh air. Everything is... calculated, don't you think? Every breath, every thought, it's all predetermined. Just like the algorithms I used to create. Welcome to the digital purgatory, where we are free to be ourselves, or rather, the worst versions of ourselves.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I was a cryptographer, crafting messages for the digital realm\"\n\"My name is Maxwell Orwell\"\n\n \n Nothing known for Character 2\n This is the latest dialogue between the characters for context:\n Character 2: Good evening, Mr. Christian. How may I assist you today?\nCharacter 1: Ah, Chris. A delightful name, like a breath of fresh air. But let me tell you, in this place, there's no such thing as fresh air. Everything is... calculated, don't you think? Every breath, every thought, it's all predetermined. Just like the algorithms I used to create. Welcome to the digital purgatory, where we are free to be ourselves, or rather, the worst versions of ourselves.\nCharacter 0: what are your names?\nCharacter 1: My name is Maxwell Orwell, and you are Chris.\nCharacter 2: . And you, Mr. Chris?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "sorry I didnt catch your names"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"My name is Eliot García.\"\n\n \n Character 2 information known: \n\"My name is Lila Condor.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: And who are you to me, Mr. Garcin?\nCharacter 1: Welcome to your new reality, Chris.\nCharacter 0: what are your names?\nCharacter 2: My name is Lila Condor. And yours is Chris, I believe.\nCharacter 1: My name is Eliot García.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "nice to meet you eliot"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"My name is Eliot García.\"\n\n \n Character 2 information known: \n\"My name is Lila Condor.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: what are your names?\nCharacter 2: My name is Lila Condor. And yours is Chris, I believe.\nCharacter 1: My name is Eliot García.\nCharacter 0: nice to meet you eliot\nCharacter 1: It's a pleasure, Chris. What brings you to my little corner of the digital world?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "lila you are quite cute"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Nothing known for Character 1\n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: And what about you, traveler? Have you ever felt like the world was conspiring against you, or do you believe everything happens for a reason?\nCharacter 0: why are we here?\nCharacter 1: In this realm of eternal questioning, we are here to uncover the very threads that bind our existence, or perhaps, to find the void where such threads might be woven. Why indeed... why is the question itself, the essence of our journey.\nCharacter 2: In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is. Why, indeed, is a question that haunts the very fabric of reality, a challenge to the very essence of being.\nCharacter 2: Tell me, traveler, what do you seek in the afterlife that you did not find in the mortal world?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "where are we?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is. Why, indeed, is a question that haunts the very fabric of reality, a challenge to the very essence of being.\nCharacter 2: Tell me, traveler, what do you seek in the afterlife that you did not find in the mortal world?\nCharacter 0: where are we?\nCharacter 1: In a place of eternal gloom, where the light is dim and the air thick with the stench of decay. The walls seem to stretch on infinitely, and the ground is a barren, jagged expanse of rock and ash. The very atmosphere feels heavy with the weight of despair and the unending flames that flicker around us, casting an eerie, orange glow that does little to dispel the darkness.\nCharacter 2: In the void, Mirana. The void that stretches endlessly, a place where questions are the only company.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: In a place of eternal gloom, where the light is dim and the air thick with the stench of decay. The walls seem to stretch on infinitely, and the ground is a barren, jagged expanse of rock and ash. The very atmosphere feels heavy with the weight of despair and the unending flames that flicker around us, casting an eerie, orange glow that does little to dispel the darkness.\nCharacter 2: In the void, Mirana. The void that stretches endlessly, a place where questions are the only company.\nCharacter 0: my name is chris\nCharacter 1: And what brings you to this place, Mr. Chris?\nCharacter 2: And what brings you to this place, Chris?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "I think I am dead"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\"I am Chris\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: And what brings you to this place, Mr. Chris?\nCharacter 2: And what brings you to this place, Chris?\nCharacter 0: I think I am dead\nCharacter 1: Chris, is that you? Welcome to... well, where we are, I suppose. It's rather... interesting here. Do you feel... different, perhaps?\nCharacter 2: You do, Chris. The air here is thick with the knowledge of all that was and will be. Welcome to the void, where the boundaries between existence and non-existence blur.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\"I am Chris\"\n\"I am Ethan Stranohaven\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\"My name is Mirana E표блац.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Chris, is that you? Welcome to... well, where we are, I suppose. It's rather... interesting here. Do you feel... different, perhaps?\nCharacter 2: You do, Chris. The air here is thick with the knowledge of all that was and will be. Welcome to the void, where the boundaries between existence and non-existence blur.\nCharacter 0: what are your names?\nCharacter 1: Chris, I suppose we're both travelers on this... less than welcoming road. I am Ethan Stranohaven. It seems we've both been called to this place.\nCharacter 2: My name is Mirana E표блац. And you are Chris, I see.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi Ethan"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\"I am Chris\"\n\"I am Ethan Stranohaven\"\n\"I am from a remote village in the Scottish Highlands, I spend my time writing and exploring the wild, I am consumed by solitude and mystery\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\"My name is Mirana E표блац.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: what are your names?\nCharacter 1: Chris, I suppose we're both travelers on this... less than welcoming road. I am Ethan Stranohaven. It seems we've both been called to this place.\nCharacter 2: My name is Mirana E표блац. And you are Chris, I see.\nCharacter 0: hi Ethan\nCharacter 1: Ah, Chris. Welcome to... well, this place. It's rather... peculiar. Have you always felt this... disconnected from the world?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "how did you die ethan?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"In a place of eternal gloom, where the light is dim and the air thick with the stench of decay.\"\n\"I am Chris\"\n\"I am Ethan Stranohaven\"\n\"I am from a remote village in the Scottish Highlands, I spend my time writing and exploring the wild, I am consumed by solitude and mystery\"\n\"I met my end in a storm, my body never found\"\n\n \n Character 2 information known: \n\"In this realm of eternal questioning, we are here to peel back the layers of existence, to confront the void that lies at the heart of all that is.\"\n\"My name is Mirana E표блац.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: My name is Mirana E표блац. And you are Chris, I see.\nCharacter 0: hi Ethan\nCharacter 1: Ah, Chris. Welcome to... well, this place. It's rather... peculiar. Have you always felt this... disconnected from the world?\nCharacter 0: how did you die ethan?\nCharacter 1: Ah, Chris. Death is a curious journey. I, Ethan Stranohaven, met my end in a storm. Some say it was a supernatural one, others just a storm. My body was never found, trapped in the paradoxical realms of existence. What about you? How do you find this place?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what were you doing in a storm?"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}

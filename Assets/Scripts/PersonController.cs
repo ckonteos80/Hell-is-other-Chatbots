@@ -5,6 +5,8 @@ public class PersonController : MonoBehaviour
 {
     public string myName;
     public string myCharacter;
+    public string gender;
+    public int age;
     public Transform dialogueHolder;
 
     public AiEventController myAiEventController;

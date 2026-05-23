@@ -1753,8 +1753,8 @@ MonoBehaviour:
     of either character or continues the conversation with a specific character.\r\n\r\n-
     If the user message addresses both characters, reply with \"0\".\n- If the user
     message addresses character 1, reply with \"1\".\r\n- If the user message addresses
-    character 2, reply with \"2\".\r\n- If the user message addresses character 3,
-    reply with \"3\".\n\r\nDo not include any additional text, commentary, or explanations.\r"
+    character 2, reply with \"2\".\r\n\r\nDo not include any additional text, commentary,
+    or explanations.\r"
   adressingSystemPromptIntro: 'You are an assistant that determines if the user is
     addressing characters in a game. Here are the information that are known about
     the characters:'
@@ -1769,7 +1769,7 @@ MonoBehaviour:
     - If the user message addresses character 2, reply with "2".
 
     -
-    If the user message addresses character 2, reply with "3".
+    If the user message addresses character 3, reply with "3".
 
 
     Do not include
@@ -4137,9 +4137,7 @@ MonoBehaviour:
   maxDialogueTokens: 75
   maxAddressingTokens: 10
   modelDialogue: gpt-3.5-turbo
-  modelNames: {fileID: 1859472996}
   useQween0_6: 1
-  useHuggingFaceProvider: 1
 --- !u!114 &1576598640
 MonoBehaviour:
   m_ObjectHideFlags: 0

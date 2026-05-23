@@ -1,0 +1,193 @@
+PROMPT STRUCTURE REFERENCE — May 23, 2026
+==========================================
+The game uses a chain of AI calls to drive character interaction. In the intro scene, two characters
+are generated (name → description → system prompt). In the main scene, each player message triggers
+info extraction, then either direct dialogue (if no info is known yet) or an addressing check first
+(to decide which character responds). All prompts are defined as separate string pieces in
+PromptsController and assembled at call time.
+
+Use this file to restore the prompt system to its current working state.
+All prompts are defined in PromptsController.cs (Awake) and assembled at runtime.
+
+
+=== PROMPT PIECES (PromptsController.cs) ===
+
+[mainGameSystemPrompt]  — Sets the game's universe for every call; used as the base for name and description generation in the intro scene.
+  "We are playing a game based on the stage play 'No Exit' by Jean-Paul Sartre, which delves into existential themes and the human condition."
+
+[characterSetupSystemPrompt]  — Gives the model a script-writer role; combined with mainGameSystemPrompt for name and description generation.
+  "You are a script writer creating a character for the play."
+
+[characterNameUserPrompt]  — Requests a two-word name only; the first call in character generation.
+  "Generate a unique and creative character name. Your response must consist solely of two words—a first name and a last name—separated by a single space. Do not include any additional text, punctuation, or explanation."
+
+[characterSetupUserPrompt]  — Requests the full character bio; the second call in character generation, with the generated name appended.
+  "Generate a unique character description for a character in this game/play.
+  Please include the following details:
+  - Name
+  - Age
+  - Place of Birth
+  - Occupation
+  - Cause of Death
+
+  Ensure the character's background and personality reflect the dark, existential atmosphere of 'No Exit' while remaining original and fitting within the narrative of our game. The name of the character you are creating is:"
+
+[characterDialogueSystemPrompt]  — Opens the character's permanent system prompt by putting the model in-character as an actor; stored once after generation.
+  "You are an actor portraying a character in the stage play *No Exit* by Jean-Paul Sartre. You must remain entirely in character for every response. Do not offer extra explanations or break character; keep your answers brief and strictly from your character's perspective.
+
+  Below is your character description:"
+
+[characterDialogueSystemPromptEnding]  — Closes the character's permanent system prompt with rules for staying in character; appended after the character description.
+  "Context:
+  When the latest dialogue is appended after this message, continue the conversation solely in character as the described persona in your character description. Do not include any out-of-character commentary, meta descriptions, or notes about your acting—simply reply as the character you are playing would."
+
+[characterDialogueUserPromptEnding]  — Signals that known player info follows; injected into the user prompt when infoShared is not empty.
+  "Context:
+  Take into account the information you are aware about the user when replying:"
+
+[characterDialogueUserPromptEnding2]  — Prevents the model from repeating or re-asking known info; appended after the player info block.
+  "Rules:
+  When user details or any known information are provided in the context or appended by the user, do not ask for or repeat that information. Simply acknowledge and incorporate it naturally into your in-character responses. Give brief replies."
+
+[infoExtractionSystemPrompt]  — Defines the info-extractor role; used after every player message and every character reply to build up infoShared.
+  "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+
+[adressingSystemPromptIntro]  — Opens the addressing call with known character info; only triggered once any character has info.
+  "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:"
+
+[adressingSystemPromptContext]  — Labels the recent dialogue block inside the addressing prompt.
+  "This is the latest dialogue between the characters for context:"
+
+[adressingSystemPromptActions]  — Defines the 0/1/2/3 reply rules for the addressing model; keeps the response to a single token.
+  "- If the user message addresses both characters, reply with "0".
+  - If the user message addresses character 1, reply with "1".
+  - If the user message addresses character 2, reply with "2".
+  - If the user message addresses character 3, reply with "3".
+
+  Do not include any additional text, commentary, or explanations."
+
+[characterQuestionSystemPromptSuffix]  — Appended to a character's system prompt when RequestCharacterQuestion is called, forcing a single direct question.
+  "\n\nYou must ask the player a single, direct question. Make it conversational and relevant to what you know about them or the situation."
+
+
+=== ASSEMBLED PROMPTS (how pieces are combined at runtime) ===
+
+--- 1. NAME GENERATION (CharacterGenerator.cs, intro scene) ---
+  SYSTEM : mainGameSystemPrompt + " " + characterSetupSystemPrompt
+  USER   : characterNameUserPrompt
+  Model  : modelGeneration
+  Temp   : 1.0
+  Tokens : 0 (unlimited)
+
+--- 2. DESCRIPTION GENERATION (CharacterGenerator.cs, intro scene) ---
+  SYSTEM : mainGameSystemPrompt + " " + characterSetupSystemPrompt
+  USER   : characterSetupUserPrompt + " " + [CHARACTER_NAME]
+  Model  : modelGeneration
+  Temp   : 1.0
+  Tokens : 0 (unlimited)
+
+--- 3. CHARACTER SYSTEM PROMPT (built once in CharacterGenerator, stored in GeneratedCharacters) ---
+  systemPrompts[charNo] = characterDialogueSystemPrompt
+                        + "\n " + [CHARACTER_DESCRIPTION]
+                        + "\n " + characterDialogueSystemPromptEnding
+  Loaded into CharacterController.Start() from GeneratedCharacters.Instance.
+
+--- 4. DIALOGUE (CharacterController.SendRequestForCharacter) ---
+  SYSTEM : systemPrompts[characterReplyingNo]   (pre-assembled above)
+
+  USER (no info known yet):
+    [USER_MESSAGE]
+
+  USER (info exists for the speaking character):
+    [USER_MESSAGE]
+    + "\n " + characterDialogueUserPromptEnding
+    + "\n " + [PLAYER_INFO  — each item quoted, one per line]
+    + "\n " + characterDialogueUserPromptEnding2
+
+  Model  : modelDialogue
+  Temp   : CharacterController.temp
+  Tokens : 150
+
+--- 5. ADDRESSING (CharacterController.SendRequestForAdress) ---
+  Triggered only when at least one character has info (infoShared.Count > 0).
+
+  SYSTEM : adressingSystemPromptIntro
+         + "\n " + [CHAR_1_INFO or "Nothing known for Character 1"]
+         + "\n " + [CHAR_2_INFO or "Nothing known for Character 2"]
+         + "\n " + adressingSystemPromptContext
+         + "\n " + latestDialoguesContext   (last 5 dialogue entries)
+         + "\n " + adressingSystemPromptActions
+
+  USER   : [USER_MESSAGE]
+  Model  : modelAddressing
+  Temp   : CharacterController.temp
+  Tokens : 10
+
+  Response key:
+    "0" → both characters respond (queue 1 then 2)
+    "1" → only character 1 responds
+    "2" → only character 2 responds
+  Retries up to 3 times on invalid response; falls back to "0".
+
+--- 6. INFO EXTRACTION (InfoExtractorHandler, called after every message) ---
+  Called for: user input AND each character reply.
+
+  SYSTEM : infoExtractionSystemPrompt
+  USER   : [MESSAGE being analysed]
+  Model  : modelInfo (via InfoExtractorHandler — uses Qween 0.6 if useQween0_6 is true)
+
+  If result != "none", it is added to Characters[characterNo].infoShared
+  and Master.StartFlicker() is triggered.
+
+--- 7. CHARACTER QUESTION (CharacterController.RequestCharacterQuestion) ---
+  SYSTEM : systemPrompts[characterNo]
+         + characterQuestionSystemPromptSuffix
+
+  USER   : "Based on the conversation: [last 3 dialogue entries]\nAsk the player a relevant question."
+         (or a custom questionContext string if provided)
+
+  Model  : modelDialogue
+  Temp   : CharacterController.temp
+  Tokens : 0 (unlimited)
+
+--- 8. NARRATOR DIALOGUE (CharacterController.RequestNarratorDialogue) ---
+  SYSTEM : systemPrompts[3]   (narrator's system prompt — set up separately)
+  USER   : context string passed by caller
+  Model  : modelDialogue
+  Temp   : CharacterController.temp
+  Tokens : 0 (unlimited)
+  On reply: ShowDialog → actionAfterClose = 1
+
+
+=== FLOW SUMMARY ===
+
+Intro scene:
+  GenerateCharacter(1) → Name → Description → systemPrompts[1] stored
+  GenerateCharacter(2) → Name → Description → systemPrompts[2] stored
+  Data saved in GeneratedCharacters singleton.
+
+Main game (user sends message):
+  1. CheckPersonalInfo(userInput, characterNo=0)     — extract info from player
+  2a. If NO info known yet:
+        SendRequestForCharacter(userInput, 0, 1)    — char 1 replies
+        SendRequestForCharacter(userInput, 0, 2)    — char 2 replies (if active)
+  2b. If info exists:
+        SendRequestForAdress(userInput)              — decide who to address
+        → ProcessCharacterResponseQueue             — send dialogue to addressed char(s)
+
+  After each character reply:
+     CheckPersonalInfo(reply, characterNo)           — extract info from character
+
+
+=== MODEL SLOTS (ModelNamesController) ===
+  modelGeneration  — used for name + description generation (intro)
+  modelDialogue    — used for dialogue, narrator, character questions
+  modelAddressing  — used for addressing detection (low token, fast)
+  modelInfo        — used inside InfoExtractorHandler
+
+
+=== API ROUTING ===
+  All requests go to: https://jejunepixels-noexit-proxy.hf.space/chat
+  provider field = "hf"     if useHuggingFaceProvider == true
+  provider field = "openai" if useHuggingFaceProvider == false
+  Retry logic: 2 retries on 503/504/timeout/connection errors, 10s wait between.
