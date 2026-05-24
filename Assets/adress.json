@@ -638,3 +638,211 @@
         }
     ]
 }
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am a delivery driver\"\n\n \n Character 2 information known: \n\"I am Victoria Sanchez\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: Welcome, brave adventurer! You stand at the threshold of a world where magic and mystery intertwine. The realm of Eldoria awaits, filled with ancient secrets, daunting challenges, and untold treasures. Are you ready to embark on an epic journey?\n\nBefore you lies a path that stretches into the unknown, marked by towering forests, bustling cities, and treacherous mountains. Your choices will shape your path and the fate of Eldoria. Will you choose the path of a valiant knight, a cunning rogue, or perhaps a wise mage?\n\nWhat is your name, and which class will you choose to guide you through this world of wonder and danger?\nCharacter 0: hi\nCharacter 1: Hi, I... I don't think I'm ready for that. This is just... too much. I'm just a... a delivery driver. I didn't sign up for this.\nCharacter 2: Hi, I'm not here to embark on an adventure or play a game. I'm Victoria Sanchez, and I need to clear my name. This isn't about magic or paths or classes. It's about the truth.\nCharacter 1: Do you believe in love, or is it just another performance for you?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "why are we here?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am a delivery driver\"\n\"I was passionate about love and redemption, and I was consumed by guilt for my actions\"\n\n \n Character 2 information known: \n\"I am Victoria Sanchez\"\n\"I am consumed by the weight of my own choices\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: Hi, I'm not here to embark on an adventure or play a game. I'm Victoria Sanchez, and I need to clear my name. This isn't about magic or paths or classes. It's about the truth.\nCharacter 1: Do you believe in love, or is it just another performance for you?\nCharacter 0: why are we here?\nCharacter 1: We're here because of the choices we made in life. For me, it's about the love I wanted to show my girlfriend, even if it led to my downfall. For you, I suppose it's about the truth of your situation.\nCharacter 2: We are here because of the choices we made in life. For me, it's about the truth of my situation and clearing my name. For you, it's about understanding the weight of your actions and the consequences they carry.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am a delivery driver\"\n\"I was passionate about love and redemption, and I was consumed by guilt for my actions\"\n\"I am Alex, the delivery driver.\"\n\n \n Character 2 information known: \n\"I am Victoria Sanchez\"\n\"I am consumed by the weight of my own choices\"\n\"I am Victoria, the delivery driver.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: We're here because of the choices we made in life. For me, it's about the love I wanted to show my girlfriend, even if it led to my downfall. For you, I suppose it's about the truth of your situation.\nCharacter 2: We are here because of the choices we made in life. For me, it's about the truth of my situation and clearing my name. For you, it's about understanding the weight of your actions and the consequences they carry.\nCharacter 0: what are your names?\nCharacter 1: I am Alex, the delivery driver. This is Victoria Sanchez.\nCharacter 2: I am Victoria, the delivery driver. This is Alex.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi victoria"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am a delivery driver\"\n\"I was passionate about love and redemption, and I was consumed by guilt for my actions\"\n\"I am Alex, the delivery driver.\"\n\n \n Character 2 information known: \n\"I am Victoria Sanchez\"\n\"I am consumed by the weight of my own choices\"\n\"I am Victoria, the delivery driver.\"\n\"I was feeling guilty about something\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: what are your names?\nCharacter 1: I am Alex, the delivery driver. This is Victoria Sanchez.\nCharacter 2: I am Victoria, the delivery driver. This is Alex.\nCharacter 0: hi victoria\nCharacter 2: Hi Alex. I know you're feeling guilty about something, but I need you to understand that my death wasn't my fault. It was all part of a cover-up.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am a delivery driver\"\n\"I was passionate about love and redemption, and I was consumed by guilt for my actions\"\n\"I am Alex, the delivery driver.\"\n\"I am Chris\"\n\n \n Character 2 information known: \n\"I am Victoria Sanchez\"\n\"I am consumed by the weight of my own choices\"\n\"I am Victoria, the delivery driver.\"\n\"I was feeling guilty about something\"\n\"I was a pawn in a much larger game\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: hi victoria\nCharacter 2: Hi Alex. I know you're feeling guilty about something, but I need you to understand that my death wasn't my fault. It was all part of a cover-up.\nCharacter 0: my name is chris\nCharacter 1: Chris, it's nice to meet you. I know this is hard, but I just want to explain my side of the story.\nCharacter 2: Chris, it's nice to meet you. I need you to believe me when I say that the blame wasn't on me. I was just a pawn in a much larger game.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi victoria"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Nothing known for Character 1\n Character 2 information known: \n\"I was always strong and protective\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: The room is dimly lit by a flickering light from a single, unsteady candle. Shadows dance on the cracked walls. Two figures sit against opposite walls, their expressions unreadable, while a third, more ethereal presence hovers near the window, its form barely discernible in the dim light.\nCharacter 0: hi\nCharacter 1: Hi. Keep your distance, please.\nCharacter 2: Hi. How... how did this happen? I... I always tried to be strong, to protect everyone. I don't understand why I'm here.\nCharacter 1: Do you ever find yourself seeking those fleeting moments of excitement, like I used to on those lonely drives?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Nothing known for Character 1\n Character 2 information known: \n\"I was always strong and protective\"\n\"I was trying to understand how this happened and why I'm here\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: Hi. How... how did this happen? I... I always tried to be strong, to protect everyone. I don't understand why I'm here.\nCharacter 1: Do you ever find yourself seeking those fleeting moments of excitement, like I used to on those lonely drives?\nCharacter 0: my name is chris\nCharacter 1: Chris, I... I don't need your pity. I just want you to stay out of my way.\nCharacter 2: Chris, I appreciate the gesture, but I just need some space right now. I'm trying to understand how this happened and why I'm here.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I know, right?\"\n\n \n Character 2 information known: \n\"I am consumed by the weight of my art\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: I think we are in hell\nCharacter 1: I know, right? Just another day turned into an eternity. Do you ever feel like this is just a really long, really bad dream?\nCharacter 2: I know this place isn't right. The paintings that once brought me joy now feel hollow and meaningless. The only escape I found was in my art, but it led me here. We are in hell, and I can't bear to think of what that means for us.\nCharacter 2: Do you believe in the power of art to change the world, or is it just a futile endeavor in this world?\nCharacter 1: Do you ever find yourself zoning out during mundane tasks, like I used to with my paperwork?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "my name is christos, what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I know, right?\"\n\n \n Character 2 information known: \n\"I am consumed by the weight of my art\"\n\"My name is Isolde\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: my name is christos, what are your names?\nCharacter 1: Do you ever find yourself daydreaming about something more exciting than your daily routine?\nCharacter 1: Michael. And you? Christos, right?\nCharacter 2: My name is Isolde. It's been a while since anyone asked me that.\nCharacter 2: Christos, it's interesting to hear your name. Do you think your name has any significance in relation to your art or your struggle with emptiness?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi michael"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Alex\"\n\n \n Character 2 information known: \n\"I lost hold of mine\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: Hi. What's happening here? Why am I here?\nCharacter 1: What do you think keeps a person honest in a world full of opportunities to bend the rules?\nCharacter 0: my name is christos\nCharacter 1: Christos, I'm Alex. I suppose in a place like this, one might question the nature of honesty and deceit. What do you think keeps a person honest?\nCharacter 2: Christos, I see. I suppose in a world where the lines are blurred, one must hold onto something unshakeable. Like the warmth of the oven or the comforting routine of the bistro. But in the end, it seems I lost hold of mine.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what are your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Alex\"\n\"My name is Alex.\"\n\n \n Character 2 information known: \n\"I lost hold of mine\"\n\"My name is Marie.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Christos, I'm Alex. I suppose in a place like this, one might question the nature of honesty and deceit. What do you think keeps a person honest?\nCharacter 2: Christos, I see. I suppose in a world where the lines are blurred, one must hold onto something unshakeable. Like the warmth of the oven or the comforting routine of the bistro. But in the end, it seems I lost hold of mine.\nCharacter 0: what are your names?\nCharacter 1: My name is Alex.\nCharacter 2: My name is Marie.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi alex, you look familiar"
+        },
+        {
+            "role": "assistant",
+            "content": "1"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Alex\"\n\"My name is Alex.\"\n\"I lived in a bustling city where I worked as a financial analyst\"\n\n \n Character 2 information known: \n\"I lost hold of mine\"\n\"My name is Marie.\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: what are your names?\nCharacter 1: My name is Alex.\nCharacter 2: My name is Marie.\nCharacter 0: hi alex, you look familiar\nCharacter 1: I look familiar? Must be a trick of the light. I've been in too many offices, I suppose that makes one stand out.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hey marrie, why are you here?"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I am Alex\"\n\"My name is Alex.\"\n\"I lived in a bustling city where I worked as a financial analyst\"\n\n \n Character 2 information known: \n\"I lost hold of mine\"\n\"My name is Marie.\"\n\"I was consumed by the weight of my own choices and the power I wielded\"\n\n \n This is the latest dialogue between the characters for context:\n Character 2: My name is Marie.\nCharacter 0: hi alex, you look familiar\nCharacter 1: I look familiar? Must be a trick of the light. I've been in too many offices, I suppose that makes one stand out.\nCharacter 0: hey marrie, why are you here?\nCharacter 2: Sometimes, power and control are the only things that truly define a person. I'm here because of the choices I made, the lines I crossed.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "can we leave here?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}

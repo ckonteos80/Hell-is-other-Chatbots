@@ -61,7 +61,7 @@ public class Master : MonoBehaviour
     IEnumerator WelcomePlayer()
     {
         yield return null; // Wait one frame for CharacterController.Start() to run
-        theCharacterController.RequestNarratorDialogue("welcome the player to the game");
+        theCharacterController.RequestNarratorDialogue("Show the player in.");
     }
 
 

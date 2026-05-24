@@ -90,8 +90,12 @@ public class CharacterController : MonoBehaviour
         Characters[2].gender = GeneratedCharacters.Instance.characters[2].gender;
         Characters[1].age = GeneratedCharacters.Instance.characters[1].age;
         Characters[2].age = GeneratedCharacters.Instance.characters[2].age;
-        myMaster.thePromptsController.systemPrompts[1] = GeneratedCharacters.Instance.characters[1].systemPrompt;
-        myMaster.thePromptsController.systemPrompts[2] = GeneratedCharacters.Instance.characters[2].systemPrompt;
+        myMaster.thePromptsController.systemPrompts[1] =
+            myMaster.thePromptsController.dialogueSystemPromptTemplate
+                .Replace("{CHARACTER_DESCRIPTION}", Characters[1].myCharacter);
+        myMaster.thePromptsController.systemPrompts[2] =
+            myMaster.thePromptsController.dialogueSystemPromptTemplate
+                .Replace("{CHARACTER_DESCRIPTION}", Characters[2].myCharacter);
     }
 
     // Called when the user sends a message.
@@ -201,17 +205,17 @@ public class CharacterController : MonoBehaviour
 
     public IEnumerator SendRequestForCharacter(string userMessage, int characterSpeakingNo, int characterReplyingNo, int retryAttempts = 0)
     {
-        // Build user prompt with character info if available
-        string userPrompt;
-        if (Characters[characterSpeakingNo].infoShared.Count != 0)
-        {
-            string allInfo = GetCharacterInfoString(characterSpeakingNo);
-            userPrompt = userMessage + "\n " + myMaster.thePromptsController.characterDialogueUserPromptEnding + "\n " + allInfo + "\n " + myMaster.thePromptsController.characterDialogueUserPromptEnding2;
-        }
-        else
-        {
-            userPrompt = userMessage;
-        }
+        var (person1Index, person2Index) = GetPersonMapping(characterReplyingNo);
+        int speakerPersonNo = GetPersonNumberFor(characterReplyingNo, characterSpeakingNo);
+
+        string userPrompt =
+            "## What you know about the others in the room\n\n" +
+            "<other_1>:\n" + BuildInfoBlock(person1Index) + "\n\n" +
+            "<other_2>:\n" + BuildInfoBlock(person2Index) + "\n\n" +
+            "## Recent dialogue in the room\n" + FormatDialogueForCharacter(characterReplyingNo) + "\n\n" +
+            "---\n\n" +
+            "[<other_" + speakerPersonNo + "> is speaking to you]\n" +
+            userMessage;
 
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, GeneratedCharacters.Instance.modelNames.modelDialogue, maxDialogueTokens, (response) =>
         {
@@ -273,6 +277,50 @@ public class CharacterController : MonoBehaviour
     }
 
     #region Helper Methods
+
+    private (int person1Index, int person2Index) GetPersonMapping(int replyingChar)
+    {
+        int otherChar = (replyingChar == 1) ? 2 : 1;
+        return (otherChar, 0);
+    }
+
+    private int GetPersonNumberFor(int replyingChar, int speakerIndex)
+    {
+        var (p1, p2) = GetPersonMapping(replyingChar);
+        if (speakerIndex == p1) return 1;
+        if (speakerIndex == p2) return 2;
+        Debug.LogWarning($"Unexpected speakerIndex {speakerIndex} for replyingChar {replyingChar}");
+        return 2;
+    }
+
+    private string BuildInfoBlock(int characterNo)
+    {
+        if (Characters[characterNo].infoShared.Count == 0)
+            return "Nothing has been revealed yet.";
+
+        var sb = new StringBuilder();
+        foreach (string info in Characters[characterNo].infoShared)
+            if (!string.IsNullOrWhiteSpace(info))
+                sb.AppendLine(info);
+        return sb.ToString().TrimEnd();
+    }
+
+    private string FormatDialogueForCharacter(int currentCharacter)
+    {
+        if (dialogueEntries.Count == 0) return "No one has spoken yet.";
+
+        var sb = new StringBuilder();
+        int startIndex = Mathf.Max(0, dialogueEntries.Count - 5);
+        for (int i = startIndex; i < dialogueEntries.Count; i++)
+        {
+            int speakerId = dialogueEntries[i].characterId;
+            string label = (speakerId == currentCharacter)
+                ? "You"
+                : "<other_" + GetPersonNumberFor(currentCharacter, speakerId) + ">";
+            sb.Append(label).Append(": ").Append(dialogueEntries[i].dialogueText).Append("\n");
+        }
+        return sb.ToString().TrimEnd();
+    }
 
     private string GetCharacterInfoString(int characterNo)
     {

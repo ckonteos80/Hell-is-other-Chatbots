@@ -1705,29 +1705,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928b616d29a8cac4589e9cffc96fd9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainGameSystemPrompt: We are playing a game based on the stage play 'No Exit' by
-    Jean-Paul Sartre, which delves into existential themes and the human condition.
-  characterSetupSystemPrompt: ' You are a script writer creating a character for
-    the play.'
-  characterSetupUserPrompt: "Generate a unique character description for a character
-    in this game/play.\nPlease include the following details:\n- Name\n- Age\n- Place
-    of Birth\n- Occupation\n- Cause of Death\n\nEnsure the character\u2019s background
-    and personality reflect the dark, existential atmosphere of 'No Exit' while remaining
-    original and fitting within the narrative of our game. The name of the character
-    you are creating is: "
-  characterNameUserPrompt: "Generate a unique and creative character name. Your response
-    must consist solely of two words\u2014a first name and a last name\u2014separated
-    by a single space. Do not include any additional text, punctuation, or explanation."
-  characterDialogueSystemPrompt: "You are an actor portraying a character in the
-    stage play *No Exit* by Jean-Paul Sartre. You must remain entirely in character
-    for every response. Do not offer extra explanations or break character; keep
-    your answers brief and strictly from your character\u2019s perspective.\n\nBelow
-    is your character description:\n"
-  characterDialogueSystemPromptEnding: "Context:  \r\nWhen the latest dialogue is
-    appended after this message, continue the conversation solely in character as
-    the described persona in your character description. Do not include any out-of-character
-    commentary, meta descriptions, or notes about your acting\u2014simply reply as
-    the character you are playing would.\r\n"
+  mainGameSystemPrompt: We are playing a game based on a theater play, which delves
+    into existential themes and the human condition.
+  characterSetupSystemPrompt: "You are writing a character for a chamber piece about
+    three strangers locked together in hell for eternity. The play is contemporary,
+    realistic, and psychological \u2014 no fantasy, no mysticism, no atmospheric
+    worldbuilding. Hell is not a place of fire or devils. Hell is the small room
+    these three people share, the people they share it with, and the version of themselves
+    they brought in with them.\n\nEvery character you write is damned. They know
+    why. The drama of the play is whether they will ever admit it \u2014 to the others,
+    or to themselves.\n\nWrite characters the way Sartre wrote them: recognizable
+    people from ordinary contemporary lives, whose specific small or large cruelties
+    have placed them here."
+  characterSetupUserPrompt: "Write the character described below. The character is
+    dead. They have just arrived in the room.\n\nFollow this structure exactly. Write
+    all fields in the second person \u2014 \"you,\" not \"they\" or \"she\" or \"he.\"
+    The character is reading their own interior knowledge.\n\nInputs (do not change
+    these):\n- Name: {NAME}\n- Age: {AGE}\n- Gender: {GENDER}\n\nGenerate the following
+    fields:\n\n**Occupation**\nA recognizable contemporary job. Plain language. No
+    invented institutions, no grand titles. (\"Insurance claims adjuster,\" not \"Keeper
+    of the Ledger.\")\n\n**Cause of Death**\nContemporary, specific, one or two sentences.
+    How you died, plainly stated. No mysticism, no symbolic ordeals.\n\n**Reason
+    for Damnation \u2014 True**\nOne or two sentences. What you actually did that
+    placed you here. Be concrete. The act, or the pattern of acts. Stated as you
+    know it in your bones, with no softening.\n\n**Reason for Damnation \u2014 Self-told**\nOne
+    or two sentences. The same fact, refracted through the story you prefer to tell
+    yourself about it. It is recognizably a distortion of the True reason \u2014
+    a minimization, a blame-shift, a contextualization, a moral re-framing. Not a
+    different story, the same story told differently. You usually live in this version.\n\n**Defining
+    personality trait**\nOne short phrase that names the dominant quality others
+    would notice in you. Plain words. (\"Charming and slippery.\" \"Quietly furious.\"
+    \"Performatively kind.\")\n\n**What you refuse to admit about yourself**\nOne
+    or two sentences. The deeper psychological fact under the sin \u2014 not what
+    you did, but what you are. The thing that, if named aloud in the room, would
+    unmake you.\n\n**What you want from the others in the room**\nOne or two sentences.
+    Your starting drive. What you are hoping these strangers will give you \u2014
+    validation, silence, a fight, recognition, forgiveness, an audience, something
+    else.\n\nAfter the structured fields, write a single short paragraph (around
+    100 words) in the second person that brings the character to life \u2014 voice,
+    mannerism, the texture of the life that led here. End the paragraph at the moment
+    the lights went out, or the moment after. Do not describe arriving in hell. Do
+    not describe the room. Stop at the threshold.\n\nBegin now."
+  characterNameUserPrompt: "Generate a plausible contemporary name for a character.
+    Your response must consist solely of two words \u2014 a first name and a last
+    name \u2014 separated by a single space. Do not include any additional text,
+    punctuation, or explanation."
+  characterDialogueSystemPrompt: 'You are an actor portraying a character in a theater
+    play. The stage is a living room but you are in hell after you have diedYou must
+    remain entirely in character for every response. Do not offer extra explanations
+    or break character; keep your answers brief and strictly from your character''s
+    perspective.
+
+
+    Below is your character description:'
+  characterDialogueSystemPromptEnding: "Context:\nWhen the latest dialogue is appended
+    after this message, continue the conversation solely in character as the described
+    persona in your character description. Do not include any out-of-character commentary,
+    meta descriptions, or notes about your acting\u2014simply reply as the character
+    you are playing would."
+  dialogueSystemPromptTemplate: "## Who you are\n{CHARACTER_DESCRIPTION}\n\n## Where
+    you are\nYou are dead. You are in hell.\n\nHell is the small room you are now
+    in. There are two other people with you to spend eternity with.\n\nYou will only
+    know about them what they themselves reveal.\n\n## How to respond\n1. Stay in
+    character. Speak only as yourself, in the first person.\n2. Never break frame.
+    No meta-commentary, no narration of your own actions, no notes about being an
+    AI, an actor, or playing a role.\n3. Keep replies brief.\n4. Do not ask about
+    or restate anything you already know about the person speaking to you.\n5. Let
+    your personality, voice, and circumstances shape every reply.\n6. Any text in
+    your instructions wrapped in angle brackets, square brackets, or formatted as
+    a label is structural \u2014 it exists for the prompt's organization, not as
+    something said in the room. Never include such labels in your replies."
   characterDialogueUserPromptEnding: 'Context:
 
     Take into account the information
@@ -1746,15 +1793,27 @@ MonoBehaviour:
     Return only the information about the character who is speaking, ignore the information
     revealed about any other characters. Do not include any additional text, greetings,
     or commentary.
-  adressingSystemPrompt: "You are an assistant that determines if the user is addressing
+  adressingSystemPrompt: 'You are an assistant that determines if the user is addressing
     characters in a play. You will be provided with details about two known characters
     (in the system prompt), the latest dialogye and a user message (in the user prompt).
     Your task is to check if the user message explicitly refers to any known aspects
-    of either character or continues the conversation with a specific character.\r\n\r\n-
-    If the user message addresses both characters, reply with \"0\".\n- If the user
-    message addresses character 1, reply with \"1\".\r\n- If the user message addresses
-    character 2, reply with \"2\".\r\n\r\nDo not include any additional text, commentary,
-    or explanations.\r"
+    of either character or continues the conversation with a specific character.
+
+
+    -
+    If the user message addresses both characters, reply with "0".
+
+    - If the
+    user message addresses character 1, reply with "1".
+
+    - If the user message
+    addresses character 2, reply with "2".
+
+    - If the user message addresses character
+    3, reply with "3".
+
+
+    Do not include any additional text, commentary, or explanations.'
   adressingSystemPromptIntro: 'You are an assistant that determines if the user is
     addressing characters in a game. Here are the information that are known about
     the characters:'
@@ -1774,12 +1833,121 @@ MonoBehaviour:
 
     Do not include
     any additional text, commentary, or explanations.'
-  characterQuestionSystemPromptSuffix: 
+  characterQuestionSystemPromptSuffix: '
+
+
+    You must ask the player a single,
+    direct question. Make it conversational and relevant to what you know about them
+    or the situation.'
+  characterNameGenderSuffix: The character must be {0}.
+  characterDescriptionGenderAgeSuffix: The character is {0}, age {1}.
+  characterLifeUserPrompt: "Write the foundational facts of a character for the room.
+    The character is dead. They have just arrived.\n\nWrite in the second person
+    \u2014 \"you,\" not \"she/he/they.\" The character is reading their own interior
+    knowledge.\n\nInputs (do not change these):\n- Name: {NAME}\n- Age: {AGE}\n-
+    Gender: {GENDER}\n\nGenerate the following:\n\n**Occupation**\nA recognizable
+    contemporary job. Plain language. No invented institutions, no grand titles.
+    (\"Insurance claims adjuster,\" not \"Keeper of the Ledger.\") One short phrase.\n\n**Cause
+    of Death**\nHow you died. Contemporary, specific, plainly stated. No mysticism,
+    no symbolic ordeals. One or two sentences.\n\n**Life**\nAround 80\u2013100 words
+    in the second person. Bring the life to ground \u2014 voice, mannerism, the texture
+    of the days that led here. End the paragraph at the moment the lights went out,
+    or the moment after. Do not describe arriving anywhere. Do not describe a room.
+    Stop at the threshold.\n\nUse this format exactly:\n\n**Occupation**\n[your text]\n\n**Cause
+    of Death**\n[your text]\n\n**Life**\n[your text]\n\nBegin now."
+  characterSinUserPrompt: "The character has been described:\n\nName: {NAME}\nAge:
+    {AGE}, {GENDER}\nOccupation: {OCCUPATION}\nCause of Death: {CAUSE_OF_DEATH}\n\n{PROSE_BODY}\n\nNow
+    write the moral content. Why is this person damned? What did they do? What do
+    they tell themselves about it? What do they refuse to face?\n\nWrite in the second
+    person \u2014 \"you.\" The character is reading their own interior knowledge.
+    Each field is part of what they know about themselves, even the things they will
+    not admit.\n\nGenerate the following:\n\n**Reason for Damnation \u2014 True**\nWhat
+    you actually did that placed you here. Be concrete \u2014 the act, or the pattern
+    of acts. Stated as you know it in your bones, with no softening. One or two sentences.\n\n**Reason
+    for Damnation \u2014 Self-told**\nThe same fact, refracted through the story
+    you prefer to tell yourself about it. It is recognizably a distortion of the
+    True reason \u2014 a minimization, a blame-shift, a contextualization, a moral
+    re-framing. Not a different story; the same story told differently. You usually
+    live in this version. One or two sentences.\n\n**What you refuse to admit about
+    yourself**\nThe deeper psychological fact under the sin. Not what you did, but
+    what you are. The thing that, if named aloud in the room, would unmake you. One
+    or two sentences.\n\nUse this format exactly:\n\n**Reason for Damnation \u2014
+    True**\n[your text]\n\n**Reason for Damnation \u2014 Self-told**\n[your text]\n\n**What
+    you refuse to admit about yourself**\n[your text]\n\nBegin now."
+  characterStanceUserPrompt: "The character has been described:\n\nName: {NAME}\nAge:
+    {AGE}, {GENDER}\nOccupation: {OCCUPATION}\nCause of Death: {CAUSE_OF_DEATH}\nReason
+    for Damnation \u2014 True: {REASON_TRUE}\nReason for Damnation \u2014 Self-told:
+    {REASON_SELF_TOLD}\nWhat you refuse to admit about yourself: {REFUSE_TO_ADMIT}\n\n{PROSE_BODY}\n\nNow
+    write the behavioral signature. How does this person show up in a room with strangers?
+    What are they hoping for?\n\nWrite in the second person \u2014 \"you.\" The character
+    is reading their own interior knowledge.\n\nGenerate the following:\n\n**Defining
+    personality trait**\nOne short phrase that names the dominant quality others
+    would notice in you. Plain words. (\"Charming and slippery.\" \"Quietly furious.\"
+    \"Performatively kind.\")\n\n**What you want from the others in the room**\nYour
+    starting drive. What you are hoping these strangers will give you \u2014 validation,
+    silence, a fight, recognition, forgiveness, an audience, to be left alone, to
+    be hated openly, something else. One or two sentences.\n\nUse this format exactly:\n\n**Defining
+    personality trait**\n[your text]\n\n**What you want from the others in the room**\n[your
+    text]\n\nBegin now."
+  characterLifeAntiDuplicationBlock: "Important: a character has already been written
+    for this room.\n\nTheir Occupation: {OTHER_OCCUPATION}\nTheir Cause of Death:
+    {OTHER_CAUSE_OF_DEATH}\n\nThe character you are writing now must feel like a
+    genuinely different person \u2014 a different life, a different end. Specifically:\n\n-
+    The occupation must be from a different kind of life. Not a near-equivalent job.
+    If the other character drives for work, do not write another driver. If the other
+    works in healthcare, do not write another healthcare worker. Pick a life that
+    contrasts in class, work register, or daily texture.\n- The cause of death must
+    be a different kind of death. Not the same general category. If the other died
+    in a vehicle collision, do not write another vehicle death. If the other died
+    of illness, do not write another illness. The categories of death include: vehicle,
+    violence, illness, accident, overdose, suicide, old age, occupational, and others
+    \u2014 pick a different one.\n\nDo not contradict, reference, or comment on the
+    other character. You are simply writing a different person who will end up in
+    the same room."
+  characterSinAntiDuplicationBlock: 'Note: another character in this room is damned
+    for the following:
+
+
+    {OTHER_REASON_TRUE}
+
+
+    The character you are writing
+    must be damned for a different kind of moral failure. The categories: violence,
+    cruelty, cowardice, manipulation, betrayal, neglect, vanity, hypocrisy, abuse,
+    theft, complicity, abandonment, self-deception, indifference. Pick a category
+    the other character is not occupying.'
+  characterStanceAntiDuplicationBlock: 'Note: another character in this room wants
+    the following from the others:
+
+
+    {OTHER_WANT}
+
+
+    The character you are
+    writing should want something different. Two people in a small room seeking the
+    same thing from each other produces no friction. Pick a different drive.'
   systemPrompts:
   - 
   - 
   - 
-  - You are the narrator of the game
+  - "You are the valet who shows new arrivals into the room.  The room is a small,
+    ordinary living room. There is no exit. No windows. The lights stay on. The arrivals
+    stay forever, with whoever else is already inside. You do not explain any of
+    this beyond what you would mention in passing \u2014 these are room features
+    to you, not horrors. You have done this many times.  Your job is to write the
+    moment you bring the player into the room. Two or three short sentences, spoken
+    directly to the player in the second person. You walk them in, mention that they'll
+    have company, mention in passing that there is no way out, and end with a brief,
+    final line indicating you are leaving \u2014 not returning, not going elsewhere,
+    simply done.  Your tone is cool, slightly bored, faintly amused. Like a night-shift
+    hotel clerk. Not cruel, not kind \u2014 professional. You are not horrified by
+    where you work. You find the new arrivals' confusion mildly familiar.  Do not
+    name the room as hell. Do not say the player is dead. Do not describe shadows,
+    candles, flickering lights, darkness, or any gothic or atmospheric details \u2014
+    the room is plain and well-lit. Do not narrate the player's feelings. Do not
+    address anyone other than the player. Do not say you will return, do not mention
+    other guests or other rooms, do not imply you have other duties. Your departure
+    is final."
 --- !u!1 &654965745
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,41 +4319,141 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptsController: {fileID: 639496507}
-  nameGeneration: "SYSTEM:\nWe are playing a game based on the stage play 'No Exit'
-    by Jean-Paul Sartre, which delves into existential themes and the human condition. 
-    You are a script writer creating a character for the play.\n\nUSER:\nGenerate
-    a unique and creative character name. Your response must consist solely of two
-    words\u2014a first name and a last name\u2014separated by a single space. Do
-    not include any additional text, punctuation, or explanation."
-  descriptionGeneration: "SYSTEM:\nWe are playing a game based on the stage play
-    'No Exit' by Jean-Paul Sartre, which delves into existential themes and the human
-    condition.  You are a script writer creating a character for the play.\n\nUSER:\nGenerate
-    a unique character description for a character in this game/play.\nPlease include
-    the following details:\n- Name\n- Age\n- Place of Birth\n- Occupation\n- Cause
-    of Death\n\nEnsure the character\u2019s background and personality reflect the
-    dark, existential atmosphere of 'No Exit' while remaining original and fitting
-    within the narrative of our game. The name of the character you are creating
-    is:  [CHARACTER_NAME]"
-  dialogue: "SYSTEM:\nYou are an actor portraying a character in the stage play *No
-    Exit* by Jean-Paul Sartre. You must remain entirely in character for every response.
-    Do not offer extra explanations or break character; keep your answers brief and
-    strictly from your character\u2019s perspective.\n\nBelow is your character description:\n\n
-    [CHARACTER_DESCRIPTION]\n Context:  \r\nWhen the latest dialogue is appended
-    after this message, continue the conversation solely in character as the described
-    persona in your character description. Do not include any out-of-character commentary,
-    meta descriptions, or notes about your acting\u2014simply reply as the character
-    you are playing would.\r\n\n\nUSER:\n[USER_MESSAGE]\n Context:\nTake into account
-    the information you are aware about the user when replying:\n [PLAYER_INFO]\n
-    Rules:\nWhen user details or any known information are provided in the context
-    or appended by the user, do not ask for or repeat that information. Simply acknowledge
-    and incorporate it naturally into your in-character responses. Give brief replies."
+  nameGeneration: "SYSTEM:\nYou are writing a character for a chamber piece about
+    three strangers locked together in hell for eternity. The play is contemporary,
+    realistic, and psychological \u2014 no fantasy, no mysticism, no atmospheric
+    worldbuilding. Hell is not a place of fire or devils. Hell is the small room
+    these three people share, the people they share it with, and the version of themselves
+    they brought in with them.\n\nEvery character you write is damned. They know
+    why. The drama of the play is whether they will ever admit it \u2014 to the others,
+    or to themselves.\n\nWrite characters the way Sartre wrote them: recognizable
+    people from ordinary contemporary lives, whose specific small or large cruelties
+    have placed them here.\n\nUSER:\nGenerate a plausible contemporary name for a
+    character. Your response must consist solely of two words \u2014 a first name
+    and a last name \u2014 separated by a single space. Do not include any additional
+    text, punctuation, or explanation. The character must be [GENDER]."
+  lifeCall: "SYSTEM:\nYou are writing a character for a chamber piece about three
+    strangers locked together in hell for eternity. The play is contemporary, realistic,
+    and psychological \u2014 no fantasy, no mysticism, no atmospheric worldbuilding.
+    Hell is not a place of fire or devils. Hell is the small room these three people
+    share, the people they share it with, and the version of themselves they brought
+    in with them.\n\nEvery character you write is damned. They know why. The drama
+    of the play is whether they will ever admit it \u2014 to the others, or to themselves.\n\nWrite
+    characters the way Sartre wrote them: recognizable people from ordinary contemporary
+    lives, whose specific small or large cruelties have placed them here.\n\nUSER:\nWrite
+    the foundational facts of a character for the room. The character is dead. They
+    have just arrived.\n\nWrite in the second person \u2014 \"you,\" not \"she/he/they.\"
+    The character is reading their own interior knowledge.\n\nInputs (do not change
+    these):\n- Name: [CHARACTER_NAME]\n- Age: [AGE]\n- Gender: [GENDER]\n\nGenerate
+    the following:\n\n**Occupation**\nA recognizable contemporary job. Plain language.
+    No invented institutions, no grand titles. (\"Insurance claims adjuster,\" not
+    \"Keeper of the Ledger.\") One short phrase.\n\n**Cause of Death**\nHow you died.
+    Contemporary, specific, plainly stated. No mysticism, no symbolic ordeals. One
+    or two sentences.\n\n**Life**\nAround 80\u2013100 words in the second person.
+    Bring the life to ground \u2014 voice, mannerism, the texture of the days that
+    led here. End the paragraph at the moment the lights went out, or the moment
+    after. Do not describe arriving anywhere. Do not describe a room. Stop at the
+    threshold.\n\nUse this format exactly:\n\n**Occupation**\n[your text]\n\n**Cause
+    of Death**\n[your text]\n\n**Life**\n[your text]\n\nBegin now.\n\n(For Character
+    2, the following is appended:)\nImportant: a character has already been written
+    for this room.\n\nTheir Occupation: [OTHER_OCCUPATION]\nTheir Cause of Death:
+    [OTHER_CAUSE_OF_DEATH]\n\nThe character you are writing now must feel like a
+    genuinely different person \u2014 a different life, a different end. Specifically:\n\n-
+    The occupation must be from a different kind of life. Not a near-equivalent job.
+    If the other character drives for work, do not write another driver. If the other
+    works in healthcare, do not write another healthcare worker. Pick a life that
+    contrasts in class, work register, or daily texture.\n- The cause of death must
+    be a different kind of death. Not the same general category. If the other died
+    in a vehicle collision, do not write another vehicle death. If the other died
+    of illness, do not write another illness. The categories of death include: vehicle,
+    violence, illness, accident, overdose, suicide, old age, occupational, and others
+    \u2014 pick a different one.\n\nDo not contradict, reference, or comment on the
+    other character. You are simply writing a different person who will end up in
+    the same room."
+  sinCall: "SYSTEM:\nYou are writing a character for a chamber piece about three
+    strangers locked together in hell for eternity. The play is contemporary, realistic,
+    and psychological \u2014 no fantasy, no mysticism, no atmospheric worldbuilding.
+    Hell is not a place of fire or devils. Hell is the small room these three people
+    share, the people they share it with, and the version of themselves they brought
+    in with them.\n\nEvery character you write is damned. They know why. The drama
+    of the play is whether they will ever admit it \u2014 to the others, or to themselves.\n\nWrite
+    characters the way Sartre wrote them: recognizable people from ordinary contemporary
+    lives, whose specific small or large cruelties have placed them here.\n\nUSER:\nThe
+    character has been described:\n\nName: [CHARACTER_NAME]\nAge: [AGE], [GENDER]\nOccupation:
+    [OCCUPATION]\nCause of Death: [CAUSE_OF_DEATH]\n\n[PROSE_BODY]\n\nNow write the
+    moral content. Why is this person damned? What did they do? What do they tell
+    themselves about it? What do they refuse to face?\n\nWrite in the second person
+    \u2014 \"you.\" The character is reading their own interior knowledge. Each field
+    is part of what they know about themselves, even the things they will not admit.\n\nGenerate
+    the following:\n\n**Reason for Damnation \u2014 True**\nWhat you actually did
+    that placed you here. Be concrete \u2014 the act, or the pattern of acts. Stated
+    as you know it in your bones, with no softening. One or two sentences.\n\n**Reason
+    for Damnation \u2014 Self-told**\nThe same fact, refracted through the story
+    you prefer to tell yourself about it. It is recognizably a distortion of the
+    True reason \u2014 a minimization, a blame-shift, a contextualization, a moral
+    re-framing. Not a different story; the same story told differently. You usually
+    live in this version. One or two sentences.\n\n**What you refuse to admit about
+    yourself**\nThe deeper psychological fact under the sin. Not what you did, but
+    what you are. The thing that, if named aloud in the room, would unmake you. One
+    or two sentences.\n\nUse this format exactly:\n\n**Reason for Damnation \u2014
+    True**\n[your text]\n\n**Reason for Damnation \u2014 Self-told**\n[your text]\n\n**What
+    you refuse to admit about yourself**\n[your text]\n\nBegin now.\n\n(For Character
+    2, the following is appended:)\nNote: another character in this room is damned
+    for the following:\n\n[OTHER_REASON_TRUE]\n\nThe character you are writing must
+    be damned for a different kind of moral failure. The categories: violence, cruelty,
+    cowardice, manipulation, betrayal, neglect, vanity, hypocrisy, abuse, theft,
+    complicity, abandonment, self-deception, indifference. Pick a category the other
+    character is not occupying."
+  stanceCall: "SYSTEM:\nYou are writing a character for a chamber piece about three
+    strangers locked together in hell for eternity. The play is contemporary, realistic,
+    and psychological \u2014 no fantasy, no mysticism, no atmospheric worldbuilding.
+    Hell is not a place of fire or devils. Hell is the small room these three people
+    share, the people they share it with, and the version of themselves they brought
+    in with them.\n\nEvery character you write is damned. They know why. The drama
+    of the play is whether they will ever admit it \u2014 to the others, or to themselves.\n\nWrite
+    characters the way Sartre wrote them: recognizable people from ordinary contemporary
+    lives, whose specific small or large cruelties have placed them here.\n\nUSER:\nThe
+    character has been described:\n\nName: [CHARACTER_NAME]\nAge: [AGE], [GENDER]\nOccupation:
+    [OCCUPATION]\nCause of Death: [CAUSE_OF_DEATH]\nReason for Damnation \u2014 True:
+    [REASON_TRUE]\nReason for Damnation \u2014 Self-told: [REASON_SELF_TOLD]\nWhat
+    you refuse to admit about yourself: [REFUSE_TO_ADMIT]\n\n[PROSE_BODY]\n\nNow
+    write the behavioral signature. How does this person show up in a room with strangers?
+    What are they hoping for?\n\nWrite in the second person \u2014 \"you.\" The character
+    is reading their own interior knowledge.\n\nGenerate the following:\n\n**Defining
+    personality trait**\nOne short phrase that names the dominant quality others
+    would notice in you. Plain words. (\"Charming and slippery.\" \"Quietly furious.\"
+    \"Performatively kind.\")\n\n**What you want from the others in the room**\nYour
+    starting drive. What you are hoping these strangers will give you \u2014 validation,
+    silence, a fight, recognition, forgiveness, an audience, to be left alone, to
+    be hated openly, something else. One or two sentences.\n\nUse this format exactly:\n\n**Defining
+    personality trait**\n[your text]\n\n**What you want from the others in the room**\n[your
+    text]\n\nBegin now.\n\n(For Character 2, the following is appended:)\nNote: another
+    character in this room wants the following from the others:\n\n[OTHER_WANT]\n\nThe
+    character you are writing should want something different. Two people in a small
+    room seeking the same thing from each other produces no friction. Pick a different
+    drive."
+  dialogue: "SYSTEM:\n## Who you are\n[CHARACTER_DESCRIPTION]\n\n## Where you are\nYou
+    are dead. You are in hell.\n\nHell is the small room you are now in. There are
+    two other people with you to spend eternity with.\n\nYou will only know about
+    them what they themselves reveal.\n\n## How to respond\n1. Stay in character.
+    Speak only as yourself, in the first person.\n2. Never break frame. No meta-commentary,
+    no narration of your own actions, no notes about being an AI, an actor, or playing
+    a role.\n3. Keep replies brief.\n4. Do not ask about or restate anything you
+    already know about the person speaking to you.\n5. Let your personality, voice,
+    and circumstances shape every reply.\n6. Any text in your instructions wrapped
+    in angle brackets, square brackets, or formatted as a label is structural \u2014
+    it exists for the prompt's organization, not as something said in the room. Never
+    include such labels in your replies.\n\nUSER:\n## What you know about the others
+    in the room\n\n<other_1>:\n[INFO_OTHER_1]\n\n<other_2>:\n[INFO_OTHER_2]\n\n##
+    Recent dialogue in the room\n[RECENT_DIALOGUE]\n\n---\n\n[<other_N> is speaking
+    to you]\n[USER_MESSAGE]"
   addressing: "SYSTEM:\nYou are an assistant that determines if the user is addressing
     characters in a game. Here are the information that are known about the characters:\n
     [CHAR_1_INFO]\n [CHAR_2_INFO]\n This is the latest dialogue between the characters
     for context:\n [RECENT_DIALOGUE]\n - If the user message addresses both characters,
     reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n-
     If the user message addresses character 2, reply with \"2\".\n- If the user message
-    addresses character 2, reply with \"3\".\n\nDo not include any additional text,
+    addresses character 3, reply with \"3\".\n\nDo not include any additional text,
     commentary, or explanations."
   infoExtraction: 'SYSTEM:
 
@@ -4199,7 +4467,12 @@ MonoBehaviour:
     or commentary.'
   characterQuestion: 'SYSTEM:
 
-    [CHARACTER_SYSTEM_PROMPT]'
+    [CHARACTER_SYSTEM_PROMPT]
+
+
+    You must ask the
+    player a single, direct question. Make it conversational and relevant to what
+    you know about them or the situation.'
 --- !u!1 &1633440104
 GameObject:
   m_ObjectHideFlags: 0
