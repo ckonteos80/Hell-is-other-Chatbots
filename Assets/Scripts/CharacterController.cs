@@ -46,11 +46,6 @@ public class CharacterController : MonoBehaviour
 
     //   public List<string> systemPrompts; // One per character.
 
-    // Model parameters.
-    public float temp;         // For dialogue requests.
-    public float charaterTemp; // For generating names/descriptions.
-    public int maxDialogueTokens = 150;  // Token limit for character dialogue responses
-    public int maxAddressingTokens = 10; // Token limit for routing/addressing decisions
 
     saveController mySaveController;
 
@@ -96,6 +91,24 @@ public class CharacterController : MonoBehaviour
         myMaster.thePromptsController.systemPrompts[2] =
             myMaster.thePromptsController.dialogueSystemPromptTemplate
                 .Replace("{CHARACTER_DESCRIPTION}", Characters[2].myCharacter);
+
+        if (mySaveController != null)
+        {
+            mySaveController.NewCharacterInfo(
+                myMaster.thePromptsController.dialogueSystemPromptTemplate,
+                Characters[1].myName,
+                Characters[1].myCharacter,
+                GeneratedCharacters.Instance.modelNames.modelGeneration,
+                GeneratedCharacters.Instance.generationTemperature,
+                GeneratedCharacters.Instance.maxGenerationTokens);
+            mySaveController.NewCharacterInfo(
+                myMaster.thePromptsController.dialogueSystemPromptTemplate,
+                Characters[2].myName,
+                Characters[2].myCharacter,
+                GeneratedCharacters.Instance.modelNames.modelGeneration,
+                GeneratedCharacters.Instance.generationTemperature,
+                GeneratedCharacters.Instance.maxGenerationTokens);
+        }
     }
 
     // Called when the user sends a message.
@@ -143,7 +156,7 @@ public class CharacterController : MonoBehaviour
 
         string AdressSystemPromptComplete = myMaster.thePromptsController.adressingSystemPromptIntro + "\n " + character1info + "\n " + character2info + "\n "+ myMaster.thePromptsController.adressingSystemPromptContext +"\n " + latestDialoguesContext +"\n " + myMaster.thePromptsController.adressingSystemPromptActions;
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, temp, GeneratedCharacters.Instance.modelNames.modelAddressing, maxAddressingTokens, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(AdressSystemPromptComplete, userMessage, characterSpeakingNo, GeneratedCharacters.Instance.addressingTemperature, GeneratedCharacters.Instance.modelNames.modelAddressing, GeneratedCharacters.Instance.maxAddressingTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             string reply = assistantMessage.content;
@@ -193,7 +206,7 @@ public class CharacterController : MonoBehaviour
 
             if (mySaveController != null)
             {
-                mySaveController.NewAdressing(AdressSystemPromptComplete, userMessage, reply);
+                mySaveController.NewAdressing(AdressSystemPromptComplete, userMessage, reply, GeneratedCharacters.Instance.modelNames.modelAddressing, GeneratedCharacters.Instance.addressingTemperature, GeneratedCharacters.Instance.maxAddressingTokens);
             }
             else
             {
@@ -217,7 +230,7 @@ public class CharacterController : MonoBehaviour
             "[<other_" + speakerPersonNo + "> is speaking to you]\n" +
             userMessage;
 
-        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, temp, GeneratedCharacters.Instance.modelNames.modelDialogue, maxDialogueTokens, (response) =>
+        yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, characterReplyingNo, GeneratedCharacters.Instance.dialogueTemperature, GeneratedCharacters.Instance.modelNames.modelDialogue, GeneratedCharacters.Instance.maxDialogueTokens, (response) =>
         {
             Message assistantMessage = response.choices[0].message;
             // string reply = StripCharacterNamePrefix(assistantMessage.content, Characters[characterReplyingNo].myName);
@@ -233,7 +246,7 @@ public class CharacterController : MonoBehaviour
             ShowDialog(reply, characterReplyingNo, 0);
 
             // Save dialogue
-            SaveDialogueIfPossible(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, reply);
+            SaveDialogueIfPossible(myMaster.thePromptsController.systemPrompts[characterReplyingNo], userPrompt, reply, GeneratedCharacters.Instance.modelNames.modelDialogue, GeneratedCharacters.Instance.dialogueTemperature, GeneratedCharacters.Instance.maxDialogueTokens);
         }, this));
     }
 
@@ -249,18 +262,18 @@ public class CharacterController : MonoBehaviour
             if (!result.Equals("none", StringComparison.OrdinalIgnoreCase))
             {
                 addPersonalInfo(characterNo, result);
-                myMaster.StartFlicker(); 
+                myMaster.StartFlicker();
             }
 
             if (mySaveController != null)
             {
-                mySaveController.NewEntryInfo(myMaster.thePromptsController.infoExtractionSystemPrompt, reply, result);
+                mySaveController.NewEntryInfo(myMaster.thePromptsController.infoExtractionSystemPrompt, reply, result, InfoExtractorHandler.useQween0_6 ? "Qwen3-0.6B" : "Qwen3-4B", GeneratedCharacters.Instance.infoTemperature, GeneratedCharacters.Instance.maxInfoTokens);
             }
             else
             {
                 Debug.LogError("mySaveController is not assigned.");
             }
-        }, this);
+        }, this, GeneratedCharacters.Instance.maxInfoTokens, GeneratedCharacters.Instance.infoTemperature);
 
         yield return null;
     }
@@ -376,11 +389,11 @@ public class CharacterController : MonoBehaviour
         UpdateLatestDialoguesContext();
     }
 
-    private void SaveDialogueIfPossible(string systemPrompt, string userPrompt, string reply)
+    private void SaveDialogueIfPossible(string systemPrompt, string userPrompt, string reply, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
         if (mySaveController != null)
         {
-            mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply);
+            mySaveController.NewEntryDialogue(systemPrompt, userPrompt, reply, modelName, temperature, maxTokens);
         }
     }
 
@@ -483,7 +496,7 @@ public class CharacterController : MonoBehaviour
             systemPrompt,
             userPrompt,
             3,
-            temp,
+            GeneratedCharacters.Instance.dialogueTemperature,
             GeneratedCharacters.Instance.modelNames.modelDialogue,
             0,
             (response) =>
@@ -499,7 +512,7 @@ public class CharacterController : MonoBehaviour
                 ShowDialog(reply, 3, 1);
 
                 // Save dialogue
-                SaveDialogueIfPossible(systemPrompt, userPrompt, reply);
+                SaveDialogueIfPossible(systemPrompt, userPrompt, reply, GeneratedCharacters.Instance.modelNames.modelDialogue, GeneratedCharacters.Instance.dialogueTemperature, GeneratedCharacters.Instance.maxDialogueTokens);
             }
         , this));
     }
@@ -533,7 +546,7 @@ public class CharacterController : MonoBehaviour
             systemPrompt,
             userPrompt,
             characterNo,
-            temp,
+            GeneratedCharacters.Instance.dialogueTemperature,
             GeneratedCharacters.Instance.modelNames.modelDialogue,
             0,
             (response) =>
@@ -549,7 +562,7 @@ public class CharacterController : MonoBehaviour
                 ShowDialog(question, characterNo, 0);
 
                 // Save dialogue
-                SaveDialogueIfPossible(systemPrompt, userPrompt, question);
+                SaveDialogueIfPossible(systemPrompt, userPrompt, question, GeneratedCharacters.Instance.modelNames.modelDialogue, GeneratedCharacters.Instance.dialogueTemperature, GeneratedCharacters.Instance.maxDialogueTokens);
             }
         , this));
     }

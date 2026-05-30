@@ -20,12 +20,12 @@ public static class InfoExtractorHandler
     /// <param name="systemPrompt">Custom system prompt for the extraction</param>
     /// <param name="callback">Callback function when request completes, returns extracted info</param>
     /// <param name="caller">MonoBehaviour calling this (needed for coroutine)</param>
-    public static void ExtractInfo(string text, string systemPrompt, Action<string> callback, MonoBehaviour caller)
+    public static void ExtractInfo(string text, string systemPrompt, Action<string> callback, MonoBehaviour caller, int maxTokens = 50, float temperature = 0f)
     {
-        caller.StartCoroutine(ExtractInfoCoroutine(text, systemPrompt, callback));
+        caller.StartCoroutine(ExtractInfoCoroutine(text, systemPrompt, callback, maxTokens, temperature));
     }
 
-    private static IEnumerator ExtractInfoCoroutine(string text, string systemPrompt, Action<string> callback)
+    private static IEnumerator ExtractInfoCoroutine(string text, string systemPrompt, Action<string> callback, int maxTokens = 50, float temperature = 0f)
     {
         // Select API URL based on bool
         string apiUrl = useQween0_6 ? Qween0_6 : Qween4B;
@@ -34,7 +34,9 @@ public static class InfoExtractorHandler
         var request = new ExtractionRequest
         {
             text = text,
-            system_prompt = systemPrompt
+            system_prompt = systemPrompt,
+            max_tokens = maxTokens,
+            temperature = temperature
         };
 
         string jsonPayload = JsonUtility.ToJson(request);
@@ -103,6 +105,8 @@ public class ExtractionRequest
 {
     public string text;
     public string system_prompt;
+    public int max_tokens;
+    public float temperature;
 }
 
 [System.Serializable]

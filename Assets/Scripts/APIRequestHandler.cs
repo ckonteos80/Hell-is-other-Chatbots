@@ -69,11 +69,11 @@ public static class APIRequestHandler
             new Message { role = "user", content = userMessage }
         };
 
-        // Clean up message content.
+        // Normalize message content — trim whitespace and unify line endings to LF.
         for (int i = 0; i < messages.Count; i++)
         {
             if (!string.IsNullOrEmpty(messages[i].content))
-                messages[i].content = messages[i].content.Trim().Replace("\n", " ");
+                messages[i].content = messages[i].content.Trim().Replace("\r\n", "\n").Replace("\r", "\n");
         }
 
         // Create a conversation payload.

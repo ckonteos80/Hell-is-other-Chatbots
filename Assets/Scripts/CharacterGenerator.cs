@@ -12,7 +12,6 @@ public class CharacterGenerator : MonoBehaviour
     public Button generateButton;
     public GameObject generatingText;
     public string mainSceneName = "start";
-    public float temperature = 1f;
 
     private struct ParsedCharData
     {
@@ -67,8 +66,8 @@ public class CharacterGenerator : MonoBehaviour
 
         Debug.Log($"[{label} / Name] PROMPT: {nameUserPrompt}");
         yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-            p.characterSetupSystemPrompt, nameUserPrompt, charNo, temperature,
-            generatedCharacters.modelNames.modelGeneration, 0,
+            p.characterSetupSystemPrompt, nameUserPrompt, charNo, generatedCharacters.generationTemperature,
+            generatedCharacters.modelNames.modelGeneration, generatedCharacters.maxGenerationTokens,
             (response) => { generatedName = response.choices[0].message.content.Trim(); },
             this));
 
@@ -99,8 +98,8 @@ public class CharacterGenerator : MonoBehaviour
             string capturedResponse = "";
             Debug.Log($"[{label} / Life] PROMPT (attempt {attempt + 1}):\n{lifeUserPrompt}");
             yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-                p.characterSetupSystemPrompt, lifeUserPrompt, charNo, temperature,
-                generatedCharacters.modelNames.modelGeneration, 0,
+                p.characterSetupSystemPrompt, lifeUserPrompt, charNo, generatedCharacters.generationTemperature,
+                generatedCharacters.modelNames.modelGeneration, generatedCharacters.maxGenerationTokens,
                 (response) => { capturedResponse = response.choices[0].message.content; },
                 this));
             Debug.Log($"[{label} / Life] RESPONSE:\n{capturedResponse}");
@@ -143,8 +142,8 @@ public class CharacterGenerator : MonoBehaviour
             string capturedResponse = "";
             Debug.Log($"[{label} / Sin] PROMPT (attempt {attempt + 1}):\n{sinUserPrompt}");
             yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-                p.characterSetupSystemPrompt, sinUserPrompt, charNo, temperature,
-                generatedCharacters.modelNames.modelGeneration, 0,
+                p.characterSetupSystemPrompt, sinUserPrompt, charNo, generatedCharacters.generationTemperature,
+                generatedCharacters.modelNames.modelGeneration, generatedCharacters.maxGenerationTokens,
                 (response) => { capturedResponse = response.choices[0].message.content; },
                 this));
             Debug.Log($"[{label} / Sin] RESPONSE:\n{capturedResponse}");
@@ -190,8 +189,8 @@ public class CharacterGenerator : MonoBehaviour
             string capturedResponse = "";
             Debug.Log($"[{label} / Stance] PROMPT (attempt {attempt + 1}):\n{stanceUserPrompt}");
             yield return StartCoroutine(APIRequestHandler.SendOpenAIRequest(
-                p.characterSetupSystemPrompt, stanceUserPrompt, charNo, temperature,
-                generatedCharacters.modelNames.modelGeneration, 0,
+                p.characterSetupSystemPrompt, stanceUserPrompt, charNo, generatedCharacters.generationTemperature,
+                generatedCharacters.modelNames.modelGeneration, generatedCharacters.maxGenerationTokens,
                 (response) => { capturedResponse = response.choices[0].message.content; },
                 this));
             Debug.Log($"[{label} / Stance] RESPONSE:\n{capturedResponse}");
@@ -229,6 +228,15 @@ public class CharacterGenerator : MonoBehaviour
 
         // ── Step 6: Assemble bio ──────────────────────────────────────────────
         var sb = new StringBuilder();
+        sb.AppendLine("**Name**");
+        sb.AppendLine(generatedName);
+        sb.AppendLine();
+        sb.AppendLine("**Age**");
+        sb.AppendLine(randomAge.ToString());
+        sb.AppendLine();
+        sb.AppendLine("**Gender**");
+        sb.AppendLine(gender);
+        sb.AppendLine();
         sb.AppendLine("**Occupation**");
         sb.AppendLine(occupation);
         sb.AppendLine();

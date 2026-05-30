@@ -1,0 +1,57 @@
+{
+    "modelName": "Qwen/Qwen2.5-7B-Instruct",
+    "temperature": 0.5,
+    "answerLength": 1,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I believed in a just world, where every action had its consequence\"\n\n \n Character 2 information known: \n\"I believe in consequences\"\n\n \n This is the latest dialogue between the characters for context:\n Character 3: Step inside, and you'll see you're not alone. No way out, but that's the rule. I'll be off now.\nCharacter 1: Do you believe in a just world, where every action has its consequences?\nCharacter 0: hi my name is chris\nCharacter 1: Chris, I believed in a just world, where every action had its consequence. It's disheartening to see that my diligence and attention to detail were not enough.\nCharacter 2: Hello, Chris. I've always believed in a world where actions have consequences, but it seems mine didn't quite align as I thought.\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "what is your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}
+{
+    "modelName": "Qwen/Qwen2.5-7B-Instruct",
+    "temperature": 0.5,
+    "answerLength": 1,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I believed in a just world, where every action had its consequence\"\n\"My name is Alex\"\n\n \n Character 2 information known: \n\"I believe in consequences\"\n\"My name is Eli\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Chris, I believed in a just world, where every action had its consequence. It's disheartening to see that my diligence and attention to detail were not enough.\nCharacter 2: Hello, Chris. I've always believed in a world where actions have consequences, but it seems mine didn't quite align as I thought.\nCharacter 0: what is your names?\nCharacter 1: My name is Alex. It's strange to be in this place, reflecting on my beliefs and actions.\nCharacter 2: My name is Eli. It's quite surreal to be here, isn't it?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "hi eli"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}
+{
+    "modelName": "Qwen/Qwen2.5-7B-Instruct",
+    "temperature": 0.5,
+    "answerLength": 1,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I believed in a just world, where every action had its consequence\"\n\"My name is Alex\"\n\n \n Character 2 information known: \n\"I believe in consequences\"\n\"My name is Eli\"\n\n \n This is the latest dialogue between the characters for context:\n Character 0: what is your names?\nCharacter 1: My name is Alex. It's strange to be in this place, reflecting on my beliefs and actions.\nCharacter 2: My name is Eli. It's quite surreal to be here, isn't it?\nCharacter 0: hi eli\nCharacter 2: Hello, Chris. It is indeed surreal. How do you find yourself here?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "I dont know why I am here, why are we chosen to be in the same room?"
+        },
+        {
+            "role": "assistant",
+            "content": "0"
+        }
+    ]
+}

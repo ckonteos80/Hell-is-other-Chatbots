@@ -1,0 +1,19 @@
+{
+    "modelName": "Qwen/Qwen2.5-7B-Instruct",
+    "temperature": 0.30000001192092898,
+    "maxTokens": 10,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an assistant that determines if the user is addressing characters in a game. Here are the information that are known about the characters:\n Character 1 information known: \n\"I enjoy board games\"\n\n \n Character 2 information known: \n\"I am [Your Name]\"\n\n \n This is the latest dialogue between the characters for context:\n Character 1: Do you enjoy board games as much as I do, or are there other hobbies that bring you joy?\nCharacter 0: hi my name is chris\nCharacter 1: Hi Chris, it's nice to meet you. I do enjoy board games. They are a wonderful way to pass the time, don't they?\nCharacter 2: Hi, Chris. I'm [Your Name]. It's... peculiar to be here. I suppose we'll have to make the best of this. Do you enjoy board games as much as I do?\nCharacter 1: Chris, it's nice to meet you. Given your name, do you have any particular hobbies or passions that you're known for?\n\n - If the user message addresses both characters, reply with \"0\".\n- If the user message addresses character 1, reply with \"1\".\n- If the user message addresses character 2, reply with \"2\".\n- If the user message addresses character 3, reply with \"3\".\n\nDo not include any additional text, commentary, or explanations."
+        },
+        {
+            "role": "user",
+            "content": "why are we here?"
+        },
+        {
+            "role": "assistant",
+            "content": "2"
+        }
+    ]
+}

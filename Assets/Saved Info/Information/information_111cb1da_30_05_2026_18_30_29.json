@@ -1,0 +1,209 @@
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 16,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi my name is chris"
+        },
+        {
+            "role": "assistant",
+            "content": "my name is chris"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 66,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Chris, I believed in a just world, where every action had its consequence. It's disheartening to see that my diligence and attention to detail were not enough."
+        },
+        {
+            "role": "assistant",
+            "content": "I believed in a just world, where every action had its consequence"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 25,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hello, Chris. I've always believed in a world where actions have consequences, but it seems mine didn't quite align as I thought."
+        },
+        {
+            "role": "assistant",
+            "content": "I believe in consequences"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 4,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "what is your names?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 15,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "My name is Alex. It's strange to be in this place, reflecting on my beliefs and actions."
+        },
+        {
+            "role": "assistant",
+            "content": "My name is Alex"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 14,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "My name is Eli. It's quite surreal to be here, isn't it?"
+        },
+        {
+            "role": "assistant",
+            "content": "My name is Eli"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 4,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi eli"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 4,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hello, Chris. It is indeed surreal. How do you find yourself here?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 4,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "I dont know why I am here, why are we chosen to be in the same room?"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 68,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "It's a difficult question, Chris. I believe we are here for a reason, to reflect on our actions and the consequences of our beliefs. My worldview was based on cause and effect, and I failed to see the immediate danger right in front of me. Perhaps we are meant to learn something from this."
+        },
+        {
+            "role": "assistant",
+            "content": "I believed in cause and effect, I failed to see the immediate danger"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "answerLength": 89,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "It's a question without an easy answer, Chris. I'm Eli, the librarian who spent a lifetime organizing others but neglected my own life. I don't have the answers either, but perhaps together we can find some understanding."
+        },
+        {
+            "role": "assistant",
+            "content": "I am Eli, the librarian who spent a lifetime organizing others but neglected my own life."
+        }
+    ]
+}

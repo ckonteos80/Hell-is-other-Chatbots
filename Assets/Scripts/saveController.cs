@@ -15,21 +15,32 @@ using System; // For Exception
 [System.Serializable]
 public class ChatHistory
 {
+    public string modelName;
+    public float temperature;
+    public int maxTokens;
     public List<Message> messages;
 }
 
 public class saveController : MonoBehaviour
 {
+    private string sessionTimestamp;
+    private string sessionId;
+
+    void Awake()
+    {
+        sessionTimestamp = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss");
+        sessionId = Guid.NewGuid().ToString("N").Substring(0, 8);
+    }
+
     /// <summary>
     /// Appends a new conversation entry as a JSON line to the specified file.
     /// Each entry will be saved in JSON Lines (JSONL) format.
     /// </summary>
     /// <param name="filePath">Full file path (including filename and .json extension).</param>
     /// <param name="newMessages">The conversation messages to append.</param>
-    public void AppendEntry(string filePath, List<Message> newMessages)
+    public void AppendEntry(string filePath, List<Message> newMessages, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
-        // Create a ChatHistory object for this conversation.
-        ChatHistory history = new ChatHistory { messages = newMessages };
+        ChatHistory history = new ChatHistory { modelName = modelName, temperature = temperature, maxTokens = maxTokens, messages = newMessages };
 
         // Convert the history to JSON.
         string jsonEntry = JsonUtility.ToJson(history, true);
@@ -49,52 +60,50 @@ public class saveController : MonoBehaviour
     /// <summary>
     /// Creates a new dialogue entry and appends it as a separate JSON line.
     /// </summary>
-    public void NewEntryDialogue(string system, string user, string assistant)
+    public void NewEntryDialogue(string system, string user, string assistant, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
         List<Message> conversationMessages = new List<Message>();
         conversationMessages.Add(new Message { role = "system", content = system });
         conversationMessages.Add(new Message { role = "user", content = user });
         conversationMessages.Add(new Message { role = "assistant", content = assistant });
 
-        // For example, saving in a file named dialogue.json inside the Assets folder.
-        // In the Editor, Application.dataPath points to your Assets folder.
-        string filePath = Path.Combine(Application.dataPath, "dialogue.json");
-        AppendEntry(filePath, conversationMessages);
+        string filePath = Path.Combine(Application.dataPath, "Saved Info", "Dialogue", "dialogue_" + sessionId + "_" + sessionTimestamp + ".json");
+        AppendEntry(filePath, conversationMessages, modelName, temperature, maxTokens);
     }
 
     /// <summary>
     /// Creates a new information entry and appends it as a separate JSON line.
     /// </summary>
-    public void NewEntryInfo(string system, string user, string assistant)
+    public void NewEntryInfo(string system, string user, string assistant, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
         List<Message> conversationMessages = new List<Message>();
         conversationMessages.Add(new Message { role = "system", content = system });
         conversationMessages.Add(new Message { role = "user", content = user });
         conversationMessages.Add(new Message { role = "assistant", content = assistant });
 
-        string filePath = Path.Combine(Application.dataPath, "information.json");
-        AppendEntry(filePath, conversationMessages);
+        string filePath = Path.Combine(Application.dataPath, "Saved Info", "Information", "information_" + sessionId + "_" + sessionTimestamp + ".json");
+        AppendEntry(filePath, conversationMessages, modelName, temperature, maxTokens);
     }
 
-    public void NewCharacterInfo(string system, string user, string assistant)
+    public void NewCharacterInfo(string system, string user, string assistant, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
         List<Message> conversationMessages = new List<Message>();
         conversationMessages.Add(new Message { role = "system", content = system });
         conversationMessages.Add(new Message { role = "user", content = user });
         conversationMessages.Add(new Message { role = "assistant", content = assistant });
 
-        string filePath = Path.Combine(Application.dataPath, "characters.json");
-        AppendEntry(filePath, conversationMessages);
+        string filePath = Path.Combine(Application.dataPath, "Saved Info", "Character", "character_" + sessionId + "_" + sessionTimestamp + ".json");
+        AppendEntry(filePath, conversationMessages, modelName, temperature, maxTokens);
     }
 
-    public void NewAdressing(string system, string user, string assistant)
+    public void NewAdressing(string system, string user, string assistant, string modelName = "", float temperature = 0f, int maxTokens = 0)
     {
         List<Message> conversationMessages = new List<Message>();
         conversationMessages.Add(new Message { role = "system", content = system });
         conversationMessages.Add(new Message { role = "user", content = user });
         conversationMessages.Add(new Message { role = "assistant", content = assistant });
 
-        string filePath = Path.Combine(Application.dataPath, "adress.json");
-        AppendEntry(filePath, conversationMessages);
+        string filePath = Path.Combine(Application.dataPath, "Saved Info", "Addressing", "addressing_" + sessionId + "_" + sessionTimestamp + ".json");
+        AppendEntry(filePath, conversationMessages, modelName, temperature, maxTokens);
     }
 }
