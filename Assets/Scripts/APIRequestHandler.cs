@@ -46,6 +46,10 @@ public static class APIRequestHandler
     // Set from CharacterController — if true, routes requests to Hugging Face; otherwise OpenAI
     public static bool useHuggingFaceProvider;
 
+    // Player-facing reason for the most recent failed request (null after a success).
+    // Lets callers show why a request failed instead of only logging it.
+    public static string lastError;
+
     /// <summary>
     /// Sends a request to the OpenAI API with retry logic for cold starts.
     /// </summary>
@@ -88,6 +92,11 @@ public static class APIRequestHandler
 
         string jsonBody = JsonUtility.ToJson(conversation);
 
+        // With a token, inference is billed to the signed-in player. Without one the
+        // proxy serves the request from this visitor's free allowance, until it runs out.
+        string token = HFAuth.GetToken();
+        bool hasToken = !string.IsNullOrEmpty(token);
+
         // Create the web request
         UnityWebRequest request = new UnityWebRequest(SPACE_URL, "POST");
 
@@ -96,7 +105,9 @@ public static class APIRequestHandler
         request.uploadHandler = new UploadHandlerRaw(jsonToSend);
         request.downloadHandler = new DownloadHandlerBuffer();
 
-        // Set headers - NO Authorization header (Hugging Face Space handles it)
+        // Set headers - the player's Hugging Face token (if signed in) is forwarded by the proxy Space
+        if (hasToken)
+            request.SetRequestHeader("Authorization", "Bearer " + token);
         request.SetRequestHeader("Content-Type", "application/json");
         request.SetRequestHeader("Accept", "application/json");
         request.SetRequestHeader("User-Agent", "UnityPlayer");
@@ -133,8 +144,50 @@ public static class APIRequestHandler
                 yield break;
             }
 
+            // Sign-in needed: free play has run out (or is unavailable), or the stored
+            // sign-in was rejected. Ask the player to sign in, wait until they have,
+            // then send this same request again so the game carries on where it was.
+            string errorBody = request.downloadHandler?.text ?? "";
+            bool freeLimitReached = errorBody.Contains("free_limit_reached");
+            bool tokenRejected = hasToken && request.responseCode == 401;
+
+            if (freeLimitReached || errorBody.Contains("sign_in_required") || tokenRejected)
+            {
+                request.Dispose();
+
+                string prompt = freeLimitReached
+                    ? "Your free play has run out. Sign in with Hugging Face to keep playing on your own inference credits."
+                    : tokenRejected
+                        ? "Your Hugging Face sign-in has expired. Sign in again to keep playing."
+                        : "Sign in with Hugging Face to play.";
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+                if (tokenRejected)
+                    HFAuth.ClearToken();
+
+                Debug.LogWarning($"🔐 {prompt}");
+                HFAuth.ShowSignInPrompt(prompt);
+                while (string.IsNullOrEmpty(HFAuth.GetToken()))
+                    yield return new WaitForSecondsRealtime(1f);
+                HFAuth.HideSignInPrompt();
+
+                yield return caller.StartCoroutine(SendOpenAIRequest(systemMessage, userMessage, characterNo, temperature, model, maxTokens, callback, caller, retryAttempts));
+#else
+                lastError = prompt + " In the editor, put a valid personal token in UserSettings/hf_token.txt.";
+                Debug.LogError($"❌ {lastError}");
+#endif
+                yield break;
+            }
+
             // Max retries reached or non-retryable error
-            Debug.LogError($"❌ Request failed after {retryAttempts + 1} attempts. Giving up.");
+            if (request.responseCode == 401 || request.responseCode == 403)
+                lastError = "Your Hugging Face sign-in was not accepted. Go back to the start page and sign in again.";
+            else if (request.responseCode == 402)
+                lastError = "Your Hugging Face inference credits have run out. Add credits on huggingface.co to keep playing.";
+            else
+                lastError = "The request to the chat service failed. Please try again.";
+
+            Debug.LogError($"❌ Request failed after {retryAttempts + 1} attempts. Giving up. {lastError}");
             request.Dispose();
             yield break;
         }
@@ -163,6 +216,7 @@ public static class APIRequestHandler
             }
 
             // Success! Invoke the callback with the parsed response
+            lastError = null;
             Debug.Log($"✨ Invoking callback with content: {openAIResponse.choices[0].message.content}");
             callback?.Invoke(openAIResponse);
         }

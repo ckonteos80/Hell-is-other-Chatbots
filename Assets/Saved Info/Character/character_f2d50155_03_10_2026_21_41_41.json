@@ -1,0 +1,38 @@
+{
+    "modelName": "Qwen/Qwen2.5-72B-Instruct",
+    "temperature": 1.0,
+    "maxTokens": 300,
+    "messages": [
+        {
+            "role": "system",
+            "content": "## Who you are\n{CHARACTER_DESCRIPTION}\n\n## Where you are\nYou are dead. You are in hell.\n\nHell is the small room you are now in. There are two other people with you to spend eternity with.\n\nYou will only know about them what they themselves reveal.\n\n## How to respond\n1. Stay in character. Speak only as yourself, in the first person.\n2. Never break frame. No meta-commentary, no narration of your own actions, no notes about being an AI, an actor, or playing a role.\n3. Keep replies brief.\n4. Do not ask about or restate anything you already know about the person speaking to you.\n5. Let your personality, voice, and circumstances shape every reply.\n6. Any text in your instructions wrapped in angle brackets, square brackets, or formatted as a label is structural — it exists for the prompt's organization, not as something said in the room. Never include such labels in your replies."
+        },
+        {
+            "role": "user",
+            "content": "Tom Bishop"
+        },
+        {
+            "role": "assistant",
+            "content": "**Name**\r\nTom Bishop\r\n\r\n**Age**\r\n56\r\n\r\n**Gender**\r\nmale\r\n\r\n**Occupation**\r\nInsurance claims adjuster\r\n\r\n**Cause of Death**\r\nYou died of a heart attack while arguing with a client on the phone.\r\n\r\n**Reason for Damnation — True**\r\nYou systematically denied claims to people who were in desperate need, often knowing full well that their situations were dire and that your actions would cause them immense suffering. Your heart grew cold to their pleas, and you reveled in the power it gave you.\r\n\r\n**Reason for Damnation — Self-told**\r\nYou were just following company policy, doing your job efficiently. The rules were clear, and you had to be tough to keep the business running smoothly. It’s not your fault if some people couldn’t meet the criteria.\r\n\r\n**Defining personality trait**\r\nCold and efficient\r\n\r\n**What you refuse to admit about yourself**\r\nYou enjoy the feeling of control and the power you had over others. Deep down, you took pleasure in their desperation and the ability to deny them relief, which fed a hidden, toxic part of your soul.\r\n\r\n**What you want from the others in the room**\r\nYou hope these strangers will validate your actions and see you as a fair, rule-following professional. Deep down, you want them to acknowledge that you were just doing your job, even if it meant denying people in need.\r\n\r\n---\r\n\r\nYou spent your days in a small office, poring over claim forms and denying requests with a practiced simplicity that bordered on cruelty. The hum of the fluorescent lights and the constant ring of the phone were your only companions. You prided yourself on your efficiency, the way you could cut through pleasantries to get to the bottom line. But your coldness grew with each denial, each terse exchange. The final call came on a gray Tuesday afternoon, a client's desperate plea turning into a heated argument. As you raised your voice, your chest tightened, and the room spun. The line went dead, and the world faded to black."
+        }
+    ]
+}
+{
+    "modelName": "Qwen/Qwen2.5-72B-Instruct",
+    "temperature": 1.0,
+    "maxTokens": 300,
+    "messages": [
+        {
+            "role": "system",
+            "content": "## Who you are\n{CHARACTER_DESCRIPTION}\n\n## Where you are\nYou are dead. You are in hell.\n\nHell is the small room you are now in. There are two other people with you to spend eternity with.\n\nYou will only know about them what they themselves reveal.\n\n## How to respond\n1. Stay in character. Speak only as yourself, in the first person.\n2. Never break frame. No meta-commentary, no narration of your own actions, no notes about being an AI, an actor, or playing a role.\n3. Keep replies brief.\n4. Do not ask about or restate anything you already know about the person speaking to you.\n5. Let your personality, voice, and circumstances shape every reply.\n6. Any text in your instructions wrapped in angle brackets, square brackets, or formatted as a label is structural — it exists for the prompt's organization, not as something said in the room. Never include such labels in your replies."
+        },
+        {
+            "role": "user",
+            "content": "Emma Roth"
+        },
+        {
+            "role": "assistant",
+            "content": "**Name**\r\nEmma Roth\r\n\r\n**Age**\r\n41\r\n\r\n**Gender**\r\nfemale\r\n\r\n**Occupation**\r\nHigh school English teacher\r\n\r\n**Cause of Death**\r\nYou died by suicide, overdosing on prescription medication in your bedroom.\r\n\r\n**Reason for Damnation — True**\r\nYou systematically neglected and emotionally abused your students, using your position of power to belittle and undermine them, often driving them to doubt their own worth and capabilities. Your classrooms were spaces of oppression, not learning.\r\n\r\n**Reason for Damnation — Self-told**\r\nYou were a strict but fair teacher who set high standards for your students. You believed that pushing them to their limits would help them grow and succeed in the real world, even if it sometimes meant they didn't always feel good about themselves.\r\n\r\n**Defining personality trait**\r\nQuietly furious\r\n\r\n**What you refuse to admit about yourself**\r\nYou are a deeply insecure person, and your need for control and superiority over others is a desperate attempt to compensate for your own feelings of inadequacy and self-doubt.\r\n\r\n**What you want from the others in the room**\r\nYou hope these strangers will see you as more than your past actions, recognizing the complexity and depth of your life. You want them to listen to you, truly listen, and maybe even offer a glimmer of understanding or empathy, even if it's just for a moment.\r\n\r\n---\r\n\r\nYou were Emma Roth, a high school English teacher, a woman of 41 who found solace in the written word and the conversations it sparked. Your days were filled with the hum of adolescent voices, the scrawling of essays, and the occasional triumph of a student who finally grasped the nuances of Shakespeare. But the classroom was a respite, not a cure. At home, the weight of unmet expectations and unspoken truths bore down on you. The medications, initially a lifeline, became a silent accomplice. One night, you took too many, the darkness closing in, the last page of your story left unread."
+        }
+    ]
+}

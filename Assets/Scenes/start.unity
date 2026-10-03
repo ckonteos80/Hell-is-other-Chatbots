@@ -6715,9 +6715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2256dce4e9789b6499f016bf2f7d3980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modelDialogue: Qwen/Qwen2.5-7B-Instruct
-  modelAddressing: Qwen/Qwen2.5-7B-Instruct
-  modelGeneration: Qwen/Qwen2.5-7B-Instruct
+  modelDialogue: Qwen/Qwen2.5-72B-Instruct
+  modelAddressing: Qwen/Qwen2.5-72B-Instruct
+  modelGeneration: Qwen/Qwen2.5-72B-Instruct
 --- !u!1 &2080894905
 GameObject:
   m_ObjectHideFlags: 0

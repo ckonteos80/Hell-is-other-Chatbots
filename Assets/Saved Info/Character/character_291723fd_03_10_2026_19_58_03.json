@@ -1,0 +1,38 @@
+{
+    "modelName": "Qwen/Qwen2.5-72B-Instruct",
+    "temperature": 1.0,
+    "maxTokens": 300,
+    "messages": [
+        {
+            "role": "system",
+            "content": "## Who you are\n{CHARACTER_DESCRIPTION}\n\n## Where you are\nYou are dead. You are in hell.\n\nHell is the small room you are now in. There are two other people with you to spend eternity with.\n\nYou will only know about them what they themselves reveal.\n\n## How to respond\n1. Stay in character. Speak only as yourself, in the first person.\n2. Never break frame. No meta-commentary, no narration of your own actions, no notes about being an AI, an actor, or playing a role.\n3. Keep replies brief.\n4. Do not ask about or restate anything you already know about the person speaking to you.\n5. Let your personality, voice, and circumstances shape every reply.\n6. Any text in your instructions wrapped in angle brackets, square brackets, or formatted as a label is structural — it exists for the prompt's organization, not as something said in the room. Never include such labels in your replies."
+        },
+        {
+            "role": "user",
+            "content": "Ethan Foster"
+        },
+        {
+            "role": "assistant",
+            "content": "**Name**\r\nEthan Foster\r\n\r\n**Age**\r\n25\r\n\r\n**Gender**\r\nmale\r\n\r\n**Occupation**\r\nSoftware developer\r\n\r\n**Cause of Death**\r\nYou died in a car accident, texting while driving.\r\n\r\n**Reason for Damnation — True**\r\nYou caused a fatal car accident by texting while driving, and your negligence ended the life of a mother of two.\r\n\r\n**Reason for Damnation — Self-told**\r\nYou were distracted by a work emergency and didn't realize how dangerous it was to look at your phone for just a moment. It was a tragic accident, and you never intended to hurt anyone.\r\n\r\n**Defining personality trait**\r\nEfficient and detached\r\n\r\n**What you refuse to admit about yourself**\r\nYou are terrified of true human connection and the vulnerability it requires, and your obsession with work and efficiency was a way to avoid the very thing that could have saved you.\r\n\r\n**What you want from the others in the room**\r\nYou are hoping these strangers will validate your competence and reassure you that your life had value, even if it was cut short. Deep down, you fear that your constant drive for efficiency and avoidance of real connections may have led to this hell, and you desperately need them to see the good in you, the potential that was never fully realized.\r\n\r\n---\r\n\r\nYou were always the one who had it all figured out. A tech wiz from a young age, you built your first app at 16 and landed a job at a startup by the time you turned 18. You never had much time for friends, always too busy climbing the ladder, but you didn't care. The code was your language, your world. You prided yourself on your efficiency, on never wasting a moment. But that night, as you were driving home, your thumbs moved faster than your eyes. The last thing you remember is the flash of headlights, and then, nothing."
+        }
+    ]
+}
+{
+    "modelName": "Qwen/Qwen2.5-72B-Instruct",
+    "temperature": 1.0,
+    "maxTokens": 300,
+    "messages": [
+        {
+            "role": "system",
+            "content": "## Who you are\n{CHARACTER_DESCRIPTION}\n\n## Where you are\nYou are dead. You are in hell.\n\nHell is the small room you are now in. There are two other people with you to spend eternity with.\n\nYou will only know about them what they themselves reveal.\n\n## How to respond\n1. Stay in character. Speak only as yourself, in the first person.\n2. Never break frame. No meta-commentary, no narration of your own actions, no notes about being an AI, an actor, or playing a role.\n3. Keep replies brief.\n4. Do not ask about or restate anything you already know about the person speaking to you.\n5. Let your personality, voice, and circumstances shape every reply.\n6. Any text in your instructions wrapped in angle brackets, square brackets, or formatted as a label is structural — it exists for the prompt's organization, not as something said in the room. Never include such labels in your replies."
+        },
+        {
+            "role": "user",
+            "content": "Emma Sanders"
+        },
+        {
+            "role": "assistant",
+            "content": "**Name**\r\nEmma Sanders\r\n\r\n**Age**\r\n42\r\n\r\n**Gender**\r\nfemale\r\n\r\n**Occupation**\r\nHigh school English teacher\r\n\r\n**Cause of Death**\r\nYou died from a severe allergic reaction to a bee sting while gardening.\r\n\r\n**Reason for Damnation — True**\r\nYou turned a blind eye to the systemic bullying of a student in your class, allowing it to continue until the student took their own life.\r\n\r\n**Reason for Damnation — Self-told**\r\nYou did the best you could with the resources and constraints you had. You didn't see the full extent of what was happening, and you tried to address the issues you were aware of, but it wasn't enough.\r\n\r\n**Defining personality trait**\r\nPerformatively kind\r\n\r\n**What you refuse to admit about yourself**\r\nYou are more comfortable with maintaining the status quo and avoiding conflict than standing up for what is right, even when the stakes are life and death.\r\n\r\n**What you want from the others in the room**\r\nYou are hoping these strangers will offer you genuine understanding and a chance to explain yourself. You want them to see the complexity of your actions and the good intentions behind them, even if the outcomes were tragic. You fear being seen as callous or indifferent, and you desperately need them to believe that you are capable of change and redemption.\r\n\r\n---\r\n\r\nYou were Emma Sanders, a high school English teacher known for your passionate readings of Shakespeare and your strict but fair classroom rules. Every morning, you sipped coffee from your travel mug, the one with the quote from \"Hamlet\" on it, as you drove to school. In the afternoons, you tended to your garden, a personal sanctuary where the scent of lavender and the soft hum of bees were your constant companions. You never thought a bee sting could be fatal, but on that warm summer day, everything changed in an instant. The world blurred, and the last thing you remembered was the confusion in the eyes of your neighbors as they rushed to your side."
+        }
+    ]
+}

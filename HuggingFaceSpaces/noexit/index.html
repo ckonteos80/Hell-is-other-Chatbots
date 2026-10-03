@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoExit – An Interactive AI Experiment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: url('NoExitScreenshot.jpg') center center / cover no-repeat fixed;
+            color: #e8e8e8;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            padding: 40px 20px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            max-width: 900px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 80px 60px;
+            border-radius: 8px;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 5.5em;
+            margin-bottom: 15px;
+            color: #D4AF37;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.7em;
+            color: #b8b8b8;
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        
+        .description {
+            font-size: 1.6em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #d4d4d4;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: left;
+        }
+        
+        .features {
+            text-align: left;
+            margin: 40px auto;
+            max-width: 650px;
+        }
+        
+        .features h2 {
+            font-size: 1.9em;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        .features ul {
+            list-style: none;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #c8c8c8;
+        }
+
+        .features li strong {
+            display: block;
+            color: #e8e8e8;
+            font-weight: 700;
+        }
+
+        .features li span {
+            display: block;
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 3px;
+            line-height: 1.5;
+        }
+        
+        .features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #8B1538;
+            font-weight: bold;
+        }
+        
+        .features a {
+            color: #D4AF37;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .features a:hover {
+            color: #fff;
+        }
+
+        .features-note {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #999;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .features-note a {
+            font-size: 1em;
+        }
+
+        .play-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 70px;
+            background: linear-gradient(135deg, #8B1538 0%, #6d0f2a 100%);
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.7em;
+            font-weight: bold;
+            border-radius: 4px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 2px solid #D4AF37;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 21, 56, 0.4);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .play-button:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .quote {
+            margin-top: 50px;
+            font-style: italic;
+            color: #8B1538;
+            font-size: 1.6em;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .description {
+                font-size: 1.05em;
+            }
+            
+            .play-button {
+                padding: 15px 40px;
+                font-size: 1.2em;
+            }
+        }
+
+        .status-panel {
+            margin: 35px auto 0;
+            max-width: 480px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 18px 24px;
+            background: rgba(0, 0, 0, 0.4);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .status-panel-title {
+            font-size: 0.8em;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 0;
+        }
+
+        .status-row + .status-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #444;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .status-dot.waking {
+            background: #D4AF37;
+            box-shadow: 0 0 7px rgba(212, 175, 55, 0.7);
+            animation: hf-pulse 1.3s ease-in-out infinite;
+        }
+
+        .status-dot.ready {
+            background: #4caf50;
+            box-shadow: 0 0 7px rgba(76, 175, 80, 0.7);
+        }
+
+        .status-dot.error { background: #c0392b; }
+
+        @keyframes hf-pulse {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.35; }
+        }
+
+        .status-label {
+            flex: 1;
+            font-size: 1.05em;
+            color: #c8c8c8;
+        }
+
+        .status-text {
+            font-size: 0.85em;
+            color: #666;
+            transition: color 0.4s ease;
+        }
+
+        .status-text.ready { color: #4caf50; }
+        .status-text.error { color: #c0392b; }
+
+        .auth-panel {
+            margin: 30px auto 0;
+            max-width: 480px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .signin-btn {
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .signin-btn img {
+            display: block;
+            height: 48px;
+        }
+
+        .auth-note {
+            margin-top: 12px;
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: #999;
+        }
+
+        .auth-user {
+            font-size: 1.1em;
+            color: #c8c8c8;
+        }
+
+        .auth-user a {
+            color: #D4AF37;
+        }
+
+        .auth-error {
+            margin-top: 12px;
+            font-size: 0.95em;
+            color: #e07a6e;
+        }
+
+        .play-button.disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="container">
+            <h1>Hell Is Other Chatbots</h1>
+            <div class="subtitle">Inspired by the one act play "No Exit"<br>by Jean-Paul Sartre</div>
+            
+            <div class="description">
+                In Sartre's No Exit, hell is sharing a room with other people for all eternity. Now hell might be sharing an eternity with other LLMs.
+            </div>
+            
+            <div class="features">
+                <h2>Features</h2>
+                <ul>
+                    <li><strong>Character Generation</strong><span>Each playthrough seeds three distinct personalities</span></li>
+                    <li><strong>Dialogue Engine</strong><span>Multi-turn LLM conversations powered by API, with per-character system prompts and personality conditioning</span></li>
+                    <li><strong>Persistent Memory</strong><span>A fine-tuned <a href="https://huggingface.co/spaces/jejunepixels/qwen3-0.6B-info-extractor-demo" target="_blank" rel="noopener noreferrer">Qwen3-0.6B</a> model extracts character details revealed in dialogue and saves them to a persistent database in Unity. The room lights flicker each time a detail is logged. These details are injected into each character's system prompt, so they remember you across turns.</span></li>
+                    <li><strong>LLM-Based Addressing</strong><span>Infers who the user is speaking to, based on information the characters have publicly shared</span></li>
+                </ul>
+                <p class="features-note">For full documentation, see the <a href="https://huggingface.co/spaces/jejunepixels/noexit/edit/main/README.md" target="_blank" rel="noopener noreferrer">README</a>.</p>
+            </div>
+            
+            <div class="status-panel">
+                <div class="status-panel-title">Initializing Systems</div>
+                <div class="status-row">
+                    <div class="status-dot" id="dot-chat"></div>
+                    <span class="status-label">Chat Engine</span>
+                    <span class="status-text" id="status-chat">Checking…</span>
+                </div>
+                <div class="status-row">
+                    <div class="status-dot" id="dot-memory"></div>
+                    <span class="status-label">Memory Extractor</span>
+                    <span class="status-text" id="status-memory">Checking…</span>
+                </div>
+            </div>
+
+            <div class="auth-panel">
+                <div id="auth-signed-out">
+                    <button type="button" class="signin-btn" id="signin-btn">
+                        <img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/sign-in-with-huggingface-xl-dark.svg" alt="Sign in with Hugging Face">
+                    </button>
+                    <p class="auth-note" id="auth-free-note">Play free for a while, or sign in with Hugging Face to use your own inference credits — no API key needed.</p>
+                    <p class="auth-note" id="auth-newtab-note" hidden>The game and sign-in open in a new tab.</p>
+                </div>
+                <div id="auth-signed-in" hidden>
+                    <p class="auth-user">Signed in as <strong id="auth-username"></strong> · <a href="#" id="signout-link">Sign out</a></p>
+                    <p class="auth-note">Dialogue is billed to your Hugging Face inference credits.</p>
+                    <p class="auth-note" id="auth-return-note" hidden>You're signed in — go back to the game tab to continue.</p>
+                </div>
+                <p class="auth-error" id="auth-error" hidden></p>
+            </div>
+
+            <a href="./game/index.html" class="play-button disabled" id="enter-btn">Enter</a>
+            
+            <div class="quote">"L'enfer, c'est les autres" — Jean-Paul Sartre</div>
+        </div>
+    </div>
+    <script>
+        const SPACES = [
+            {
+                id: 'chat',
+                owner: 'jejunepixels',
+                repo: 'noexit-proxy',
+                wakeUrl: 'https://jejunepixels-noexit-proxy.hf.space',
+                ready: false
+            },
+            {
+                id: 'memory',
+                owner: 'jejunepixels',
+                repo: 'qwen3-0-6b-info-extractor-api',
+                wakeUrl: 'https://jejunepixels-qwen3-0-6b-info-extractor-api.hf.space/extract',
+                ready: false
+            }
+        ];
+
+        function setStatus(space, state, text) {
+            space.dotEl.className = 'status-dot ' + state;
+            space.statusEl.textContent = text;
+            space.statusEl.className = 'status-text' +
+                (state === 'ready' ? ' ready' : state === 'error' ? ' error' : '');
+        }
+
+        // Set by the sign-in script below: a visitor can play when they are signed in
+        // with Hugging Face, or while they still have free play left on the proxy.
+        var signedIn = false;
+        var freePlay = false;
+
+        function checkAllReady(enterBtn, titleEl) {
+            var systemsReady = SPACES.every(s => s.ready);
+            if (systemsReady) titleEl.textContent = 'Systems Ready';
+            enterBtn.classList.toggle('disabled', !(systemsReady && (signedIn || freePlay)));
+        }
+
+        function refreshEnter() {
+            checkAllReady(document.getElementById('enter-btn'), document.querySelector('.status-panel-title'));
+        }
+
+        window.setSignedIn = function(value) {
+            signedIn = value;
+            refreshEnter();
+        };
+
+        window.setFreePlay = function(value) {
+            freePlay = value;
+            refreshEnter();
+        };
+
+        async function pollSpace(space, enterBtn, titleEl) {
+            const apiUrl = 'https://huggingface.co/api/spaces/' + space.owner + '/' + space.repo;
+            let hubFailCount = 0;
+
+            while (true) {
+                // After 2 Hub API failures, fall back to direct ping
+                if (hubFailCount < 2) {
+                    try {
+                        const res = await fetch(apiUrl);
+                        if (!res.ok) throw new Error('HTTP ' + res.status);
+                        const data = await res.json();
+                        const stage = data && data.runtime && data.runtime.stage;
+                        hubFailCount = 0;
+
+                        if (stage === 'RUNNING') {
+                            setStatus(space, 'ready', 'Ready');
+                            space.ready = true;
+                            checkAllReady(enterBtn, titleEl);
+                            return;
+                        } else if (stage === 'SLEEPING' || stage === 'PAUSED') {
+                            setStatus(space, 'waking', 'Waking up…');
+                            fetch(space.wakeUrl, { mode: 'no-cors' }).catch(function() {});
+                        } else if (stage === 'BUILDING' || stage === 'APP_STARTING') {
+                            setStatus(space, 'waking', 'Starting up…');
+                        } else if (stage === 'STOPPED') {
+                            setStatus(space, 'error', 'Unavailable');
+                            return;
+                        } else {
+                            setStatus(space, 'waking', 'Initializing…');
+                        }
+                    } catch (e) {
+                        hubFailCount++;
+                        setStatus(space, 'waking', 'Waking up…');
+                    }
+                } else {
+                    // Direct no-cors ping — resolves if server is reachable, throws if truly down
+                    try {
+                        setStatus(space, 'waking', 'Waking up…');
+                        fetch(space.wakeUrl, { mode: 'no-cors' }).catch(function() {});
+                        await fetch(space.wakeUrl, { mode: 'no-cors' });
+                        setStatus(space, 'ready', 'Ready');
+                        space.ready = true;
+                        checkAllReady(enterBtn, titleEl);
+                        return;
+                    } catch (e) {
+                        setStatus(space, 'waking', 'Waking up…');
+                    }
+                }
+                await new Promise(function(r) { setTimeout(r, 5000); });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var enterBtn = document.getElementById('enter-btn');
+            var titleEl  = document.querySelector('.status-panel-title');
+
+            SPACES.forEach(function(space) {
+                space.dotEl   = document.getElementById('dot-'    + space.id);
+                space.statusEl = document.getElementById('status-' + space.id);
+                pollSpace(space, enterBtn, titleEl);
+            });
+        });
+    </script>
+    <script type="module">
+        // Sign in with Hugging Face (OAuth, scope inference-api). The access token is
+        // stored here and read by the game (Assets/Plugins/WebGL/HFAuth.jslib), so
+        // inference is billed to the signed-in player.
+        const STORAGE_KEY = 'noexit_hf_oauth';
+        const HUB_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/hub@2.17.5/+esm';
+        const FREE_STATUS_URL = 'https://jejunepixels-noexit-proxy.hf.space/free/status';
+        // Set when this page was opened by the game's own sign-in prompt, and kept
+        // across the trip to the Hugging Face login page.
+        const FROM_GAME_KEY = 'noexit_signin_from_game';
+
+        // The Hugging Face login page cannot load inside the Space's frame on
+        // huggingface.co, so when framed the flow moves to a new tab on this URL.
+        // The game opens in a new tab too: a framed page gets separate browser
+        // storage, and the game must share storage with the sign-in page to pick
+        // up a sign-in made while playing.
+        const framed = window.self !== window.top;
+        const pageUrl = window.location.origin + window.location.pathname;
+        const params = new URLSearchParams(window.location.search);
+
+        const signedOutEl = document.getElementById('auth-signed-out');
+        const signedInEl  = document.getElementById('auth-signed-in');
+        const errorEl     = document.getElementById('auth-error');
+
+        function showError(text) {
+            errorEl.textContent = text;
+            errorEl.hidden = false;
+        }
+
+        function readStored() {
+            try {
+                const stored = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                // Require a few minutes of validity so the token does not expire while loading.
+                if (stored && stored.accessToken &&
+                    new Date(stored.accessTokenExpiresAt).getTime() > Date.now() + 5 * 60 * 1000) {
+                    return stored;
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        function render(auth) {
+            signedOutEl.hidden = !!auth;
+            signedInEl.hidden = !auth;
+            if (auth) document.getElementById('auth-username').textContent = auth.userName || 'Hugging Face user';
+            window.setSignedIn(!!auth);
+        }
+
+        // Ask the proxy whether this visitor still has free play. The proxy may be
+        // waking up, so keep trying for a while; until it answers, Enter needs sign-in.
+        async function checkFreePlay() {
+            const noteEl = document.getElementById('auth-free-note');
+            for (let attempt = 0; attempt < 24; attempt++) {
+                try {
+                    const res = await fetch(FREE_STATUS_URL);
+                    if (res.ok) {
+                        const status = await res.json();
+                        const available = !!status.enabled && status.remaining > 0;
+                        window.setFreePlay(available);
+                        if (!available) {
+                            noteEl.textContent = status.enabled
+                                ? 'Your free play is used up — sign in with Hugging Face to continue on your own inference credits.'
+                                : 'Sign in with Hugging Face to play on your own inference credits — no API key needed.';
+                        }
+                        return;
+                    }
+                    if (res.status === 404) break;   // proxy without free play
+                } catch (e) {}
+                await new Promise(function(r) { setTimeout(r, 5000); });
+            }
+            noteEl.textContent = 'Sign in with Hugging Face to play on your own inference credits — no API key needed.';
+        }
+
+        let hub = null;
+        async function loadHub() {
+            if (!hub) hub = await import(HUB_URL);
+            return hub;
+        }
+
+        async function startSignIn() {
+            errorEl.hidden = true;
+            if (framed) {
+                window.open(pageUrl + '?signin=1', '_blank', 'noopener');
+                return;
+            }
+            if (params.get('from') === 'game') {
+                try { sessionStorage.setItem(FROM_GAME_KEY, '1'); } catch (e) {}
+            }
+            const vars = window.huggingface && window.huggingface.variables;
+            if (!vars || !vars.OAUTH_CLIENT_ID) {
+                showError('Sign-in is not set up for this Space yet.');
+                return;
+            }
+            try {
+                const lib = await loadHub();
+                window.location.href = await lib.oauthLoginUrl({
+                    clientId: vars.OAUTH_CLIENT_ID,
+                    scopes: vars.OAUTH_SCOPES,
+                    redirectUrl: pageUrl
+                });
+            } catch (e) {
+                showError('Could not start sign-in. Check your connection and try again.');
+            }
+        }
+
+        let auth = readStored();
+
+        // Returning from the Hugging Face login page: exchange the code for a token.
+        if (!auth && (params.has('code') || params.has('error'))) {
+            try {
+                const lib = await loadHub();
+                const result = await lib.oauthHandleRedirectIfPresent();
+                if (result) {
+                    auth = {
+                        accessToken: result.accessToken,
+                        accessTokenExpiresAt: result.accessTokenExpiresAt,
+                        userName: result.userInfo && (result.userInfo.preferred_username || result.userInfo.name)
+                    };
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(auth));
+                }
+            } catch (e) {
+                showError('Sign-in did not complete. Please try again.');
+            }
+            window.history.replaceState(null, '', pageUrl);
+        }
+
+        document.getElementById('auth-newtab-note').hidden = !framed;
+
+        if (framed) {
+            // Whether the visitor may play is settled in the game's own tab.
+            document.getElementById('enter-btn').target = '_blank';
+            window.setFreePlay(true);
+        } else {
+            checkFreePlay();
+        }
+
+        // Sign-in started from the game's prompt: point the player back to that tab.
+        try {
+            if (auth && (params.get('from') === 'game' || sessionStorage.getItem(FROM_GAME_KEY))) {
+                document.getElementById('auth-return-note').hidden = false;
+                sessionStorage.removeItem(FROM_GAME_KEY);
+            }
+        } catch (e) {}
+        document.getElementById('signin-btn').addEventListener('click', startSignIn);
+        document.getElementById('signout-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+            render(null);
+        });
+
+        render(auth);
+
+        // Arrived in the new tab opened from the framed page: continue straight to login.
+        if (!auth && !framed && params.get('signin') === '1') startSignIn();
+    </script>
+</body>
+</html>

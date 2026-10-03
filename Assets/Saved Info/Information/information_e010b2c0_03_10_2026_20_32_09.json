@@ -1,0 +1,57 @@
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "maxTokens": 50,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "hi"
+        },
+        {
+            "role": "assistant",
+            "content": "none"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "maxTokens": 50,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hello. I'm Emily. I was a high school English teacher. What about you?"
+        },
+        {
+            "role": "assistant",
+            "content": "I worked as a high school English teacher"
+        }
+    ]
+}
+{
+    "modelName": "Qwen3-0.6B",
+    "temperature": 0.0,
+    "maxTokens": 50,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a personal information extractor. Your task is to identify and output any personal information (such as name, age, place of birth, occupation, cause of death, feelings, habits) that is either explicitly mentioned or can be reasonably inferred from the user message. Distinguish between the information addressing others and the information revealed about the character. Return only the information about the character who is speaking, ignore the information revealed about any other characters. Do not include any additional text, greetings, or commentary."
+        },
+        {
+            "role": "user",
+            "content": "Hello. I'm Michael Thompson. I was an insurance claims adjuster. I always followed the rules and upheld the integrity of the system. What about you?"
+        },
+        {
+            "role": "assistant",
+            "content": "I worked as an insurance claims adjuster"
+        }
+    ]
+}

@@ -22,6 +22,18 @@
       </div>
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
+    <!-- Shown by the game (HFAuth.jslib) when free play runs out or the sign-in expires.
+         Sign-in happens on the landing page in a new tab; the game carries on once the
+         token is stored. -->
+    <div id="hf-signin-prompt" style="display: none;">
+      <div id="hf-signin-box">
+        <p id="hf-signin-message"></p>
+        <a href="../index.html?signin=1&from=game" target="_blank" rel="noopener">
+          <img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/sign-in-with-huggingface-xl-dark.svg" alt="Sign in with Hugging Face">
+        </a>
+        <p id="hf-signin-hint">Sign-in opens in a new tab. Come back to this tab afterwards and the game continues where you left off.</p>
+      </div>
+    </div>
     <script>
       const hideFullScreenButton = "{{{ HIDE_FULL_SCREEN_BUTTON }}}";
       const buildUrl = "Build";

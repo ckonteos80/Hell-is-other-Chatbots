@@ -46,6 +46,18 @@ public class CharacterGenerator : MonoBehaviour
         yield return StartCoroutine(GenerateCharacter(1));
         yield return StartCoroutine(GenerateCharacter(2));
 
+        // A character is only stored when its generation got through. If either is
+        // missing (not signed in, out of credits, request failed), say why and stop
+        // here rather than offering Start with no characters.
+        var generated = generatedCharacters.characters;
+        if (generated.Count <= 2 || string.IsNullOrEmpty(generated[1].name) || string.IsNullOrEmpty(generated[2].name))
+        {
+            var label = generatingText.GetComponentInChildren<TMP_Text>(true);
+            if (label != null)
+                label.text = APIRequestHandler.lastError ?? "Character generation failed. Please reload and try again.";
+            yield break;
+        }
+
         generatingText.SetActive(false);
         generateButton.onClick.RemoveAllListeners();
         generateButton.onClick.AddListener(() => SceneManager.LoadScene(mainSceneName));
